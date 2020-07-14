@@ -16,19 +16,6 @@ public:
 	virtual void LateUpdate_Object()	override;
 	virtual void Render_Object(HDC hDC)	override;
 	virtual void Release_Object()		override;
-public:
-// 	CObj* CreateBullet();
-// 	CObj* CreateBullet(BULLET::ID eDir);
-// 	CObj* CreateBullet(float fAngle );
-// 	CObj* CreateScrewBullet();
-// 	CObj* CreateGuideBullet(); 
-	template<typename T> 
-	CObj* CreateBullet()
-	{
-		CObj* pInstance = CAbstractFactory<T>::Create(float(m_tPosin.x), (float)m_tPosin.y, m_fAngle);
-		return pInstance; 
-	}
-	CObj* CreateShield();
 	
 private:
 	float m_fDist = 0.f; 

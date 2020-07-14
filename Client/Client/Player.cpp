@@ -36,66 +36,7 @@ void CPlayer::KeyCheck()
 
 	}
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-		m_bIsJump = true; 
-// 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-// 		CObj_Manager::Get_Instance()->Add_Object(CreateBullet<CBullet>(), OBJ::OBJ_BULLET);
-// 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-// 		CObj_Manager::Get_Instance()->Add_Object(CreateBullet<CScrewBullet>(), OBJ::OBJ_BULLET);
-// 	if (GetAsyncKeyState('A') & 0x8000)
-// 		CObj_Manager::Get_Instance()->Add_Object(CreateBullet<CGuideBullet>(), OBJ::OBJ_BULLET);
-// 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-// 		CObj_Manager::Get_Instance()->Add_Object(CreateShield(), OBJ::OBJ_SHIELD);
-	// 현재 키가 눌려있는지를 판별해주는 함수. 
-	// 이함수는 4가지의 반환값을 반환한다. 
-	//0x0000
-	//0x0001
-	//0x8000
-	//0x8001
-	// 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-	// 	{
-	// 		if (GetAsyncKeyState(VK_UP))
-	// 		{
-	// 			m_tInfo.fX += m_fSpeed / sqrtf(2);
-	// 			m_tInfo.fY -= m_fSpeed / sqrtf(2); 
-	// 		}
-	// 		else if (GetAsyncKeyState(VK_DOWN))
-	// 		{
-	// 			m_tInfo.fX += m_fSpeed / sqrtf(2);
-	// 			m_tInfo.fY += m_fSpeed / sqrtf(2);
-	// 		}
-	// 		else
-	// 			m_tInfo.fX += m_fSpeed;
-	// 	}
-	// 		
-	// 	else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-	// 	{
-	// 		if (GetAsyncKeyState(VK_UP))
-	// 		{
-	// 			m_tInfo.fX -= m_fSpeed / sqrtf(2);
-	// 			m_tInfo.fY -= m_fSpeed / sqrtf(2);
-	// 		}
-	// 		else if (GetAsyncKeyState(VK_DOWN))
-	// 		{
-	// 			m_tInfo.fX -= m_fSpeed / sqrtf(2);
-	// 			m_tInfo.fY += m_fSpeed / sqrtf(2);
-	// 		}
-	// 		else
-	// 		m_tInfo.fX -= m_fSpeed;
-	// 	}
-	// 	else if (GetAsyncKeyState(VK_UP) & 0x8000)
-	// 		m_tInfo.fY -= m_fSpeed;
-	// 	 if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-	// 		m_tInfo.fY += m_fSpeed;
-	// 
-	// 	// 사방향 미사일 발사를 어떻게 하면 좋을까 ? 
-	// 	if (GetAsyncKeyState('W') & 0x8000)
-	// 		m_plistBullet->emplace_back(CreateBullet(BULLET::상)); 
-	// 	if (GetAsyncKeyState('S') & 0x8000)
-	// 		m_plistBullet->emplace_back(CreateBullet(BULLET::하));
-	// 	if (GetAsyncKeyState('A') & 0x8000)
-	// 		m_plistBullet->emplace_back(CreateBullet(BULLET::좌));
-	// 	if (GetAsyncKeyState('D') & 0x8000)
-	// 		m_plistBullet->emplace_back(CreateBullet(BULLET::우));
+		m_bIsJump = true;
 }
 
 void CPlayer::IsJumping()
@@ -161,36 +102,3 @@ void CPlayer::Render_Object(HDC hDC)
 void CPlayer::Release_Object()
 {
 }
-// 
-// CObj * CPlayer::CreateBullet()
-// {
-// 	CObj* pBullet = CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY); 
-// 	return pBullet;
-// }
-// 
-// CObj * CPlayer::CreateBullet(BULLET::ID eDir)
-// {
-// 	CObj* pBullet = CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY);
-// 	dynamic_cast<CBullet*>(pBullet)->Set_Dir(eDir); 
-// 	return pBullet;
-// }
-// 
-// CObj * CPlayer::CreateBullet(float fAngle)
-// {
-// 	CObj* pBullet = CAbstractFactory<CBullet>::Create(float(m_tPosin.x), static_cast<float>(m_tPosin.y), fAngle);
-// 	return pBullet;
-// }
-
-// CObj * CPlayer::CreateScrewBullet()
-// {
-// 	CObj* pInstance = CAbstractFactory<CScrewBullet>::Create(m_tInfo.fX, m_tInfo.fY, m_fAngle);
-// 	return pInstance;
-// }
-
-CObj * CPlayer::CreateShield()
-{
-	CObj* pInstance = CAbstractFactory<CShield>::Create(m_tInfo.fX, m_tInfo.fY); 
-	dynamic_cast<CShield*>(pInstance)->Set_Target(this);
-	return pInstance;
-}
-

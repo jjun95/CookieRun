@@ -16,32 +16,17 @@
     <Filter Include="01.Obj\Player">
       <UniqueIdentifier>{61d68466-2303-475f-b1cb-3980938c4428}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Obj\Bullet">
-      <UniqueIdentifier>{c1319bba-721d-460e-9182-d89267bd050d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="98.DesignPattern">
       <UniqueIdentifier>{23ededb0-cb1a-48c9-8dfb-3cf85ed84ff0}</UniqueIdentifier>
     </Filter>
     <Filter Include="01.Obj\Mouse">
       <UniqueIdentifier>{820bfbac-b5df-49ae-8d88-17e751773823}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Obj\Monster">
-      <UniqueIdentifier>{b2bb8b3a-0f99-4899-88db-3e9c61e4cf6e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Manager">
       <UniqueIdentifier>{dcec6cd1-c718-402c-9908-f03fb1e99271}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Obj\Shield">
-      <UniqueIdentifier>{2840f8c9-cf7e-4ab6-9b45-d5ea1afdff8b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01.Obj\ScrewBullet">
-      <UniqueIdentifier>{4583adbd-4d5c-4b9b-9c22-772414d5cbf4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="98.DesignPattern\Obj_Manager">
       <UniqueIdentifier>{b90fafa0-9d9b-431f-ba8d-fdc7ab9a8d7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01.Obj\GuideBullet">
-      <UniqueIdentifier>{dc462ac3-1b7e-4a33-b9ba-1c6f25228d1a}</UniqueIdentifier>
     </Filter>
     <Filter Include="02.Line">
       <UniqueIdentifier>{a7d7ff70-eda5-4410-9ea7-fd5e0422f866}</UniqueIdentifier>
@@ -81,29 +66,14 @@
     <ClInclude Include="Enum.h">
       <Filter>99.Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>01.Obj\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="AbstractFactory.h">
       <Filter>98.DesignPattern</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
       <Filter>01.Obj\Mouse</Filter>
     </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>01.Obj\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="Shield.h">
-      <Filter>01.Obj\Shield</Filter>
-    </ClInclude>
-    <ClInclude Include="ScrewBullet.h">
-      <Filter>01.Obj\ScrewBullet</Filter>
-    </ClInclude>
     <ClInclude Include="Obj_Manager.h">
       <Filter>98.DesignPattern\Obj_Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="GuideBullet.h">
-      <Filter>01.Obj\GuideBullet</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
       <Filter>02.Line</Filter>
@@ -114,7 +84,9 @@
     <ClInclude Include="Collision_Manager.h">
       <Filter>Manager\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Key_Manager.h" />
+    <ClInclude Include="Key_Manager.h">
+      <Filter>Manager\Key</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -132,26 +104,11 @@
     <ClCompile Include="Player.cpp">
       <Filter>01.Obj\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>01.Obj\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>01.Obj\Mouse</Filter>
     </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>01.Obj\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="Shield.cpp">
-      <Filter>01.Obj\Shield</Filter>
-    </ClCompile>
-    <ClCompile Include="ScrewBullet.cpp">
-      <Filter>01.Obj\ScrewBullet</Filter>
-    </ClCompile>
     <ClCompile Include="Obj_Manager.cpp">
       <Filter>98.DesignPattern\Obj_Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="GuideBullet.cpp">
-      <Filter>01.Obj\GuideBullet</Filter>
     </ClCompile>
     <ClCompile Include="Line.cpp">
       <Filter>02.Line</Filter>
@@ -162,7 +119,9 @@
     <ClCompile Include="Collision_Manager.cpp">
       <Filter>Manager\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Key_Manager.cpp" />
+    <ClCompile Include="Key_Manager.cpp">
+      <Filter>Manager\Key</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Client.ico">

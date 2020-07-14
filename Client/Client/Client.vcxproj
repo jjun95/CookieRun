@@ -149,42 +149,32 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFactory.h" />
-    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Collision_Manager.h" />
     <ClInclude Include="Enum.h" />
-    <ClInclude Include="GuideBullet.h" />
     <ClInclude Include="Key_Manager.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Line_Manager.h" />
     <ClInclude Include="MainApp.h" />
-    <ClInclude Include="Monster.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="Obj_Manager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="ScrewBullet.h" />
-    <ClInclude Include="Shield.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Collision_Manager.cpp" />
-    <ClCompile Include="GuideBullet.cpp" />
     <ClCompile Include="Key_Manager.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Line_Manager.cpp" />
     <ClCompile Include="MainApp.cpp" />
-    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="Obj_Manager.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="ScrewBullet.cpp" />
-    <ClCompile Include="Shield.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

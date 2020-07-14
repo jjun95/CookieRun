@@ -21,6 +21,21 @@ typedef struct tagLinePoint
 	float fY; 
 }LINEPOS;
 
+typedef struct tagMapPoint
+{
+	tagMapPoint()
+	{
+		ZeroMemory(this, sizeof(tagMapPoint));
+	}
+	tagMapPoint(float _fx, float _fy)
+	{
+		fX = static_cast<int>(_fx / 90) * 90 - 45;
+		fY = static_cast<int>(_fy / 90) * 90 - 45;
+	}
+	float fX;
+	float fY;
+}MAPPOS;
+
 typedef struct tagLineInfo
 {
 	tagLineInfo()
@@ -34,3 +49,15 @@ typedef struct tagLineInfo
 	LINEPOS tLPoint; 
 	LINEPOS tRPoint; 
 }LINEINFO;
+
+typedef struct tagMapInfo
+{
+	tagMapInfo()
+	{
+		ZeroMemory(this, sizeof(tagMapInfo));
+	}
+	tagMapInfo(const MAPPOS& mousePoint)
+		:tPoint(mousePoint)
+	{}
+	MAPPOS tPoint;
+}MAPINFO;

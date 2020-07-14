@@ -28,13 +28,6 @@ void CMainApp::Ready_MainApp()
 	pObj = CAbstractFactory<CMouse>::Create(); 
 	m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_MOUSE);
 
-// 	for (int i = 0 ; i < 5; ++i)
-// 	{
-// 		pObj = CAbstractFactory<CMonster>::Create(100 * (i + 1), 500.f);
-// 		dynamic_cast<CMonster*>(pObj)->Set_Target(m_pObj_Manager->Get_Player());
-// 		m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_MONSTER);
-// 	}
-
 	CLine_Manager::Get_Instance()->Ready_LineManager(); 
 }
 
@@ -53,7 +46,6 @@ void CMainApp::LateUpdate_MainApp()
 void CMainApp::Render_MainApp()
 {
 	Rectangle(m_hDC, 0, 0, WINCX, WINCY); 
-	Rectangle(m_hDC, 100, 100, WINCX - 100, WINCY - 100);
 	m_pObj_Manager->Render_ObjectManager(m_hDC); 
 	CLine_Manager::Get_Instance()->Render_LineManager(m_hDC); 
 

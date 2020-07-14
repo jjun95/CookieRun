@@ -16,6 +16,12 @@
     <Filter Include="Line\Manager">
       <UniqueIdentifier>{c618f908-3338-45f3-af86-b133d6d7b473}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{fcf3cfbe-ca6f-4a1d-b509-a58084beb6b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Manager">
+      <UniqueIdentifier>{e48a336f-af70-4acf-8f2e-ec4eca833e69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Editor.h">
@@ -42,6 +48,12 @@
     <ClInclude Include="Line_Manager.h">
       <Filter>Line\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="MapBlock.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map_Manager.h">
+      <Filter>Map\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Editor.cpp">
@@ -61,6 +73,12 @@
     </ClCompile>
     <ClCompile Include="Line_Manager.cpp">
       <Filter>Line\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MapBlock.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map_Manager.cpp">
+      <Filter>Map\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
