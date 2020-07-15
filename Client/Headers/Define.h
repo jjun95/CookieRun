@@ -8,6 +8,8 @@
 #define WINCX 1280
 #define WINCY 720
 
+#define MAPTILE_SIZE 90
+
 #define OBJ_NOEVENT 0
 #define OBJ_DEAD 1
 

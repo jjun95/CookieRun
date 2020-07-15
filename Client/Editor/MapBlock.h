@@ -12,7 +12,6 @@ public:
 public:
 	void Render_Map(HDC hDC);
 private:
-	float mapSize = 90.f;
 	MAPINFO m_tInfo;
 };
 

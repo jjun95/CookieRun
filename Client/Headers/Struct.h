@@ -29,8 +29,8 @@ typedef struct tagMapPoint
 	}
 	tagMapPoint(float _fx, float _fy)
 	{
-		fLeft = static_cast<int>(_fx / 90) * 90;
-		fTop = static_cast<int>(_fy / 90) * 90;
+		fLeft = static_cast<int>(_fx / MAPTILE_SIZE) * MAPTILE_SIZE;
+		fTop = static_cast<int>(_fy / MAPTILE_SIZE) * MAPTILE_SIZE;
 	}
 	float fLeft;
 	float fTop;
