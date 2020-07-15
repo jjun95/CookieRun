@@ -25,6 +25,9 @@ public:
 
 public:
 	void Load_MapData();
+
+	bool MapCollision_MapManager(float fInX, float* pOutY);
+
 public:
 	void Ready_MapManager();
 	void Render_MapManager(HDC hDC);

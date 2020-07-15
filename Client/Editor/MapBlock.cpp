@@ -18,5 +18,5 @@ CMapBlock::~CMapBlock()
 
 void CMapBlock::Render_Map(HDC hDC)
 {
-	Rectangle(hDC, m_tInfo.tPoint.fX + mapSize / 2 , m_tInfo.tPoint.fY + mapSize * 0.5, m_tInfo.tPoint.fX + mapSize * 1.5, m_tInfo.tPoint.fY + mapSize * 1.5);
+	Rectangle(hDC, m_tInfo.tPoint.fLeft , m_tInfo.tPoint.fTop, m_tInfo.tPoint.fLeft + mapSize, m_tInfo.tPoint.fTop + mapSize);
 }

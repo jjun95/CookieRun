@@ -29,7 +29,7 @@ void CMainApp::Ready_MainApp()
 	pObj = CAbstractFactory<CMouse>::Create(); 
 	m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_MOUSE);
 
-	CLine_Manager::Get_Instance()->Ready_LineManager(); 
+	//CLine_Manager::Get_Instance()->Ready_LineManager(); 
 	CMap_Manager::Get_Instance()->Ready_MapManager(); 
 }
 
@@ -49,7 +49,7 @@ void CMainApp::Render_MainApp()
 {
 	Rectangle(m_hDC, 0, 0, WINCX, WINCY); 
 	m_pObj_Manager->Render_ObjectManager(m_hDC); 
-	CLine_Manager::Get_Instance()->Render_LineManager(m_hDC); 
+	//CLine_Manager::Get_Instance()->Render_LineManager(m_hDC); 
 	CMap_Manager::Get_Instance()->Render_MapManager(m_hDC); 
 
 	++m_iFPS; 
@@ -67,7 +67,7 @@ void CMainApp::Release_MainApp()
 {
 	ReleaseDC(g_hWND, m_hDC);
 	m_pObj_Manager->Destroy_Instance();
-	CLine_Manager::Destroy_Instance(); 
+	//CLine_Manager::Destroy_Instance(); 
 	CMap_Manager::Destroy_Instance(); 
 	CKey_Manager::Destroy_Instance(); 
 

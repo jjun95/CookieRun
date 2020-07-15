@@ -29,11 +29,11 @@ typedef struct tagMapPoint
 	}
 	tagMapPoint(float _fx, float _fy)
 	{
-		fX = static_cast<int>(_fx / 90) * 90 - 45;
-		fY = static_cast<int>(_fy / 90) * 90 - 45;
+		fLeft = static_cast<int>(_fx / 90) * 90;
+		fTop = static_cast<int>(_fy / 90) * 90;
 	}
-	float fX;
-	float fY;
+	float fLeft;
+	float fTop;
 }MAPPOS;
 
 typedef struct tagLineInfo

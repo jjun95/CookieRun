@@ -39,6 +39,11 @@ void CMap_Manager::Load_MapData()
 	CloseHandle(hFile);
 }
 
+bool CMap_Manager::MapCollision_MapManager(float fInX, float * pOutY)
+{
+	return false;
+}
+
 void CMap_Manager::Ready_MapManager()
 {
 	Load_MapData();
