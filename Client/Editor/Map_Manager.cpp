@@ -2,6 +2,7 @@
 #include "Map_Manager.h"
 #include "MapBlock.h"
 
+CMap_Manager* CMap_Manager::m_pInstance = nullptr;
 
 CMap_Manager::CMap_Manager()
 {
@@ -45,6 +46,8 @@ void CMap_Manager::Update_MapManager()
 
 	if (CKey_Manager::Get_Instance()->Key_UP(KEY_LBUTTON))
 	{
+		CMapBlock* pMapBlock = new CMapBlock(MAPINFO());
+		m_listMap.emplace_back(pMapBlock);
 		m_listMap.back()->Set_Pos(MAPPOS(float(pt.x), float(pt.y)));
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_S))

@@ -6,6 +6,7 @@
 #include "Monster.h"
 #include "Obj_Manager.h"
 #include "Line_Manager.h"
+#include "Map_manager.h"
 CMainApp::CMainApp()
 	:m_pObj_Manager(CObj_Manager::Get_Instance())
 {
@@ -29,6 +30,7 @@ void CMainApp::Ready_MainApp()
 	m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_MOUSE);
 
 	CLine_Manager::Get_Instance()->Ready_LineManager(); 
+	CMap_Manager::Get_Instance()->Ready_MapManager(); 
 }
 
 void CMainApp::Update_MainApp()
@@ -48,6 +50,7 @@ void CMainApp::Render_MainApp()
 	Rectangle(m_hDC, 0, 0, WINCX, WINCY); 
 	m_pObj_Manager->Render_ObjectManager(m_hDC); 
 	CLine_Manager::Get_Instance()->Render_LineManager(m_hDC); 
+	CMap_Manager::Get_Instance()->Render_MapManager(m_hDC); 
 
 	++m_iFPS; 
 	if (m_dwOldTime + 1000 < GetTickCount() )
@@ -65,6 +68,7 @@ void CMainApp::Release_MainApp()
 	ReleaseDC(g_hWND, m_hDC);
 	m_pObj_Manager->Destroy_Instance();
 	CLine_Manager::Destroy_Instance(); 
+	CMap_Manager::Destroy_Instance(); 
 	CKey_Manager::Destroy_Instance(); 
 
 }

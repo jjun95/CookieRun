@@ -56,8 +56,5 @@ typedef struct tagMapInfo
 	{
 		ZeroMemory(this, sizeof(tagMapInfo));
 	}
-	tagMapInfo(const MAPPOS& mousePoint)
-		:tPoint(mousePoint)
-	{}
 	MAPPOS tPoint;
 }MAPINFO;

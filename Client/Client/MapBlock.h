@@ -15,4 +15,3 @@ private:
 	float mapSize = 90.f;
 	MAPINFO m_tInfo;
 };
-

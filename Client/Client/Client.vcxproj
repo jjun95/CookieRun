@@ -156,6 +156,8 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="Line_Manager.h" />
     <ClInclude Include="MainApp.h" />
+    <ClInclude Include="MapBlock.h" />
+    <ClInclude Include="Map_Manager.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="Obj_Manager.h" />
@@ -171,6 +173,8 @@
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Line_Manager.cpp" />
     <ClCompile Include="MainApp.cpp" />
+    <ClCompile Include="MapBlock.cpp" />
+    <ClCompile Include="Map_Manager.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="Obj_Manager.cpp" />

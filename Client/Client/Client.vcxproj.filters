@@ -40,6 +40,12 @@
     <Filter Include="Manager\Key">
       <UniqueIdentifier>{4420e406-1e60-4c27-9832-e5ebd007bf2e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Map">
+      <UniqueIdentifier>{4ae7db54-2e14-499d-9fc5-c1a88af41ae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Map\Manager">
+      <UniqueIdentifier>{065e6224-f1ee-4a42-b8df-373b1ac20375}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -87,6 +93,12 @@
     <ClInclude Include="Key_Manager.h">
       <Filter>Manager\Key</Filter>
     </ClInclude>
+    <ClInclude Include="MapBlock.h">
+      <Filter>03.Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map_Manager.h">
+      <Filter>03.Map\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -121,6 +133,12 @@
     </ClCompile>
     <ClCompile Include="Key_Manager.cpp">
       <Filter>Manager\Key</Filter>
+    </ClCompile>
+    <ClCompile Include="MapBlock.cpp">
+      <Filter>03.Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map_Manager.cpp">
+      <Filter>03.Map\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
