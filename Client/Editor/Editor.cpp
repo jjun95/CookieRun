@@ -44,6 +44,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 	msg.message = WM_NULL; 
     // 기본 메시지 루프입니다.
+
+	DWORD dwOldTime = GetTickCount();
+
     while (WM_QUIT != msg.message)
     {
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -55,8 +58,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
 		}
-		tMain.Update_Main(); 
-		tMain.Render_Main(); 
+
+		if (dwOldTime + 10 < GetTickCount()) {
+			tMain.Update_Main();
+			tMain.Render_Main();
+			dwOldTime = GetTickCount();
+		}
     }
 
     return (int) msg.wParam;
@@ -106,7 +113,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    RECT rc = { 0, 0, WINCX, WINCY }; 
    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE); 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance, nullptr);
+      0, 0, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {

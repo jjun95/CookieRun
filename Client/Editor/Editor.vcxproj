@@ -148,18 +148,26 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bitmap_Manager.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="Key_Manager.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Line_Manager.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MapBlock.h" />
+    <ClInclude Include="Maps.h" />
     <ClInclude Include="Map_Manager.h" />
+    <ClInclude Include="MyBitmap.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scroll_Manager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bitmap_Manager.cpp" />
+    <ClCompile Include="Maps.cpp" />
+    <ClCompile Include="MyBitmap.cpp" />
+    <ClCompile Include="Scroll_Manager.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="Key_Manager.cpp" />
     <ClCompile Include="Line.cpp" />

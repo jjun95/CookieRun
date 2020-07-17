@@ -24,7 +24,7 @@ void CMap_Manager::Load_MapData()
 		MessageBox(nullptr, __T("LoadData Failed"), __T("MapManager_Client"), MB_OK);
 		return;
 	}
-	CMapBlock* pMapBlock = nullptr;
+	CMaps* pMap = nullptr;
 	DWORD dwByte = 0;
 	MAPINFO tMapInfo = {};
 	while (true)
@@ -32,8 +32,8 @@ void CMap_Manager::Load_MapData()
 		ReadFile(hFile, &tMapInfo, sizeof(MAPINFO), &dwByte, nullptr);
 		if (0 == dwByte)
 			break;
-		pMapBlock = new CMapBlock(tMapInfo);
-		m_listMap.emplace_back(pMapBlock);
+		pMap = new CMapBlock(tMapInfo);
+		m_listMap.emplace_back(pMap);
 	}
 	MessageBox(nullptr, L"MapLoad ¼º°ø!", L"MapManager", MB_OK);
 	CloseHandle(hFile);
@@ -59,5 +59,5 @@ void CMap_Manager::Render_MapManager(HDC hDC)
 
 void CMap_Manager::Release_MapManager()
 {
-	for_each(m_listMap.begin(), m_listMap.end(), Safe_Delete<CMapBlock*>);
+	for_each(m_listMap.begin(), m_listMap.end(), Safe_Delete<CMaps*>);
 }

@@ -1,5 +1,6 @@
 #pragma once
 class CObj; 
+class CMaps; 
 class CObj_Manager
 {
 public:
@@ -24,6 +25,7 @@ private:
 public:
 	CObj* Get_Player() { return m_listObject[OBJ::OBJ_PLAYER].front(); }
 	CObj* Get_Target(CObj* pObj, OBJ::ID eTargetID); 
+
 public:
 	void Add_Object(CObj* pObj, OBJ::ID eID); 
 

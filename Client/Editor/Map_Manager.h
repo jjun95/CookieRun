@@ -1,6 +1,6 @@
 #pragma once
 
-class CMapBlock;
+class CMaps;
 
 class CMap_Manager
 {
@@ -32,7 +32,7 @@ public:
 	void Release_MapManager();
 
 private:
-	list<CMapBlock*> m_listMap;
+	list<CMaps*> m_listMap;
 	static CMap_Manager* m_pInstance;
 };
 

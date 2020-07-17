@@ -16,7 +16,7 @@ typedef struct tagLinePoint
 	}
 	tagLinePoint(float _fx, float _fy)
 		:fX(_fx), fY(_fy)
-	{}
+	{}	
 	float fX; 
 	float fY; 
 }LINEPOS;
@@ -27,13 +27,16 @@ typedef struct tagMapPoint
 	{
 		ZeroMemory(this, sizeof(tagMapPoint));
 	}
-	tagMapPoint(float _fx, float _fy)
+	void SetPosition(float _fx, float _fy)
 	{
-		fLeft = static_cast<int>(_fx / MAPTILE_SIZE) * MAPTILE_SIZE;
-		fTop = static_cast<int>(_fy / MAPTILE_SIZE) * MAPTILE_SIZE;
+		fLeft = static_cast<int>(_fx / iCX) * iCX;
+		fTop = static_cast<int>(_fy / iCY) * iCY;
 	}
+
 	float fLeft;
 	float fTop;
+	int iCX;
+	int iCY;
 }MAPPOS;
 
 typedef struct tagLineInfo
@@ -55,6 +58,12 @@ typedef struct tagMapInfo
 	tagMapInfo()
 	{
 		ZeroMemory(this, sizeof(tagMapInfo));
+	}
+	tagMapInfo(int _iCX, int _iCY)
+	{
+		ZeroMemory(this, sizeof(tagMapInfo));
+		tPoint.iCX = _iCX;
+		tPoint.iCY = _iCY;
 	}
 	MAPPOS tPoint;
 }MAPINFO;

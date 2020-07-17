@@ -22,6 +22,18 @@
     <Filter Include="Map\Manager">
       <UniqueIdentifier>{e48a336f-af70-4acf-8f2e-ec4eca833e69}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scroll_Manager">
+      <UniqueIdentifier>{c9aeadf7-7149-4191-8318-490f8b15d2ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Bitmap">
+      <UniqueIdentifier>{4d5581f9-7ed6-40c2-8b52-61c8ab79c89d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Bitmap\Manager">
+      <UniqueIdentifier>{33357111-0cd9-464b-bca4-067c7fe321f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\MapBlock">
+      <UniqueIdentifier>{bf99d25e-dfbd-4a0a-b1a1-4399fcf414b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Editor.h">
@@ -48,11 +60,23 @@
     <ClInclude Include="Line_Manager.h">
       <Filter>Line\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="MapBlock.h">
-      <Filter>Map</Filter>
-    </ClInclude>
     <ClInclude Include="Map_Manager.h">
       <Filter>Map\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scroll_Manager.h">
+      <Filter>Scroll_Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBitmap.h">
+      <Filter>02.Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap_Manager.h">
+      <Filter>02.Bitmap\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MapBlock.h">
+      <Filter>Map\MapBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="Maps.h">
+      <Filter>Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -74,11 +98,23 @@
     <ClCompile Include="Line_Manager.cpp">
       <Filter>Line\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="MapBlock.cpp">
-      <Filter>Map</Filter>
-    </ClCompile>
     <ClCompile Include="Map_Manager.cpp">
       <Filter>Map\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Scroll_Manager.cpp">
+      <Filter>Scroll_Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBitmap.cpp">
+      <Filter>02.Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap_Manager.cpp">
+      <Filter>02.Bitmap\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MapBlock.cpp">
+      <Filter>Map\MapBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="Maps.cpp">
+      <Filter>Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

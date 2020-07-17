@@ -1,6 +1,5 @@
 #pragma once
-
-class CMapBlock;
+#include "Maps.h"
 
 class CMap_Manager
 {
@@ -28,13 +27,15 @@ public:
 
 	bool MapCollision_MapManager(float fInX, float* pOutY);
 
+	list<CMaps*>* Get_MapList() { return &m_listMap; }
+
 public:
 	void Ready_MapManager();
 	void Render_MapManager(HDC hDC);
 	void Release_MapManager();
 
 private:
-	list<CMapBlock*> m_listMap;
+	list<CMaps*> m_listMap;
 	static CMap_Manager* m_pInstance;
 };
 

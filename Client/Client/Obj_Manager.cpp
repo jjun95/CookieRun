@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Obj_Manager.h"
 #include "Obj.h"
+#include "Maps.h"
 
 CObj_Manager* CObj_Manager::m_pInstance = nullptr;
 

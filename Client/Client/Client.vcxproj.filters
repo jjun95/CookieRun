@@ -46,6 +46,18 @@
     <Filter Include="03.Map\Manager">
       <UniqueIdentifier>{065e6224-f1ee-4a42-b8df-373b1ac20375}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.Bitmap">
+      <UniqueIdentifier>{72dba63d-9118-4a83-a39f-f59bb2444015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Bitmap\Manager">
+      <UniqueIdentifier>{c7d3936f-e2d7-4105-a7f5-3fa27951f881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scroll_Manager">
+      <UniqueIdentifier>{670bec14-36ce-4180-89ca-24f19a79f486}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Map\MapBlock">
+      <UniqueIdentifier>{333f62d5-bc9d-4a7d-a545-093791d6e46d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -93,11 +105,23 @@
     <ClInclude Include="Key_Manager.h">
       <Filter>Manager\Key</Filter>
     </ClInclude>
-    <ClInclude Include="MapBlock.h">
-      <Filter>03.Map</Filter>
-    </ClInclude>
     <ClInclude Include="Map_Manager.h">
       <Filter>03.Map\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MyBitmap.h">
+      <Filter>02.Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap_Manager.h">
+      <Filter>02.Bitmap\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scroll_Manager.h">
+      <Filter>Scroll_Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Maps.h">
+      <Filter>03.Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MapBlock.h">
+      <Filter>03.Map\MapBlock</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,11 +158,23 @@
     <ClCompile Include="Key_Manager.cpp">
       <Filter>Manager\Key</Filter>
     </ClCompile>
-    <ClCompile Include="MapBlock.cpp">
-      <Filter>03.Map</Filter>
-    </ClCompile>
     <ClCompile Include="Map_Manager.cpp">
       <Filter>03.Map\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBitmap.cpp">
+      <Filter>02.Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap_Manager.cpp">
+      <Filter>02.Bitmap\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Scroll_Manager.cpp">
+      <Filter>Scroll_Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Maps.cpp">
+      <Filter>03.Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MapBlock.cpp">
+      <Filter>03.Map\MapBlock</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

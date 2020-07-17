@@ -13,9 +13,9 @@ CMouse::~CMouse()
 
 void CMouse::Ready_Object()
 {
-	m_tInfo.iCX = 100; 
-	m_tInfo.iCY = 100; 
-	ShowCursor(false);
+	//m_tInfo.iCX = 100; 
+	//m_tInfo.iCY = 100; 
+	ShowCursor(true);
 }
 
 int CMouse::Update_Object()

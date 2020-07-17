@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Map_Manager.h"
+#include "Maps.h"
 #include "MapBlock.h"
+#include "Scroll_Manager.h"
 
 CMap_Manager* CMap_Manager::m_pInstance = nullptr;
 
@@ -25,9 +27,9 @@ void CMap_Manager::Save_MapData()
 		return;
 	}
 	DWORD dwByte = 0;
-	for (auto& pMapBlock : m_listMap)
+	for (auto& pMap : m_listMap)
 	{
-		WriteFile(hFile, pMapBlock->Get_MapInfo(), sizeof(MAPINFO), &dwByte, nullptr);
+		WriteFile(hFile, pMap->Get_MapInfo(), sizeof(MAPINFO), &dwByte, nullptr);
 	}
 	MessageBox(nullptr, L"MapSave 성공!", L"맵매니저!", MB_OK);
 	CloseHandle(hFile);
@@ -44,11 +46,17 @@ void CMap_Manager::Update_MapManager()
 	GetCursorPos(&pt);
 	ScreenToClient(g_hWND, &pt);
 
+	pt.x -= CScroll_Manager::Get_ScrollX();
+
+	if (CKey_Manager::Get_Instance()->Key_Pressing(KEY_LEFT))
+		CScroll_Manager::Set_ScrollX(-5);
+	if (CKey_Manager::Get_Instance()->Key_Pressing(KEY_RIGHT))
+		CScroll_Manager::Set_ScrollX(+5);
 	if (CKey_Manager::Get_Instance()->Key_UP(KEY_LBUTTON))
 	{
-		CMapBlock* pMapBlock = new CMapBlock(MAPINFO());
-		m_listMap.emplace_back(pMapBlock);
-		m_listMap.back()->Set_Pos(MAPPOS(float(pt.x), float(pt.y)));
+		CMaps* pMap = new CMapBlock();
+		m_listMap.emplace_back(pMap);
+		m_listMap.back()->Set_Pos(float(pt.x), float(pt.y));
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_S))
 	{
@@ -66,5 +74,5 @@ void CMap_Manager::Render_MapManager(HDC hDC)
 
 void CMap_Manager::Release_MapManager()
 {
-	for_each(m_listMap.begin(), m_listMap.end(), Safe_Delete<CMapBlock*>);
+	for_each(m_listMap.begin(), m_listMap.end(), Safe_Delete<CMaps*>);
 }

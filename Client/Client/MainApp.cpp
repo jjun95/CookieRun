@@ -7,6 +7,10 @@
 #include "Obj_Manager.h"
 #include "Line_Manager.h"
 #include "Map_manager.h"
+#include "Bitmap_Manager.h"
+#include "Scroll_Manager.h"
+#include "Maps.h"
+
 CMainApp::CMainApp()
 	:m_pObj_Manager(CObj_Manager::Get_Instance())
 {
@@ -21,8 +25,15 @@ CMainApp::~CMainApp()
 
 void CMainApp::Ready_MainApp()
 {
-	m_dwOldTime = GetTickCount(); 
+	//m_dwOldTime = GetTickCount(); 
 	m_hDC = GetDC(g_hWND); 
+
+	//그림 저장하기
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Ground1.bmp", L"Ground1");
+
+	//map 저장하기
+	m_listMaps[MAP::MAP_BLOCK] = CMap_Manager::Get_Instance()->Get_MapList();
+
 	CObj* pObj = CAbstractFactory<CPlayer>::Create(); 
 	m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_PLAYER);
 
@@ -38,6 +49,13 @@ void CMainApp::Update_MainApp()
 	CKey_Manager::Get_Instance()->Update_KeyManager(); 
 
 	m_pObj_Manager->Update_ObjectManager(); 
+
+	for (size_t i = 0; i < MAP::MAP_END; ++i)
+	{
+		auto& iter_end = m_listMaps[i]->end();
+		for (auto& iter = m_listMaps[i]->begin(); iter != iter_end; ++iter)
+			(*iter)->Update_Map();
+	}
 }
 
 void CMainApp::LateUpdate_MainApp()
