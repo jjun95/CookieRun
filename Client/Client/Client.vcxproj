@@ -154,8 +154,6 @@
     <ClInclude Include="Collision_Manager.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Key_Manager.h" />
-    <ClInclude Include="Line.h" />
-    <ClInclude Include="Line_Manager.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="MapBlock.h" />
     <ClInclude Include="Maps.h" />
@@ -166,6 +164,8 @@
     <ClInclude Include="Obj_Manager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scene_Manager.h" />
     <ClInclude Include="Scroll_Manager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -175,8 +175,6 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Collision_Manager.cpp" />
     <ClCompile Include="Key_Manager.cpp" />
-    <ClCompile Include="Line.cpp" />
-    <ClCompile Include="Line_Manager.cpp" />
     <ClCompile Include="MainApp.cpp" />
     <ClCompile Include="MapBlock.cpp" />
     <ClCompile Include="Maps.cpp" />
@@ -186,6 +184,8 @@
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="Obj_Manager.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Scene_Manager.cpp" />
     <ClCompile Include="Scroll_Manager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

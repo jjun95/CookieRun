@@ -151,8 +151,6 @@
     <ClInclude Include="Bitmap_Manager.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="Key_Manager.h" />
-    <ClInclude Include="Line.h" />
-    <ClInclude Include="Line_Manager.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="MapBlock.h" />
     <ClInclude Include="Maps.h" />
@@ -170,8 +168,6 @@
     <ClCompile Include="Scroll_Manager.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="Key_Manager.cpp" />
-    <ClCompile Include="Line.cpp" />
-    <ClCompile Include="Line_Manager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MapBlock.cpp" />
     <ClCompile Include="Map_Manager.cpp" />

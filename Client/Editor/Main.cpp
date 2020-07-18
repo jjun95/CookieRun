@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Main.h"
-#include "Line_Manager.h"
 #include "Key_Manager.h"
 #include "Map_Manager.h"
 #include "Bitmap_Manager.h"

@@ -5,7 +5,6 @@
 #include "ScrewBullet.h"
 #include "Obj_Manager.h"
 #include "GuideBullet.h"
-#include "Line_Manager.h"
 
 CPlayer::CPlayer()
 {
@@ -42,22 +41,22 @@ void CPlayer::KeyCheck()
 void CPlayer::IsJumping()
 {
 	float fY = m_tInfo.fY; 
-	bool IsColl =  CLine_Manager::Get_Instance()->LineCollision_LineManager(m_tInfo.fX, &fY);
-	if (m_bIsJump)
-	{
-		//자유낙하 공식// y = 힘 * sin@ * 시간 - 1/2 * 중력 * 시간 * 시간 
-		m_tInfo.fY -= m_fJumpPower * m_fJumpAccel - GRAVITY * m_fJumpAccel * m_fJumpAccel * 0.5f;
-		m_fJumpAccel += 0.1f;
+	//bool IsColl =  CLine_Manager::Get_Instance()->LineCollision_LineManager(m_tInfo.fX, &fY);
+	//if (m_bIsJump)
+	//{
+	//	//자유낙하 공식// y = 힘 * sin@ * 시간 - 1/2 * 중력 * 시간 * 시간 
+	//	m_tInfo.fY -= m_fJumpPower * m_fJumpAccel - GRAVITY * m_fJumpAccel * m_fJumpAccel * 0.5f;
+	//	m_fJumpAccel += 0.1f;
 
-		if (m_tInfo.fY > fY)
-		{
-			m_bIsJump = false;
-			m_fJumpAccel = 0.f;
-			m_tInfo.fY = fY;
-		}
-	}
-	else if (IsColl)
-		m_tInfo.fY = fY; 
+	//	if (m_tInfo.fY > fY)
+	//	{
+	//		m_bIsJump = false;
+	//		m_fJumpAccel = 0.f;
+	//		m_tInfo.fY = fY;
+	//	}
+	//}
+	//else if (IsColl)
+	//	m_tInfo.fY = fY; 
 }
 
 void CPlayer::Ready_Object()

@@ -28,12 +28,6 @@
     <Filter Include="98.DesignPattern\Obj_Manager">
       <UniqueIdentifier>{b90fafa0-9d9b-431f-ba8d-fdc7ab9a8d7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02.Line">
-      <UniqueIdentifier>{a7d7ff70-eda5-4410-9ea7-fd5e0422f866}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02.Line\Manager">
-      <UniqueIdentifier>{19c800c0-6f74-4d06-852b-ba3062d7ac01}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Manager\Collision">
       <UniqueIdentifier>{a4328585-94de-4a0c-b763-48539ba17526}</UniqueIdentifier>
     </Filter>
@@ -57,6 +51,12 @@
     </Filter>
     <Filter Include="03.Map\MapBlock">
       <UniqueIdentifier>{333f62d5-bc9d-4a7d-a545-093791d6e46d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{da44f399-d6cb-4092-bf03-761aec8ff454}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Manager">
+      <UniqueIdentifier>{0121ac86-97dd-4fb4-9f38-7014a8b24e1b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,12 +93,6 @@
     <ClInclude Include="Obj_Manager.h">
       <Filter>98.DesignPattern\Obj_Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Line.h">
-      <Filter>02.Line</Filter>
-    </ClInclude>
-    <ClInclude Include="Line_Manager.h">
-      <Filter>02.Line\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="Collision_Manager.h">
       <Filter>Manager\Collision</Filter>
     </ClInclude>
@@ -123,6 +117,12 @@
     <ClInclude Include="MapBlock.h">
       <Filter>03.Map\MapBlock</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Manager.h">
+      <Filter>Scene\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -145,12 +145,6 @@
     </ClCompile>
     <ClCompile Include="Obj_Manager.cpp">
       <Filter>98.DesignPattern\Obj_Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="Line.cpp">
-      <Filter>02.Line</Filter>
-    </ClCompile>
-    <ClCompile Include="Line_Manager.cpp">
-      <Filter>02.Line\Manager</Filter>
     </ClCompile>
     <ClCompile Include="Collision_Manager.cpp">
       <Filter>Manager\Collision</Filter>
@@ -175,6 +169,12 @@
     </ClCompile>
     <ClCompile Include="MapBlock.cpp">
       <Filter>03.Map\MapBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Manager.cpp">
+      <Filter>Scene\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

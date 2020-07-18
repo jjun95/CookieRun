@@ -5,7 +5,6 @@
 #include "Mouse.h"
 #include "Monster.h"
 #include "Obj_Manager.h"
-#include "Line_Manager.h"
 #include "Map_manager.h"
 #include "Bitmap_Manager.h"
 #include "Scroll_Manager.h"
