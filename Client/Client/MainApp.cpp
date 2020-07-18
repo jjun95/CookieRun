@@ -29,7 +29,11 @@ void CMainApp::Ready_MainApp()
 	m_hDC = GetDC(g_hWND); 
 
 	//그림 저장하기
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/BackGround/BackBuffer.bmp", L"BackBuffer");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/BackGround/Back01.bmp", L"Back01");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/BackGround/Back01-1.bmp", L"Back01-1");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Ground1.bmp", L"Ground1");
+
 
 	//map 저장하기
 	m_listMaps[MAP::MAP_BLOCK] = CMap_Manager::Get_Instance()->Get_MapList();
@@ -65,20 +69,25 @@ void CMainApp::LateUpdate_MainApp()
 
 void CMainApp::Render_MainApp()
 {
-	Rectangle(m_hDC, 0, 0, WINCX, WINCY); 
-	m_pObj_Manager->Render_ObjectManager(m_hDC); 
-	//CLine_Manager::Get_Instance()->Render_LineManager(m_hDC); 
-	CMap_Manager::Get_Instance()->Render_MapManager(m_hDC); 
+	HDC hBack = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"BackBuffer");
+	if (nullptr == hBack)
+		return;
+	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"Back01");
+	BitBlt(hBack, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
+	m_pObj_Manager->Render_ObjectManager(hBack); 
+	CMap_Manager::Get_Instance()->Render_MapManager(hBack); 
+	//CMap_Manager::Get_Instance()->Render_MapManager(m_hDC); 
 
-	++m_iFPS; 
-	if (m_dwOldTime + 1000 < GetTickCount() )
-	{
-		swprintf_s(m_szFPS, L"FPS : %d", m_iFPS);
-		m_iFPS = 0; 
-		m_dwOldTime = GetTickCount(); 
-	}
+	//++m_iFPS; 
+	//if (m_dwOldTime + 1000 < GetTickCount() )
+	//{
+	//	swprintf_s(m_szFPS, L"FPS : %d", m_iFPS);
+	//	m_iFPS = 0; 
+	//	m_dwOldTime = GetTickCount(); 
+	//}
 	TextOut(m_hDC, 600, 50, m_szFPS, lstrlen(m_szFPS));
 	SetWindowText(g_hWND, m_szFPS);
+	BitBlt(m_hDC, 0, 0, WINCX, WINCY, hBack, 0, 0, SRCCOPY);
 }
 
 void CMainApp::Release_MainApp()
