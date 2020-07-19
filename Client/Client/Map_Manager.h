@@ -25,17 +25,16 @@ public:
 public:
 	void Load_MapData();
 
-	bool MapCollision_MapManager(float fInX, float* pOutY);
-
-	list<CMaps*>* Get_MapList() { return &m_listMap; }
+	bool GroundCollision_MapManager(float inX, float * pOutY, int iCY);
 
 public:
 	void Ready_MapManager();
+	void Update_MapManager();
 	void Render_MapManager(HDC hDC);
 	void Release_MapManager();
 
 private:
-	list<CMaps*> m_listMap;
+	list<CMaps*> m_listMap[MAP::MAP_END];
 	static CMap_Manager* m_pInstance;
 };
 

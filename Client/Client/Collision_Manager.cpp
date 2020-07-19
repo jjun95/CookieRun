@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Collision_Manager.h"
 #include "Obj.h"
+#include "Maps.h"
+#include "MapBlock.h"
 
 CCollision_Manager::CCollision_Manager()
 {
@@ -33,7 +35,7 @@ void CCollision_Manager::Collision_Sphere(list<CObj*>& rDstList, list<CObj*>& rS
 	{
 		for (auto& rSrcObject : rSrcList)
 		{
-			if (CheckSphere(rDstObject, *rSrcObject))
+			if (CheckSphere(rDstObject, rSrcObject))
 			{
 				rDstObject->Set_Dead();
 				rSrcObject->Set_Dead();
@@ -50,7 +52,7 @@ void CCollision_Manager::Collision_RectEX(list<CObj*>& rDstList, list<CObj*>& rS
 	{
 		for (auto& rSrcObject : rSrcList)
 		{
-			if (CheckRect(rDstObject, *rSrcObject, &fMoveX, &fMoveY))
+			if (CheckRect(rDstObject, rSrcObject, &fMoveX, &fMoveY))
 			{
 				float fX = rSrcObject->Get_Info()->fX; 
 				float fY = rSrcObject->Get_Info()->fY; 
@@ -74,26 +76,30 @@ void CCollision_Manager::Collision_RectEX(list<CObj*>& rDstList, list<CObj*>& rS
 
 }
 
-bool CCollision_Manager::CheckSphere(const CObj * pDstObject, const CObj & rSrcObject)
+void CCollision_Manager::Collision_GoundRect(list<CMaps*>& rDstList, CObj *& Player)
 {
-	float fRadiusSum = static_cast<float>((pDstObject->Get_Info()->iCX >> 1) + (rSrcObject.Get_Info()->iCX >> 1));
-	float fX = pDstObject->Get_Info()->fX - rSrcObject.Get_Info()->fX; 
-	float fY = pDstObject->Get_Info()->fY - rSrcObject.Get_Info()->fY; 
+}
+
+bool CCollision_Manager::CheckSphere(const CObj * pDstObject, const CObj * rSrcObject)
+{
+	float fRadiusSum = static_cast<float>((pDstObject->Get_Info()->iCX >> 1) + (rSrcObject->Get_Info()->iCX >> 1));
+	float fX = pDstObject->Get_Info()->fX - rSrcObject->Get_Info()->fX;
+	float fY = pDstObject->Get_Info()->fY - rSrcObject->Get_Info()->fY;
 	float fDist = sqrtf(fX * fX + fY * fY); 
 
 	return fDist <fRadiusSum;
 }
 
-bool CCollision_Manager::CheckRect(const CObj * pDstObject, const CObj & rSrcObject, float * pMoveX, float * pMoveY)
+bool CCollision_Manager::CheckRect(const CObj * pDstObject, const CObj * rSrcObject, float * pMoveX, float * pMoveY)
 {
 	// 1.사각형 두개의 x축으로의 반지름의 합을 구함. 
-	float fRadiusSumX = static_cast<float>((pDstObject->Get_Info()->iCX >> 1) + (rSrcObject.Get_Info()->iCX >> 1));
+	float fRadiusSumX = static_cast<float>((pDstObject->Get_Info()->iCX >> 1) + (rSrcObject->Get_Info()->iCX >> 1));
 	//2.사각형 두개의 y축으로의 반지름의 합을 구함. 
-	float fRadiusSumY = static_cast<float>((pDstObject->Get_Info()->iCY >> 1) + (rSrcObject.Get_Info()->iCY >> 1));
+	float fRadiusSumY = static_cast<float>((pDstObject->Get_Info()->iCY >> 1) + (rSrcObject->Get_Info()->iCY >> 1));
 
 	// x축과 y축의 거리 구함. 
-	float fDistX = fabs(pDstObject->Get_Info()->fX - rSrcObject.Get_Info()->fX); 
-	float fDistY = fabs(pDstObject->Get_Info()->fY - rSrcObject.Get_Info()->fY); 
+	float fDistX = fabs(pDstObject->Get_Info()->fX - rSrcObject->Get_Info()->fX);
+	float fDistY = fabs(pDstObject->Get_Info()->fY - rSrcObject->Get_Info()->fY);
 
 	// 구한 두개의 거리와 반지름의 합을 각각 비교. 
 	if (fDistX <= fRadiusSumX && fDistY <= fRadiusSumY)
@@ -104,4 +110,23 @@ bool CCollision_Manager::CheckRect(const CObj * pDstObject, const CObj & rSrcObj
 	}
 	// 두개의 거리가 더 짧다라면 ? 충돌. 
 	return false; 
+}
+
+bool CCollision_Manager::CheckGroundRect(CMaps* ground, CObj * player, float * pMoveX, float * pMoveY)
+{
+	//2.사각형 두개의 y축으로의 반지름의 합을 구함. 
+	float fRadiusSumY = static_cast<float>(( dynamic_cast<CMapBlock*>(ground)->Get_MapInfo()->tPoint.iCY >> 1) + (player->Get_Info()->iCY >> 1));
+	
+	float groundRadius = (dynamic_cast<CMapBlock*>(ground)->Get_MapInfo()->tPoint.fTop) + (dynamic_cast<CMapBlock*>(ground)->Get_MapInfo()->tPoint.iCY >> 1);
+	// x축과 y축의 거리 구함. 
+	float fDistY = fabs( groundRadius - player->Get_Info()->fY);
+
+	// 구한 두개의 거리와 반지름의 합을 각각 비교. 
+	if (fDistY <= fRadiusSumY)
+	{\
+		*pMoveY = fRadiusSumY - fDistY;
+		return true;
+	}
+	// 두개의 거리가 더 짧다라면 ? 충돌. 
+	return false;
 }

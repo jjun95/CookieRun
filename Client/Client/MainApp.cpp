@@ -8,6 +8,7 @@
 #include "Map_manager.h"
 #include "Bitmap_Manager.h"
 #include "Scroll_Manager.h"
+#include "Scene_Manager.h"
 #include "Maps.h"
 
 CMainApp::CMainApp()
@@ -32,38 +33,29 @@ void CMainApp::Ready_MainApp()
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/BackGround/Back01.bmp", L"Back01");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/BackGround/Back01-1.bmp", L"Back01-1");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Ground1.bmp", L"Ground1");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/ButterCream.bmp", L"ButterCream");
 
 
-	//map 저장하기
-	m_listMaps[MAP::MAP_BLOCK] = CMap_Manager::Get_Instance()->Get_MapList();
+	//CObj* pObj = CAbstractFactory<CPlayer>::Create(); 
+	//m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_PLAYER);
 
-	CObj* pObj = CAbstractFactory<CPlayer>::Create(); 
-	m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_PLAYER);
-
-	pObj = CAbstractFactory<CMouse>::Create(); 
+	CObj* pObj = CAbstractFactory<CMouse>::Create(); 
 	m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_MOUSE);
 
-	//CLine_Manager::Get_Instance()->Ready_LineManager(); 
-	CMap_Manager::Get_Instance()->Ready_MapManager(); 
+	CScene_Manager::Get_Instance()->Scene_Change_SceneManager(CScene_Manager::SCENE_PLAY);
 }
 
 void CMainApp::Update_MainApp()
 {
 	CKey_Manager::Get_Instance()->Update_KeyManager(); 
-
-	m_pObj_Manager->Update_ObjectManager(); 
-
-	for (size_t i = 0; i < MAP::MAP_END; ++i)
-	{
-		auto& iter_end = m_listMaps[i]->end();
-		for (auto& iter = m_listMaps[i]->begin(); iter != iter_end; ++iter)
-			(*iter)->Update_Map();
-	}
+	CScene_Manager::Get_Instance()->Update_SceneManager();
+	//m_pObj_Manager->Update_ObjectManager(); 
 }
 
 void CMainApp::LateUpdate_MainApp()
 {
-	m_pObj_Manager->LateUpdate_ObjectManager();
+	//m_pObj_Manager->LateUpdate_ObjectManager();
+	CScene_Manager::Get_Instance()->LateUpdate_SceneManager();
 }
 
 void CMainApp::Render_MainApp()
@@ -73,9 +65,9 @@ void CMainApp::Render_MainApp()
 		return;
 	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"Back01");
 	BitBlt(hBack, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
-	m_pObj_Manager->Render_ObjectManager(hBack); 
-	CMap_Manager::Get_Instance()->Render_MapManager(hBack); 
-	//CMap_Manager::Get_Instance()->Render_MapManager(m_hDC); 
+	//BitBlt(m_hDC, 0, 0, WINCX, WINCY, hMemDC, 0, 0, SRCCOPY);
+	CScene_Manager::Get_Instance()->Render_SceneManager(hBack);
+	//CScene_Manager::Get_Instance()->Render_SceneManager(m_hDC);
 
 	//++m_iFPS; 
 	//if (m_dwOldTime + 1000 < GetTickCount() )
@@ -96,6 +88,8 @@ void CMainApp::Release_MainApp()
 	//CLine_Manager::Destroy_Instance(); 
 	CMap_Manager::Destroy_Instance(); 
 	CKey_Manager::Destroy_Instance(); 
+	CBitmap_Manager::Destroy_Instance();
+	CScene_Manager::Destroy_Instance();
 
 }
 

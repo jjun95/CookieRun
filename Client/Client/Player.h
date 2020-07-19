@@ -9,6 +9,7 @@ public:
 public:
 	void KeyCheck(); 
 	void IsJumping(); 
+	void Animation_Change();
 public:
 	// CObj을(를) 통해 상속됨
 	virtual void Ready_Object()			override;
@@ -18,12 +19,16 @@ public:
 	virtual void Release_Object()		override;
 	
 private:
-	float m_fDist = 0.f; 
-	POINT m_tPosin; 
-
 	bool m_bIsJump = false;
-	float m_fJumpPower = 0.f; 
-	float m_fJumpAccel = 0.f; 
+	bool m_bIsDoubleJump = false;
+	float m_fJumpPower = 0.f;
+	float m_fJumpAccel = 0.f;
+	float m_fStartfY = 0.f;
+	DWORD m_dwJumpTime;
+
+	TCHAR* m_szFrameKey;
+	OBJ::STATE m_eCurState;
+	OBJ::STATE m_eNextState;
 };
 
 // y = 힘 * sin@ * 시간 - 1/2 * 중력 * 시간 * 시간 

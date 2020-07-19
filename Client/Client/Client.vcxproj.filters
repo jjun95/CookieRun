@@ -52,11 +52,14 @@
     <Filter Include="03.Map\MapBlock">
       <UniqueIdentifier>{333f62d5-bc9d-4a7d-a545-093791d6e46d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene">
+    <Filter Include="03.Scene">
       <UniqueIdentifier>{da44f399-d6cb-4092-bf03-761aec8ff454}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\Manager">
+    <Filter Include="03.Scene\Manager">
       <UniqueIdentifier>{0121ac86-97dd-4fb4-9f38-7014a8b24e1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Scene\Stage">
+      <UniqueIdentifier>{3b11b5ee-7b27-48c8-9356-b8d45d4df09d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -118,10 +121,13 @@
       <Filter>03.Map\MapBlock</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Scene</Filter>
+      <Filter>03.Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scene_Manager.h">
-      <Filter>Scene\Manager</Filter>
+      <Filter>03.Scene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>03.Scene\Stage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -171,10 +177,13 @@
       <Filter>03.Map\MapBlock</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Scene</Filter>
+      <Filter>03.Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene_Manager.cpp">
-      <Filter>Scene\Manager</Filter>
+      <Filter>03.Scene\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>03.Scene\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -33,31 +33,63 @@ void CMap_Manager::Load_MapData()
 		if (0 == dwByte)
 			break;
 		pMap = new CMapBlock(tMapInfo);
-		m_listMap.emplace_back(pMap);
+		m_listMap[MAP::MAP_BLOCK].emplace_back(pMap);
 	}
 	MessageBox(nullptr, L"MapLoad 성공!", L"MapManager", MB_OK);
 	CloseHandle(hFile);
 }
 
-bool CMap_Manager::MapCollision_MapManager(float fInX, float * pOutY)
+bool CMap_Manager::GroundCollision_MapManager(float inX, float * pOutY, int iCY)
 {
-	return false;
+	CMaps* pTarget = nullptr;
+
+
+	// 일단 MapBlock에 대한 충돌처리만.
+	for (auto& pMap : m_listMap[MAP::MAP_BLOCK]) {
+		MAPINFO* mapInfo = pMap->Get_MapInfo();
+		float mapSpeed = pMap->Get_Speed();
+		if ((inX > mapInfo->tPoint.fLeft + mapSpeed) && (inX <= mapInfo->tPoint.fLeft + mapInfo->tPoint.iCX + mapSpeed) &&(*pOutY + (iCY >> 1) >= mapInfo->tPoint.fTop)) {
+			pTarget = pMap;
+			break;
+		}
+	}
+	if (nullptr == pTarget)
+		return false;
+
+	return true;
 }
 
 void CMap_Manager::Ready_MapManager()
 {
-	Load_MapData();
+	
+}
+
+void CMap_Manager::Update_MapManager()
+{
+	for (size_t i = 0; i < MAP::MAP_END; ++i)
+	{
+		auto& iter_end = m_listMap[i].end();
+		for (auto& iter = m_listMap[i].begin(); iter != iter_end; ++iter) {
+			(*iter)->Update_Map();
+		}
+		for (auto& iter = m_listMap[i].begin(); iter != iter_end; ++iter) {
+			(*iter)->LateUpdate_Map();
+		}
+	}
 }
 
 void CMap_Manager::Render_MapManager(HDC hDC)
 {
-	for (auto& pMapBlock : m_listMap)
-	{
-		pMapBlock->Render_Map(hDC);
+	for (size_t i = 0; i < MAP::MAP_END; ++i) {
+		for (auto& pMapObject : m_listMap[i])
+		{
+			pMapObject->Render_Map(hDC);
+		}
 	}
 }
 
 void CMap_Manager::Release_MapManager()
 {
-	for_each(m_listMap.begin(), m_listMap.end(), Safe_Delete<CMaps*>);
+	for(size_t i = 0; i < MAP::MAP_END; ++i)
+		for_each(m_listMap[i].begin(), m_listMap[i].end(), Safe_Delete<CMaps*>);
 }

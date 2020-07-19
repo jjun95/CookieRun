@@ -67,3 +67,12 @@ typedef struct tagMapInfo
 	}
 	MAPPOS tPoint;
 }MAPINFO;
+
+typedef struct tagFramge {
+	int iDefaultStartFrame;
+	int iStartFrame;
+	int iEndFrame;
+	int iSceneFrame;
+	DWORD dwFrameTime;
+	DWORD dwFrameSpeed;
+}FRAME;

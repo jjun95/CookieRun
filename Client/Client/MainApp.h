@@ -24,7 +24,5 @@ private:
 	int m_iFPS = 0;
 	DWORD m_dwOldTime =0; 
 	TCHAR m_szFPS[32] = L""; 
-	list<CMaps*>* m_listMaps[MAP::MAP_END];
-
 };
 

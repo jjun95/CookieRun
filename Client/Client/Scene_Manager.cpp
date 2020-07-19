@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Scene_Manager.h"
-#include "Scene.h"
+#include "Stage.h"
 
 CScene_Manager* CScene_Manager::m_pInstance = nullptr;
 CScene_Manager::CScene_Manager()
@@ -26,7 +26,7 @@ void CScene_Manager::Scene_Change_SceneManager(ID eSceneID)
 			//m_pScene = new CStandby;
 			break;
 		case CScene_Manager::SCENE_PLAY:
-			//m_pScene = new CStage;
+			m_pScene = new CStage;
 			break;
 		case CScene_Manager::SCENE_END:
 			break;

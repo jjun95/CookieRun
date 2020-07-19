@@ -10,7 +10,7 @@ public:
 		m_tInfo.fX = fX; 
 		m_tInfo.fY = fY; 
 	}
-	void Set_Angle(float fAngle) { m_fAngle = fAngle; }
+	//void Set_Angle(float fAngle) { m_fAngle = fAngle; }
 	void Set_Dead() { m_bIsDead = true;  }
 
 	const RECT& Get_Rect() const { return m_tRect;  }
@@ -24,11 +24,13 @@ public:
 	virtual void Release_Object()		=0; 
 public:
 	void Update_Rect_Object(); 
+	void MoveFrame();
 protected:
 	RECT m_tRect; 
 	INFO m_tInfo; 
 	float m_fSpeed; 
 	bool m_bIsDead = false; 
-	float m_fAngle = 0.f; 
+	//float m_fAngle = 0.f; 
+	FRAME m_tFrame;
 };
 
