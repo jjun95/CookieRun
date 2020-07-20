@@ -38,5 +38,7 @@ private:
 	list<CMaps*> m_listMap[MAP::MAP_END];
 	CObj* m_pPlayer;
 	static CMap_Manager* m_pInstance;
+	MAP::ID m_mapID = MAP::MAP_END;
+	int m_iMapKey;
 };
 

@@ -4,7 +4,7 @@ class CMapBlock : public CMaps
 {
 public:
 	explicit CMapBlock();
-	explicit CMapBlock(MAPINFO& mapInfo);
+	explicit CMapBlock(MAPINFO& mapInfo, MAP::DETAILED_ID eDTID);
 	virtual ~CMapBlock();
 
 public:

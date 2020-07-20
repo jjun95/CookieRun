@@ -58,6 +58,15 @@
     <Filter Include="03.Scene\Stage">
       <UniqueIdentifier>{3b11b5ee-7b27-48c8-9356-b8d45d4df09d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Map\Coin">
+      <UniqueIdentifier>{f8ae24f6-fd4b-4771-bed2-17f079eca5b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Map\Jelly">
+      <UniqueIdentifier>{46ac584e-c717-4158-9c7d-90d84e84bda9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Map\Obstacle">
+      <UniqueIdentifier>{07c6b13b-44d4-4d0a-94c7-672178aeb346}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -123,6 +132,36 @@
     <ClInclude Include="Stage.h">
       <Filter>03.Scene\Stage</Filter>
     </ClInclude>
+    <ClInclude Include="BaseJelly.h">
+      <Filter>03.Map\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="BigCoin.h">
+      <Filter>03.Map\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="GoldCoin.h">
+      <Filter>03.Map\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle1.h">
+      <Filter>03.Map\Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle2.h">
+      <Filter>03.Map\Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle3.h">
+      <Filter>03.Map\Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle4.h">
+      <Filter>03.Map\Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="PinkJelly.h">
+      <Filter>03.Map\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="YellowJelly.h">
+      <Filter>03.Map\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="SilverCoin.h">
+      <Filter>03.Map\Coin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -178,6 +217,36 @@
     </ClCompile>
     <ClCompile Include="Stage.cpp">
       <Filter>03.Scene\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseJelly.cpp">
+      <Filter>03.Map\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="BigCoin.cpp">
+      <Filter>03.Map\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="GoldCoin.cpp">
+      <Filter>03.Map\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle1.cpp">
+      <Filter>03.Map\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle2.cpp">
+      <Filter>03.Map\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle3.cpp">
+      <Filter>03.Map\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle4.cpp">
+      <Filter>03.Map\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="PinkJelly.cpp">
+      <Filter>03.Map\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="YellowJelly.cpp">
+      <Filter>03.Map\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="SilverCoin.cpp">
+      <Filter>03.Map\Coin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,11 @@
 #pragma once
+#include "Bitmap_Manager.h"
+
 class CMaps abstract
 {
 public:
 	explicit CMaps();
-	explicit CMaps(MAPINFO & mapInfo);
+	explicit CMaps(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID);
 	virtual ~CMaps();
 
 public:
@@ -25,5 +27,7 @@ protected:
 	DWORD m_dwTime = 0;
 	float m_fSpeed = 0.f;
 	bool m_bIsDead = false;
+	MAP::DETAILED_ID m_eDTID;
+
 };
 

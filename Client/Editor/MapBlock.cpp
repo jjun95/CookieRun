@@ -4,10 +4,11 @@
 CMapBlock::CMapBlock()
 {
 	m_tInfo = MAPINFO(124, 120);
+	m_eDTID = MAP::BLOCK;
 }
 
-CMapBlock::CMapBlock(MAPINFO & mapInfo)
-	: CMaps(mapInfo)
+CMapBlock::CMapBlock(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
+	: CMaps(mapInfo, eDTID)
 {
 }
 

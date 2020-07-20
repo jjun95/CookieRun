@@ -149,9 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractFactory.h" />
+    <ClInclude Include="BaseJelly.h" />
+    <ClInclude Include="BigCoin.h" />
     <ClInclude Include="Bitmap_Manager.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Collision_Manager.h" />
+    <ClInclude Include="GoldCoin.h" />
     <ClInclude Include="Key_Manager.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="MapBlock.h" />
@@ -161,19 +164,29 @@
     <ClInclude Include="MyBitmap.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="Obj_Manager.h" />
+    <ClInclude Include="Obstacle1.h" />
+    <ClInclude Include="Obstacle2.h" />
+    <ClInclude Include="Obstacle3.h" />
+    <ClInclude Include="Obstacle4.h" />
+    <ClInclude Include="PinkJelly.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene_Manager.h" />
     <ClInclude Include="Scroll_Manager.h" />
+    <ClInclude Include="SilverCoin.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="YellowJelly.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseJelly.cpp" />
+    <ClCompile Include="BigCoin.cpp" />
     <ClCompile Include="Bitmap_Manager.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Collision_Manager.cpp" />
+    <ClCompile Include="GoldCoin.cpp" />
     <ClCompile Include="Key_Manager.cpp" />
     <ClCompile Include="MainApp.cpp" />
     <ClCompile Include="MapBlock.cpp" />
@@ -183,10 +196,16 @@
     <ClCompile Include="MyBitmap.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="Obj_Manager.cpp" />
+    <ClCompile Include="Obstacle1.cpp" />
+    <ClCompile Include="Obstacle2.cpp" />
+    <ClCompile Include="Obstacle3.cpp" />
+    <ClCompile Include="Obstacle4.cpp" />
+    <ClCompile Include="PinkJelly.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Manager.cpp" />
     <ClCompile Include="Scroll_Manager.cpp" />
+    <ClCompile Include="SilverCoin.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -194,6 +213,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="YellowJelly.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

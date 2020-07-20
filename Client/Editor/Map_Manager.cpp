@@ -37,10 +37,12 @@ void CMap_Manager::Save_MapData()
 		return;
 	}
 	DWORD dwByte = 0;
+
 	for (int i = 0; i < MAP::MAP_END; ++i) {
 		for (auto& pMap : m_listMap[i])
 		{
 			WriteFile(hFile, pMap->Get_MapInfo(), sizeof(MAPINFO), &dwByte, nullptr);
+			WriteFile(hFile, pMap->Get_DTID(), sizeof(int), &dwByte, nullptr);
 		}
 	}
 	MessageBox(nullptr, L"MapSave 성공!", L"MapManager_Editor", MB_OK);
@@ -60,13 +62,60 @@ void CMap_Manager::Load_MapData()
 	CMaps* pMap = nullptr;
 	DWORD dwByte = 0;
 	MAPINFO tMapInfo = {};
+	MAP::DETAILED_ID eDTID;
 	while (true)
 	{
 		ReadFile(hFile, &tMapInfo, sizeof(MAPINFO), &dwByte, nullptr);
+		ReadFile(hFile, &eDTID, sizeof(int), &dwByte, nullptr);
 		if (0 == dwByte)
 			break;
-		pMap = new CMapBlock(tMapInfo);
-		m_listMap[MAP::MAP_BLOCK].emplace_back(pMap);
+		switch (eDTID) {
+		case MAP::BLOCK :
+			pMap = new CMapBlock(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_BLOCK].emplace_back(pMap);
+			break;
+		case MAP::SVCOIN:
+			pMap = new CSilverCoin(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_COIN].emplace_back(pMap);
+			break;
+		case MAP::GDCOIN:
+			pMap = new CGoldCoin(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_COIN].emplace_back(pMap);
+			break;
+		case MAP::BIGCOIN:
+			pMap = new CBigCoin(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_COIN].emplace_back(pMap);
+			break;
+		case MAP::BASEJL:
+			pMap = new CBaseJelly(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_JELLY].emplace_back(pMap);
+			break;
+		case MAP::PINKJL:
+			pMap = new CPinkJelly(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_JELLY].emplace_back(pMap);
+			break;
+		case MAP::YELLOWJL:
+			pMap = new CYellowJelly(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_JELLY].emplace_back(pMap);
+			break;
+		case MAP::OTC1:
+			pMap = new CObstacle1(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_OBSTACLE].emplace_back(pMap);
+			break;
+		case MAP::OTC2:
+			pMap = new CObstacle2(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_OBSTACLE].emplace_back(pMap);
+			break;
+		case MAP::OTC3:
+			pMap = new CObstacle3(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_OBSTACLE].emplace_back(pMap);
+			break;
+		case MAP::OTC4:
+			pMap = new CObstacle4(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_OBSTACLE].emplace_back(pMap);
+			break;
+		}
+
 	}
 	MessageBox(nullptr, L"MapLoad 성공!", L"MapManager_Editor", MB_OK);
 	CloseHandle(hFile);
@@ -113,18 +162,14 @@ void CMap_Manager::Update_MapManager()
 		m_mapID = MAP::MAP_BLOCK;
 		m_iMapKey = 1;
 	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_1)) {
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_1)) 
 		m_iMapKey = 1;
-	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_2)) {
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_2)) 
 		m_iMapKey = 2;
-	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_3)) {
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_3)) 
 		m_iMapKey = 3;
-	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_4)) {
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_4)) 
 		m_iMapKey = 4;
-	}
 
 	if (CKey_Manager::Get_Instance()->Key_UP(KEY_LBUTTON))
 	{

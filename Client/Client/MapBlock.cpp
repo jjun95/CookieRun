@@ -1,15 +1,13 @@
 #include "stdafx.h"
 #include "MapBlock.h"
-#include "Bitmap_Manager.h"
-#include "Scroll_Manager.h"
 
 CMapBlock::CMapBlock()
 {
 	m_tInfo = MAPINFO(124, 120);
 }
 
-CMapBlock::CMapBlock(MAPINFO & mapInfo)
-	: CMaps(mapInfo)
+CMapBlock::CMapBlock(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
+	: CMaps(mapInfo, eDTID)
 {
 	m_dwTime = GetTickCount();
 }
