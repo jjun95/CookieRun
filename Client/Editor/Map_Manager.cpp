@@ -86,7 +86,12 @@ void CMap_Manager::Update_MapManager()
 	pt.x -= CScroll_Manager::Get_ScrollX();
 
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_BACKSPACE)) {
-
+		if (!m_listMap[m_mapID].empty()) {
+			auto& iter = m_listMap[m_mapID].end();
+			--iter;
+			Safe_Delete(*iter);
+			iter = m_listMap[m_mapID].erase(iter);
+		}
 	}
 	if (CKey_Manager::Get_Instance()->Key_Pressing(KEY_LEFT))
 		CScroll_Manager::Set_ScrollX(-5);
