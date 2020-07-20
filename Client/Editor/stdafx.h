@@ -28,5 +28,6 @@ using namespace std;
 #include "Function.h"
 #include "Struct.h"
 #include "Extern.h"
+#include "Enum.h"
 #include "Key_Manager.h"
 

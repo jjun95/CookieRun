@@ -8,8 +8,9 @@ public:
 	virtual ~CPlayer();
 public:
 	void KeyCheck(); 
-	void IsJumping(); 
+	bool IsJumping(); 
 	void Animation_Change();
+	void Stop_Jump();
 public:
 	// CObj을(를) 통해 상속됨
 	virtual void Ready_Object()			override;
@@ -21,9 +22,11 @@ public:
 private:
 	bool m_bIsJump = false;
 	bool m_bIsDoubleJump = false;
-	float m_fJumpPower = 0.f;
-	float m_fJumpAccel = 0.f;
-	float m_fStartfY = 0.f;
+	//float m_fJumpPower = 0.f;
+	//float m_fJumpAccel = 0.f;
+	float m_fTime = 0.f;
+	float m_fHeight = 0.f;
+	float m_fStartHeight = 0.f;
 	DWORD m_dwJumpTime;
 
 	TCHAR* m_szFrameKey;

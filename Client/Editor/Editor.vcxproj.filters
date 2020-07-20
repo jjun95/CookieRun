@@ -28,6 +28,27 @@
     <Filter Include="Map\MapBlock">
       <UniqueIdentifier>{bf99d25e-dfbd-4a0a-b1a1-4399fcf414b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map\Obstacle">
+      <UniqueIdentifier>{c49938a8-5684-4453-87af-ec6a80710d95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Obstacle\Obstacle1">
+      <UniqueIdentifier>{e98d565e-0477-4dfe-9338-18921601dfe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Obstacle\Obstacle2">
+      <UniqueIdentifier>{77c7265f-e794-4d16-a4f8-eaa85efdf8c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Obstacle\Obstacle4">
+      <UniqueIdentifier>{4acdf9a9-22af-42a6-ad57-7d7b516afb63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Obstacle\Obstacle3">
+      <UniqueIdentifier>{d8689c1a-8c5e-4b48-a41d-61c199a72113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Coin">
+      <UniqueIdentifier>{58f490d0-ba19-45d6-ac33-2d8a8bc411dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Jelly">
+      <UniqueIdentifier>{93ed5377-5ad6-405a-bdb1-1ed41603d46c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Editor.h">
@@ -66,6 +87,36 @@
     <ClInclude Include="Maps.h">
       <Filter>Map</Filter>
     </ClInclude>
+    <ClInclude Include="Obstacle1.h">
+      <Filter>Map\Obstacle\Obstacle1</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle2.h">
+      <Filter>Map\Obstacle\Obstacle2</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle3.h">
+      <Filter>Map\Obstacle\Obstacle3</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle4.h">
+      <Filter>Map\Obstacle\Obstacle4</Filter>
+    </ClInclude>
+    <ClInclude Include="BigCoin.h">
+      <Filter>Map\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="GoldCoin.h">
+      <Filter>Map\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="SilverCoin.h">
+      <Filter>Map\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseJelly.h">
+      <Filter>Map\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="PinkJelly.h">
+      <Filter>Map\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="YellowJelly.h">
+      <Filter>Map\Jelly</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Editor.cpp">
@@ -97,6 +148,36 @@
     </ClCompile>
     <ClCompile Include="Maps.cpp">
       <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle1.cpp">
+      <Filter>Map\Obstacle\Obstacle1</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle2.cpp">
+      <Filter>Map\Obstacle\Obstacle2</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle3.cpp">
+      <Filter>Map\Obstacle\Obstacle3</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle4.cpp">
+      <Filter>Map\Obstacle\Obstacle4</Filter>
+    </ClCompile>
+    <ClCompile Include="BigCoin.cpp">
+      <Filter>Map\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="GoldCoin.cpp">
+      <Filter>Map\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="SilverCoin.cpp">
+      <Filter>Map\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseJelly.cpp">
+      <Filter>Map\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="PinkJelly.cpp">
+      <Filter>Map\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="YellowJelly.cpp">
+      <Filter>Map\Jelly</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

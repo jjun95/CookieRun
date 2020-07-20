@@ -1,8 +1,5 @@
 #include "stdafx.h"
 #include "MapBlock.h"
-#include "Scroll_Manager.h"
-#include "Bitmap_Manager.h"
-
 
 CMapBlock::CMapBlock()
 {
@@ -24,8 +21,8 @@ void CMapBlock::Render_Map(HDC hDC)
 	if (nullptr == hMemDC)
 		return;
 	int scX = CScroll_Manager::Get_ScrollX();
-	GdiTransparentBlt(hDC, m_tInfo.tPoint.fLeft + scX,
-		m_tInfo.tPoint.fTop,
+	GdiTransparentBlt(hDC, m_tInfo.tPoint.fX - m_tInfo.tPoint.iCX / 2.f + scX,
+		m_tInfo.tPoint.fY - m_tInfo.tPoint.iCY / 2.f,
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		hMemDC,

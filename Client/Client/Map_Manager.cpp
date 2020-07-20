@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Map_Manager.h"
 #include "MapBlock.h"
+#include "Collision_Manager.h"
 
 CMap_Manager* CMap_Manager::m_pInstance = nullptr;
 
@@ -37,26 +38,6 @@ void CMap_Manager::Load_MapData()
 	}
 	MessageBox(nullptr, L"MapLoad 성공!", L"MapManager", MB_OK);
 	CloseHandle(hFile);
-}
-
-bool CMap_Manager::GroundCollision_MapManager(float inX, float * pOutY, int iCY)
-{
-	CMaps* pTarget = nullptr;
-
-
-	// 일단 MapBlock에 대한 충돌처리만.
-	for (auto& pMap : m_listMap[MAP::MAP_BLOCK]) {
-		MAPINFO* mapInfo = pMap->Get_MapInfo();
-		float mapSpeed = pMap->Get_Speed();
-		if ((inX > mapInfo->tPoint.fLeft + mapSpeed) && (inX <= mapInfo->tPoint.fLeft + mapInfo->tPoint.iCX + mapSpeed) &&(*pOutY + (iCY >> 1) >= mapInfo->tPoint.fTop)) {
-			pTarget = pMap;
-			break;
-		}
-	}
-	if (nullptr == pTarget)
-		return false;
-
-	return true;
 }
 
 void CMap_Manager::Ready_MapManager()

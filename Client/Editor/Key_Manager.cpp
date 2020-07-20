@@ -18,12 +18,36 @@ void CKey_Manager::Update_KeyManager()
 		m_dwKey |= KEY_LBUTTON;
 	if (GetAsyncKeyState(VK_RBUTTON) & 0x8000)
 		m_dwKey |= KEY_RBUTTON;
+	if (GetAsyncKeyState(VK_UP) & 0x8000)
+		m_dwKey |= KEY_UP;
+	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+		m_dwKey |= KEY_DOWN;
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 		m_dwKey |= KEY_LEFT;
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 		m_dwKey |= KEY_RIGHT;
+	if (GetAsyncKeyState(VK_BACK) & 0x8000)
+		m_dwKey |= KEY_BACKSPACE;
 	if (GetAsyncKeyState('S') & 0x8000)
 		m_dwKey |= KEY_S;
+	if (GetAsyncKeyState('L') & 0x8000)
+		m_dwKey |= KEY_L;
+	if (GetAsyncKeyState('C') & 0x8000)
+		m_dwKey |= KEY_C;
+	if (GetAsyncKeyState('J') & 0x8000)
+		m_dwKey |= KEY_J;
+	if (GetAsyncKeyState('O') & 0x8000)
+		m_dwKey |= KEY_O;
+	if (GetAsyncKeyState('B') & 0x8000)
+		m_dwKey |= KEY_B;
+	if (GetAsyncKeyState(0x31) & 0x8000)
+		m_dwKey |= KEY_1;
+	if (GetAsyncKeyState(0x32) & 0x8000)
+		m_dwKey |= KEY_2;
+	if (GetAsyncKeyState(0x33) & 0x8000)
+		m_dwKey |= KEY_3;
+	if (GetAsyncKeyState(0x34) & 0x8000)
+		m_dwKey |= KEY_4;
 }
 
 bool CKey_Manager::Key_UP(DWORD dwKey)

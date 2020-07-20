@@ -35,7 +35,7 @@ void CMouse::LateUpdate_Object()
 
 void CMouse::Render_Object(HDC hDC)
 {
-	CObj::Update_Rect_Object(); 
+	//CObj::Update_Rect_Object(); 
 	Ellipse(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom); 
 }
 

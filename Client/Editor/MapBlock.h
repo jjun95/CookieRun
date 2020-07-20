@@ -6,8 +6,8 @@ class CMapBlock : public CMaps
 public:
 	explicit CMapBlock();
 	explicit CMapBlock(MAPINFO& mapInfo);
-	~CMapBlock();
+	virtual ~CMapBlock();
 public:
-	void Render_Map(HDC hDC);
+	virtual void Render_Map(HDC hDC);
 };
 

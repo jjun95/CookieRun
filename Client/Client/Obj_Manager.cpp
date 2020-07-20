@@ -1,12 +1,15 @@
 #include "stdafx.h"
 #include "Obj_Manager.h"
 #include "Obj.h"
+#include "Player.h"
 #include "Maps.h"
+#include "Map_Manager.h"
 
 CObj_Manager* CObj_Manager::m_pInstance = nullptr;
 
 CObj_Manager::CObj_Manager()
 {
+	m_plistMap[MAP::MAP_BLOCK] = CMap_Manager::Get_Instance()->Get_MapList(MAP::MAP_BLOCK);
 }
 
 
@@ -76,8 +79,8 @@ void CObj_Manager::LateUpdate_ObjectManager()
 			pObj->LateUpdate_Object();
 		}
 	}
-	CCollision_Manager::Collision_RectEX(m_listObject[OBJ::OBJ_MONSTER], m_listObject[OBJ::OBJ_PLAYER]);
-	CCollision_Manager::Collision_Sphere(m_listObject[OBJ::OBJ_MONSTER], m_listObject[OBJ::OBJ_MOUSE]);
+	if(CCollision_Manager::Collision_RectEX(*m_plistMap[MAP::MAP_BLOCK], m_listObject[OBJ::OBJ_PLAYER]))
+		dynamic_cast<CPlayer*>(m_listObject[OBJ::OBJ_PLAYER].front())->Stop_Jump();
 }
 
 void CObj_Manager::Render_ObjectManager(HDC hDC)

@@ -38,5 +38,6 @@ private:
 	static CObj_Manager* m_pInstance;
 private:
 	list<CObj*> m_listObject[OBJ::OBJ_END];
+	list<CMaps*>* m_plistMap[MAP::MAP_END];
 };
 

@@ -23,7 +23,7 @@ public:
 	virtual void Render_Object(HDC hDC)	=0;
 	virtual void Release_Object()		=0; 
 public:
-	void Update_Rect_Object(); 
+	void Update_Rect_Object(int left, int top, int right, int bottom); 
 	void MoveFrame();
 protected:
 	RECT m_tRect; 

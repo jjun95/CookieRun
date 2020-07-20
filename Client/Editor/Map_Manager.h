@@ -25,6 +25,7 @@ public:
 
 public:
 	void Save_MapData();
+	void Load_MapData();
 public:
 	void Ready_MapManager();
 	void Update_MapManager();
@@ -32,7 +33,10 @@ public:
 	void Release_MapManager();
 
 private:
-	list<CMaps*> m_listMap;
+	list<CMaps*> m_listMap[MAP::MAP_END];
 	static CMap_Manager* m_pInstance;
+	CMaps* m_pMap = nullptr;
+	MAP::ID m_mapID = MAP::MAP_END;
+	int m_iMapKey;
 };
 

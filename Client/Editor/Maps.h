@@ -1,4 +1,7 @@
 #pragma once
+#include "Scroll_Manager.h"
+#include "Bitmap_Manager.h"
+
 class CMaps abstract
 {
 public:

@@ -34,9 +34,10 @@ void CMainApp::Ready_MainApp()
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/BackGround/Back01-1.bmp", L"Back01-1");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Ground1.bmp", L"Ground1");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/ButterCream.bmp", L"ButterCream");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Obstacle01.bmp", L"Obstacle01");
 
 
-	//CObj* pObj = CAbstractFactory<CPlayer>::Create(); 
+	//CObj* pObj = ; 
 	//m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_PLAYER);
 
 	CObj* pObj = CAbstractFactory<CMouse>::Create(); 

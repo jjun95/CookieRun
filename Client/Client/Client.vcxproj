@@ -152,7 +152,6 @@
     <ClInclude Include="Bitmap_Manager.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Collision_Manager.h" />
-    <ClInclude Include="Enum.h" />
     <ClInclude Include="Key_Manager.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="MapBlock.h" />

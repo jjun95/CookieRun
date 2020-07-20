@@ -7,9 +7,6 @@
     <Filter Include="00.MainApp">
       <UniqueIdentifier>{c9d90e59-9ba2-4949-8ed7-bee927e9473c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="99.Headers">
-      <UniqueIdentifier>{499bf16b-758e-41ef-a334-7a8c5370e261}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.Obj">
       <UniqueIdentifier>{d56ea007-cb5d-45ed-be16-9d8cd4c38198}</UniqueIdentifier>
     </Filter>
@@ -83,9 +80,6 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>01.Obj\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Enum.h">
-      <Filter>99.Headers</Filter>
     </ClInclude>
     <ClInclude Include="AbstractFactory.h">
       <Filter>98.DesignPattern</Filter>

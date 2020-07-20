@@ -16,83 +16,55 @@ CPlayer::~CPlayer()
 
 void CPlayer::KeyCheck()
 {
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_DOWN)) {
-		m_tInfo.fY = WINCY - 180;
-		m_tInfo.iCX = 160;
-		m_tInfo.iCY = 120;
+	if (CKey_Manager::Get_Instance()->Key_Pressing(KEY_DOWN)) {
 		m_eNextState = OBJ::PLAYER_SLIDE;
 	}
 	if (CKey_Manager::Get_Instance()->Key_UP(KEY_DOWN)) {
-		m_tInfo.fY = WINCY - 200.f;
-		m_tInfo.iCX = 70;
-		m_tInfo.iCY = 160;
 		m_eNextState = OBJ::PLAYER_RUN;
 	}
 }
 
-void CPlayer::IsJumping()
+bool CPlayer::IsJumping()
 {
-	if (m_dwJumpTime + 200 < GetTickCount()) {
-		if (m_bIsJump && !m_bIsDoubleJump) {
+	if (m_dwJumpTime + 150 < GetTickCount()) {
+		if (m_bIsJump && (m_bIsDoubleJump == false)) {
 			if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_UP)) {
+				m_fStartHeight = m_tInfo.fY;
 				m_bIsDoubleJump = true;
-				m_fJumpAccel = 0.f;
-				m_eNextState = OBJ::_PLAYER_DOUBLEJUMP;
+				m_fTime = 0.f;
+				m_eNextState = OBJ::PLAYER_DOUBLEJUMP;
 			}
 		}
 	}
-	if (!m_bIsJump){
+	if (!m_bIsJump)
+	{
 		if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_UP))
 		{
+			m_fStartHeight = m_tInfo.fY;
 			m_bIsJump = true;
 			m_dwJumpTime = GetTickCount();
-			m_fStartfY = m_tInfo.fY;
 			m_eNextState = OBJ::PLAYER_JUMP;
 		}
 	}
+	m_fTime += 0.2f;
 
-	bool IsColl = CMap_Manager::Get_Instance()->GroundCollision_MapManager(m_tInfo.fX, &m_fStartfY, m_tInfo.iCY);
-
-	m_fJumpAccel += 0.1f;
-	if (m_bIsJump || m_bIsDoubleJump) {
-		m_tInfo.fY -= m_fJumpPower * m_fJumpAccel - GRAVITY * m_fJumpAccel * m_fJumpAccel * 0.5f;
-
-		if (m_tInfo.fY > m_fStartfY) {
-			m_tInfo.fY = m_fStartfY;
-			m_bIsJump = false;
-			m_bIsDoubleJump = false;
-			m_eNextState = OBJ::PLAYER_RUN;
-		}
-		return;
+	if (m_bIsDoubleJump) {
+		m_fHeight = 2*(m_fTime * m_fTime * -GRAVITY / 2) + (m_fTime * m_fSpeed);
+		m_tInfo.fY = -m_fHeight + m_fStartHeight;
 	}
-	else if (IsColl) {
-		m_tInfo.fY = m_fStartfY;
-		m_fJumpAccel = 0.f;
-		m_bIsJump = false;
-		m_bIsDoubleJump = false;
-		m_eNextState = OBJ::PLAYER_RUN;
-		return;
+	else if (m_bIsJump)//첫번째 점프할 때
+	{
+		m_fHeight = 2*(m_fTime * m_fTime * -GRAVITY / 2) + (m_fTime * m_fSpeed);
+		m_tInfo.fY = -m_fHeight + m_fStartHeight;
+
 	}
 	else {
-		m_tInfo.fY += m_fJumpAccel * GRAVITY;
+		m_tInfo.fY += m_fTime * GRAVITY;
 	}
-	//float fY = m_tInfo.fY; 
-	//bool IsColl = CMap_Manager::Get_Instance()->GroundCollision_MapManager(&fY, m_tInfo.iCY);
-	//if (m_bIsJump)
-	//{
-	//	//자유낙하 공식// y = 힘 * sin@ * 시간 - 1/2 * 중력 * 시간 * 시간 
-	//	m_tInfo.fY -= m_fJumpPower * m_fJumpAccel - GRAVITY * m_fJumpAccel * m_fJumpAccel * 0.5f;
-	//	m_fJumpAccel += 0.1f;
 
-	//	if (m_tInfo.fY > fY)
-	//	{
-	//		m_bIsJump = false;
-	//		m_fJumpAccel = 0.f;
-	//		m_tInfo.fY = fY;
-	//	}
-	//}
-	//else if (IsColl)
-	//	m_tInfo.fY = fY; 
+	if (m_bIsJump)
+		return true;
+	else return false;
 }
 
 void CPlayer::Animation_Change()
@@ -127,7 +99,7 @@ void CPlayer::Animation_Change()
 			m_tFrame.dwFrameSpeed = 1000;
 			m_tFrame.iSceneFrame = 0;
 			break;
-		case OBJ::_PLAYER_DOUBLEJUMP:
+		case OBJ::PLAYER_DOUBLEJUMP:
 			m_tFrame.iDefaultStartFrame = 8;
 			m_tFrame.iStartFrame = 1;
 			m_tFrame.iEndFrame = 8;
@@ -148,20 +120,33 @@ void CPlayer::Animation_Change()
 			m_tFrame.dwFrameSpeed = 500;
 			m_tFrame.iSceneFrame = 4;
 			break;
+		default:
+			break;
 		}
+		m_eCurState = m_eNextState;
 	}
+}
+
+void CPlayer::Stop_Jump()
+{
+	m_bIsJump= false; 
+	m_bIsDoubleJump = false; 
+	m_fTime = 0.f; 
+	m_dwJumpTime = GetTickCount();
+	m_fTime = 0.f;
+	m_eNextState = OBJ::PLAYER_RUN;
 }
 
 void CPlayer::Ready_Object()
 {
 	m_tInfo.fX = 300.f; 
-	m_tInfo.fY = WINCY - 200.f; 
-	m_tInfo.iCX = 70; 
-	m_tInfo.iCY = 160; 
-	m_fSpeed = 5.f; 
+	m_tInfo.fY = WINCY - 280.f; 
+	m_tInfo.iCX = PLAYERSIZE; 
+	m_tInfo.iCY = PLAYERSIZE;
+	m_fSpeed = 80.f; 
 	m_dwJumpTime = GetTickCount();
-	m_fJumpPower = 15.f;
-	m_fStartfY = m_tInfo.fY;
+	//m_fJumpPower = 20.f;
+	//m_fStartfY = m_tInfo.fY;
 	m_szFrameKey = L"ButterCream";
 	m_tFrame.iDefaultStartFrame = 0;
 	m_tFrame.iStartFrame = 0;
@@ -171,12 +156,13 @@ void CPlayer::Ready_Object()
 	m_tFrame.dwFrameTime = GetTickCount();
 	m_eCurState = OBJ::PLAYER_RUN;
 	m_eNextState = OBJ::PLAYER_RUN;
+	CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 3), m_tInfo.fY, m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY >> 1));
 }
 
 int CPlayer::Update_Object()
 {
-	KeyCheck(); 
-	IsJumping(); 
+	if (!IsJumping())
+		KeyCheck(); 
 	Animation_Change();
 	CObj::MoveFrame();
 	return 0;
@@ -189,29 +175,22 @@ void CPlayer::LateUpdate_Object()
 
 void CPlayer::Render_Object(HDC hDC)
 {
-	CObj::Update_Rect_Object();
-
+	if(m_eCurState == OBJ::PLAYER_SLIDE)
+		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 2), m_tInfo.fY + (m_tInfo.iCX >> 2), m_tInfo.fX + (m_tInfo.iCX >> 2), m_tInfo.fY + (m_tInfo.iCY >> 1));
+	else
+		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 3), m_tInfo.fY, m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY >> 1));
 	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(m_szFrameKey);
 	if (nullptr == hMemDC)
 		return;
-	//GdiTransparentBlt(hDC, m_tInfo.fX - (PLAYERSIZE >> 1),
-	//	WINCY - (120 + PLAYERSIZE),
-	//	PLAYERSIZE,
-	//	PLAYERSIZE,
-	//	hMemDC,
-	//	PLAYERSIZE * m_tFrame.iStartFrame, PLAYERSIZE * m_tFrame.iSceneFrame,
-	//	PLAYERSIZE,
-	//	PLAYERSIZE,
-	//	RGB(255, 0, 255));
 
 	GdiTransparentBlt(hDC, m_tInfo.fX - (PLAYERSIZE >> 1),
-		m_tInfo.fY - (m_tInfo.iCY * 1.5),
-		PLAYERSIZE,
-		PLAYERSIZE,
+		m_tInfo.fY - (PLAYERSIZE >> 1),
+		m_tInfo.iCX,
+		m_tInfo.iCY,
 		hMemDC,
-		PLAYERSIZE * m_tFrame.iStartFrame, PLAYERSIZE * m_tFrame.iSceneFrame,
-		PLAYERSIZE,
-		PLAYERSIZE,
+		m_tInfo.iCX * m_tFrame.iStartFrame, m_tInfo.iCY * m_tFrame.iSceneFrame,
+		m_tInfo.iCX,
+		m_tInfo.iCY,
 		RGB(255, 0, 255));
 	//충돌 처리할 rect 확인
 	MoveToEx(hDC, m_tRect.left, m_tRect.top, nullptr);

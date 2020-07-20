@@ -1,5 +1,6 @@
 #pragma once
 #include "Maps.h"
+#include "Obj.h"
 
 class CMap_Manager
 {
@@ -25,8 +26,8 @@ public:
 public:
 	void Load_MapData();
 
-	bool GroundCollision_MapManager(float inX, float * pOutY, int iCY);
-
+	void Set_Player(CObj* pPlayer) { m_pPlayer = pPlayer; }
+	list<CMaps*>* Get_MapList(MAP::ID mapID) { return &m_listMap[mapID]; }
 public:
 	void Ready_MapManager();
 	void Update_MapManager();
@@ -35,6 +36,7 @@ public:
 
 private:
 	list<CMaps*> m_listMap[MAP::MAP_END];
+	CObj* m_pPlayer;
 	static CMap_Manager* m_pInstance;
 };
 

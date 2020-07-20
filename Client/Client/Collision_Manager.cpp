@@ -76,8 +76,38 @@ void CCollision_Manager::Collision_RectEX(list<CObj*>& rDstList, list<CObj*>& rS
 
 }
 
-void CCollision_Manager::Collision_GoundRect(list<CMaps*>& rDstList, CObj *& Player)
+bool CCollision_Manager::Collision_RectEX(list<CMaps*>& rDstList, list<CObj*>& rSrcList)
 {
+	float fMoveX = 0.f, fMoveY = 0.f;
+	bool isCollide = false;
+
+	for (auto& rDstObject : rDstList)
+	{
+		for (auto& rSrcObject : rSrcList)
+		{
+			if (CheckRect(rDstObject, rSrcObject, &fMoveX, &fMoveY))
+			{
+				isCollide = true;
+				float fX = rSrcObject->Get_Info()->fX;
+				float fY = rSrcObject->Get_Info()->fY;
+
+				if (fMoveX > fMoveY)
+				{
+					if (fY < rDstObject->Get_MapInfo()->tPoint.fY)
+						fMoveY *= -1.f;
+
+					rSrcObject->Set_Pos(fX, fY + fMoveY);
+				}
+				else
+				{
+					if (fX < rDstObject->Get_MapInfo()->tPoint.fX)
+						fMoveX *= -1.f;
+					rSrcObject->Set_Pos(fX + fMoveX, fY);
+				}
+			}
+		}
+	}
+	return isCollide;
 }
 
 bool CCollision_Manager::CheckSphere(const CObj * pDstObject, const CObj * rSrcObject)
@@ -112,18 +142,23 @@ bool CCollision_Manager::CheckRect(const CObj * pDstObject, const CObj * rSrcObj
 	return false; 
 }
 
-bool CCollision_Manager::CheckGroundRect(CMaps* ground, CObj * player, float * pMoveX, float * pMoveY)
+bool CCollision_Manager::CheckRect(CMaps * pDstObject, const CObj * rSrcObject, float * pMoveX, float * pMoveY)
 {
+	// 1.사각형 두개의 x축으로의 반지름의 합을 구함. 
+	float fRadiusSumX = static_cast<float>((pDstObject->Get_MapInfo()->tPoint.iCY >> 1) + (rSrcObject->Get_Info()->iCX >> 1));
 	//2.사각형 두개의 y축으로의 반지름의 합을 구함. 
-	float fRadiusSumY = static_cast<float>(( dynamic_cast<CMapBlock*>(ground)->Get_MapInfo()->tPoint.iCY >> 1) + (player->Get_Info()->iCY >> 1));
-	
-	float groundRadius = (dynamic_cast<CMapBlock*>(ground)->Get_MapInfo()->tPoint.fTop) + (dynamic_cast<CMapBlock*>(ground)->Get_MapInfo()->tPoint.iCY >> 1);
+	float fRadiusSumY = static_cast<float>((pDstObject->Get_MapInfo()->tPoint.iCY >> 1) + (rSrcObject->Get_Info()->iCY >> 1));
+
+	float fMapfX = pDstObject->Get_MapInfo()->tPoint.fX + pDstObject->Get_Speed() - pDstObject->Get_MapInfo()->tPoint.iCX;
+
 	// x축과 y축의 거리 구함. 
-	float fDistY = fabs( groundRadius - player->Get_Info()->fY);
+	float fDistX = fabs(fMapfX - rSrcObject->Get_Info()->fX);
+	float fDistY = fabs(pDstObject->Get_MapInfo()->tPoint.fY - rSrcObject->Get_Info()->fY);
 
 	// 구한 두개의 거리와 반지름의 합을 각각 비교. 
-	if (fDistY <= fRadiusSumY)
-	{\
+	if (fDistX <= fRadiusSumX && fDistY <= fRadiusSumY)
+	{
+		*pMoveX = fRadiusSumX - fDistX;
 		*pMoveY = fRadiusSumY - fDistY;
 		return true;
 	}

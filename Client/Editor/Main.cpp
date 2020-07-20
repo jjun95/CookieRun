@@ -19,6 +19,16 @@ void CMain::Ready_Main()
 	m_hDC = GetDC(g_hWND);
 
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Ground1.bmp", L"Ground1");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Obstacle/Obstacle1.bmp", L"Obstacle1");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Obstacle/Obstacle2.bmp", L"Obstacle2");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Obstacle/Obstacle3.bmp", L"Obstacle3");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Obstacle/Obstacle4.bmp", L"Obstacle4");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Coin/SilverCoin.bmp", L"SilverCoin");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Coin/GoldCoin.bmp", L"GoldCoin");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Coin/BigCoin.bmp", L"BigCoin");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/PinkBear.bmp", L"PinkBear");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/YellowBear.bmp", L"YellowBear");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/TestJelly.bmp", L"BaseJelly");
 	
 }
 

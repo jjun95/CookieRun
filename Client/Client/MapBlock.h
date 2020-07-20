@@ -5,7 +5,7 @@ class CMapBlock : public CMaps
 public:
 	explicit CMapBlock();
 	explicit CMapBlock(MAPINFO& mapInfo);
-	~CMapBlock();
+	virtual ~CMapBlock();
 
 public:
 	virtual void Update_Map();
