@@ -4,7 +4,7 @@
 
 CObstacle2::CObstacle2()
 {
-	m_tInfo = MAPINFO(68, 99);
+	m_tInfo = MAPINFO(OTC2_CX, OTC2_CY);
 	m_eDTID = MAP::OTC2;
 }
 

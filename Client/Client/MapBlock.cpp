@@ -48,7 +48,7 @@ void CMapBlock::Render_Map(HDC hDC)
 		0, 0,
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
-		RGB(255, 255, 255));
+		RGB(255, 0, 255));
 
 	MoveToEx(hDC, m_tRect.left + m_fSpeed, m_tRect.top, nullptr);
 	LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.top);

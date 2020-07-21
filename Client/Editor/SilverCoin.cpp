@@ -4,7 +4,7 @@
 
 CSilverCoin::CSilverCoin()
 {
-	m_tInfo = MAPINFO(48, 48);
+	m_tInfo = MAPINFO(SVCOIN_CX, SVCOIN_CY);
 	m_eDTID = MAP::SVCOIN;
 }
 

@@ -13,17 +13,11 @@
     <Filter Include="01.Obj\Player">
       <UniqueIdentifier>{61d68466-2303-475f-b1cb-3980938c4428}</UniqueIdentifier>
     </Filter>
-    <Filter Include="98.DesignPattern">
-      <UniqueIdentifier>{23ededb0-cb1a-48c9-8dfb-3cf85ed84ff0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.Obj\Mouse">
       <UniqueIdentifier>{820bfbac-b5df-49ae-8d88-17e751773823}</UniqueIdentifier>
     </Filter>
     <Filter Include="Manager">
       <UniqueIdentifier>{dcec6cd1-c718-402c-9908-f03fb1e99271}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="98.DesignPattern\Obj_Manager">
-      <UniqueIdentifier>{b90fafa0-9d9b-431f-ba8d-fdc7ab9a8d7c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Manager\Collision">
       <UniqueIdentifier>{a4328585-94de-4a0c-b763-48539ba17526}</UniqueIdentifier>
@@ -67,6 +61,12 @@
     <Filter Include="03.Map\Obstacle">
       <UniqueIdentifier>{07c6b13b-44d4-4d0a-94c7-672178aeb346}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Scene\98.DesignPattern">
+      <UniqueIdentifier>{23ededb0-cb1a-48c9-8dfb-3cf85ed84ff0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Scene\98.DesignPattern\Obj_Manager">
+      <UniqueIdentifier>{b90fafa0-9d9b-431f-ba8d-fdc7ab9a8d7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -91,13 +91,13 @@
       <Filter>01.Obj\Player</Filter>
     </ClInclude>
     <ClInclude Include="AbstractFactory.h">
-      <Filter>98.DesignPattern</Filter>
+      <Filter>03.Scene\98.DesignPattern</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
       <Filter>01.Obj\Mouse</Filter>
     </ClInclude>
     <ClInclude Include="Obj_Manager.h">
-      <Filter>98.DesignPattern\Obj_Manager</Filter>
+      <Filter>03.Scene\98.DesignPattern\Obj_Manager</Filter>
     </ClInclude>
     <ClInclude Include="Collision_Manager.h">
       <Filter>Manager\Collision</Filter>
@@ -132,14 +132,26 @@
     <ClInclude Include="Stage.h">
       <Filter>03.Scene\Stage</Filter>
     </ClInclude>
-    <ClInclude Include="BaseJelly.h">
-      <Filter>03.Map\Jelly</Filter>
+    <ClInclude Include="..\Headers\Struct.h">
+      <Filter>00.MainApp</Filter>
     </ClInclude>
     <ClInclude Include="BigCoin.h">
       <Filter>03.Map\Coin</Filter>
     </ClInclude>
     <ClInclude Include="GoldCoin.h">
       <Filter>03.Map\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="SilverCoin.h">
+      <Filter>03.Map\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseJelly.h">
+      <Filter>03.Map\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="PinkJelly.h">
+      <Filter>03.Map\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="YellowJelly.h">
+      <Filter>03.Map\Jelly</Filter>
     </ClInclude>
     <ClInclude Include="Obstacle1.h">
       <Filter>03.Map\Obstacle</Filter>
@@ -152,15 +164,6 @@
     </ClInclude>
     <ClInclude Include="Obstacle4.h">
       <Filter>03.Map\Obstacle</Filter>
-    </ClInclude>
-    <ClInclude Include="PinkJelly.h">
-      <Filter>03.Map\Jelly</Filter>
-    </ClInclude>
-    <ClInclude Include="YellowJelly.h">
-      <Filter>03.Map\Jelly</Filter>
-    </ClInclude>
-    <ClInclude Include="SilverCoin.h">
-      <Filter>03.Map\Coin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +186,7 @@
       <Filter>01.Obj\Mouse</Filter>
     </ClCompile>
     <ClCompile Include="Obj_Manager.cpp">
-      <Filter>98.DesignPattern\Obj_Manager</Filter>
+      <Filter>03.Scene\98.DesignPattern\Obj_Manager</Filter>
     </ClCompile>
     <ClCompile Include="Collision_Manager.cpp">
       <Filter>Manager\Collision</Filter>
@@ -218,14 +221,23 @@
     <ClCompile Include="Stage.cpp">
       <Filter>03.Scene\Stage</Filter>
     </ClCompile>
-    <ClCompile Include="BaseJelly.cpp">
-      <Filter>03.Map\Jelly</Filter>
-    </ClCompile>
     <ClCompile Include="BigCoin.cpp">
       <Filter>03.Map\Coin</Filter>
     </ClCompile>
     <ClCompile Include="GoldCoin.cpp">
       <Filter>03.Map\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="SilverCoin.cpp">
+      <Filter>03.Map\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseJelly.cpp">
+      <Filter>03.Map\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="PinkJelly.cpp">
+      <Filter>03.Map\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="YellowJelly.cpp">
+      <Filter>03.Map\Jelly</Filter>
     </ClCompile>
     <ClCompile Include="Obstacle1.cpp">
       <Filter>03.Map\Obstacle</Filter>
@@ -238,15 +250,6 @@
     </ClCompile>
     <ClCompile Include="Obstacle4.cpp">
       <Filter>03.Map\Obstacle</Filter>
-    </ClCompile>
-    <ClCompile Include="PinkJelly.cpp">
-      <Filter>03.Map\Jelly</Filter>
-    </ClCompile>
-    <ClCompile Include="YellowJelly.cpp">
-      <Filter>03.Map\Jelly</Filter>
-    </ClCompile>
-    <ClCompile Include="SilverCoin.cpp">
-      <Filter>03.Map\Coin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

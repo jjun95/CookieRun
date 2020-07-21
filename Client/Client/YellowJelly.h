@@ -9,8 +9,8 @@ public:
 	virtual ~CYellowJelly();
 
 	// CMaps을(를) 통해 상속됨
-	virtual void Render_Map(HDC hDC) override;
 	virtual void Update_Map() override;
 	virtual void LateUpdate_Map() override;
+	virtual void Render_Map(HDC hDC) override;
 };
 

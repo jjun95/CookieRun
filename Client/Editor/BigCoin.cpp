@@ -4,7 +4,7 @@
 
 CBigCoin::CBigCoin()
 {
-	m_tInfo = MAPINFO(161, 161);
+	m_tInfo = MAPINFO(BIGCOIN_CX, BIGCOIN_CY);
 	m_eDTID = MAP::BIGCOIN;
 }
 

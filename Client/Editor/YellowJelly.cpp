@@ -4,7 +4,7 @@
 
 CYellowJelly::CYellowJelly()
 {
-	m_tInfo = MAPINFO(55, 51);
+	m_tInfo = MAPINFO(BEARJL_CX, BEARJL_CY);
 	m_eDTID = MAP::YELLOWJL;
 }
 

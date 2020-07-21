@@ -4,7 +4,7 @@
 
 CGoldCoin::CGoldCoin()
 {
-	m_tInfo = MAPINFO(58, 59);
+	m_tInfo = MAPINFO(GDCOIN_CX, GDCOIN_CY);
 	m_eDTID = MAP::GDCOIN;
 }
 
@@ -15,6 +15,18 @@ CGoldCoin::CGoldCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 
 
 CGoldCoin::~CGoldCoin()
+{
+}
+
+void CGoldCoin::Update_Map()
+{
+	if (m_dwTime + 10 <= GetTickCount()) {
+		m_fSpeed -= 5.f;
+	}
+	CMaps::Update_Rect_Object();
+}
+
+void CGoldCoin::LateUpdate_Map()
 {
 }
 
@@ -32,16 +44,4 @@ void CGoldCoin::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		RGB(255, 0, 255));
-}
-
-void CGoldCoin::Update_Map()
-{
-	if (m_dwTime + 10 <= GetTickCount()) {
-		m_fSpeed -= 5.f;
-	}
-	CMaps::Update_Rect_Object();
-}
-
-void CGoldCoin::LateUpdate_Map()
-{
 }

@@ -4,7 +4,7 @@
 
 CBaseJelly::CBaseJelly()
 {
-	m_tInfo = MAPINFO(66, 66);
+	m_tInfo = MAPINFO(BASEJL_CX, BASEJL_CY);
 	m_eDTID = MAP::BASEJL;
 }
 

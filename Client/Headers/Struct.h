@@ -16,8 +16,10 @@ typedef struct tagMapPoint
 	}
 	void SetPosition(float _fx, float _fy)
 	{
-		fX = static_cast<int>(_fx / iCX) * iCX + iCX / 2.f;
-		fY = static_cast<int>(_fy / iCY) * iCY + iCY / 2.f;
+		fX = static_cast<int>(_fx / 10) * 10 + iCX / 2.f;
+		fY = static_cast<int>(_fy / 10) * 10 + iCY / 2.f;
+		//fX = _fx + iCX / 2.f;
+		//fY = _fy + iCY / 2.f;
 	}
 
 	float fX;

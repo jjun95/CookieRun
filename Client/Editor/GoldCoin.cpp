@@ -4,7 +4,7 @@
 
 CGoldCoin::CGoldCoin()
 {
-	m_tInfo = MAPINFO(58, 59);
+	m_tInfo = MAPINFO(GDCOIN_CX, GDCOIN_CY);
 	m_eDTID = MAP::GDCOIN;
 }
 

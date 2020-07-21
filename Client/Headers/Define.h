@@ -27,6 +27,29 @@
 #define WINCX 1280
 #define WINCY 720
 
+#define BLOCK_CX 120
+#define BLOCK_CY 120
+#define OTC1_CX 60
+#define OTC1_CY 100
+#define OTC2_CX 70
+#define OTC2_CY 100
+#define OTC3_CX 60
+#define OTC3_CY 190
+#define OTC4_CX 130
+#define OTC4_CY 470
+#define SVCOIN_CX 50
+#define SVCOIN_CY 50
+#define GDCOIN_CX 60
+#define GDCOIN_CY 60
+#define BIGCOIN_CX 160
+#define BIGCOIN_CY 160
+#define BASEJL_CX 60
+#define BASEJL_CY 60
+#define BEARJL_CX 50
+#define BEARJL_CY 50
+#define BIGJL_CX 160
+#define BIGJL_CY 150
+
 #define PLAYERSIZE 320
 
 #define OBJ_NOEVENT 0

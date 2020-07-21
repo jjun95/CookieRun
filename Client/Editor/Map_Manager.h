@@ -38,5 +38,8 @@ private:
 	CMaps* m_pMap = nullptr;
 	MAP::ID m_mapID = MAP::MAP_END;
 	int m_iMapKey;
+	TCHAR* m_szImage;
+	int m_iMapCX;
+	int m_iMapCY;
 };
 

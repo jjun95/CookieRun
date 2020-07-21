@@ -12,7 +12,7 @@
 #include "Obstacle1.h"
 #include "Obstacle2.h"
 #include "Obstacle3.h"
-#include "Obstacle4.h"1
+#include "Obstacle4.h"
 
 CMap_Manager* CMap_Manager::m_pInstance = nullptr;
 
@@ -149,28 +149,93 @@ void CMap_Manager::Update_MapManager()
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_C)) {
 		m_mapID = MAP::MAP_COIN;
 		m_iMapKey = 1;
+		m_szImage = L"SilverCoin";
+		m_iMapCX = SVCOIN_CX;
+		m_iMapCY = SVCOIN_CY;
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_J)) {
 		m_mapID = MAP::MAP_JELLY;
 		m_iMapKey = 1;
+		m_szImage = L"BaseJelly";
+		m_iMapCX = BASEJL_CX;
+		m_iMapCY = BASEJL_CY;
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_O)) {
 		m_mapID = MAP::MAP_OBSTACLE;
 		m_iMapKey = 1;
+		m_szImage = L"Obstacle1";
+		m_iMapCX = OTC1_CX;
+		m_iMapCY = OTC1_CY;
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_B)) {
 		m_mapID = MAP::MAP_BLOCK;
 		m_iMapKey = 1;
+		m_szImage = L"Ground1";
+		m_iMapCX = BLOCK_CX;
+		m_iMapCY = BLOCK_CY;
 	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_1)) 
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_1)) {
 		m_iMapKey = 1;
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_2)) 
+		if (m_mapID == MAP::MAP_COIN) {
+			m_szImage = L"SilverCoin";
+			m_iMapCX = SVCOIN_CX;
+			m_iMapCY = SVCOIN_CY;
+		}
+		if (m_mapID == MAP::MAP_JELLY) {
+			m_szImage = L"BaseJelly";
+			m_iMapCX = BASEJL_CX;
+			m_iMapCY = BASEJL_CY;
+		}
+		if (m_mapID == MAP::MAP_OBSTACLE) {
+			m_szImage = L"Obstacle1";
+			m_iMapCX = OTC1_CX;
+			m_iMapCY = OTC1_CY;
+		}
+	}
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_2)) {
 		m_iMapKey = 2;
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_3)) 
+		if (m_mapID == MAP::MAP_COIN) {
+			m_szImage = L"GoldCoin";
+			m_iMapCX = GDCOIN_CX;
+			m_iMapCY = GDCOIN_CY;
+		}
+		if (m_mapID == MAP::MAP_JELLY) {
+			m_szImage = L"YellowBear";
+			m_iMapCX = BEARJL_CX;
+			m_iMapCY = BEARJL_CY;
+		}
+		if (m_mapID == MAP::MAP_OBSTACLE) {
+			m_szImage = L"Obstacle2";
+			m_iMapCX = OTC2_CX;
+			m_iMapCY = OTC2_CY;
+		}
+	}
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_3)) {
 		m_iMapKey = 3;
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_4)) 
+		if (m_mapID == MAP::MAP_COIN) {
+			m_szImage = L"BigCoin";
+			m_iMapCX = BIGCOIN_CX;
+			m_iMapCY = BIGCOIN_CY;
+		}
+		if (m_mapID == MAP::MAP_JELLY) {
+			m_szImage = L"PinkBear";
+			m_iMapCX = BEARJL_CX;
+			m_iMapCY = BEARJL_CY;
+		}
+		if (m_mapID == MAP::MAP_OBSTACLE) {
+			m_szImage = L"Obstacle3";
+			m_iMapCX = OTC3_CX;
+			m_iMapCY = OTC3_CY;
+		}
+	}
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_4)) {
 		m_iMapKey = 4;
-
+		if (m_mapID == MAP::MAP_OBSTACLE) {
+			m_szImage = L"Obstacle4";
+			m_iMapCX = OTC4_CX;
+			m_iMapCY = OTC4_CY;
+		}
+	}
 	if (CKey_Manager::Get_Instance()->Key_UP(KEY_LBUTTON))
 	{
 		switch (m_mapID) {
@@ -229,6 +294,23 @@ void CMap_Manager::Render_MapManager(HDC hDC)
 			pMapBlock->Render_Map(hDC);
 		}
 	}
+	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(m_szImage);
+	POINT pt = {};
+	GetCursorPos(&pt);
+	ScreenToClient(g_hWND, &pt);
+
+	if (nullptr == hMemDC)
+		return;
+	int scX = CScroll_Manager::Get_ScrollX();
+	GdiTransparentBlt(hDC, static_cast<int>(pt.x / 10) * 10,
+		static_cast<int>(pt.y / 10) * 10,
+		m_iMapCX,
+		m_iMapCY,
+		hMemDC,
+		0, 0,
+		m_iMapCX,
+		m_iMapCY,
+		RGB(255, 0, 255));
 }
 
 void CMap_Manager::Release_MapManager()

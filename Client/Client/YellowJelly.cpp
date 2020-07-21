@@ -4,7 +4,7 @@
 
 CYellowJelly::CYellowJelly()
 {
-	m_tInfo = MAPINFO(55, 51);
+	m_tInfo = MAPINFO(BEARJL_CX, BEARJL_CY);
 	m_eDTID = MAP::YELLOWJL;
 }
 
@@ -15,6 +15,18 @@ CYellowJelly::CYellowJelly(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 
 
 CYellowJelly::~CYellowJelly()
+{
+}
+
+void CYellowJelly::Update_Map()
+{
+	if (m_dwTime + 10 <= GetTickCount()) {
+		m_fSpeed -= 5.f;
+	}
+	CMaps::Update_Rect_Object();
+}
+
+void CYellowJelly::LateUpdate_Map()
 {
 }
 
@@ -32,16 +44,4 @@ void CYellowJelly::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		RGB(255, 0, 255));
-}
-
-void CYellowJelly::Update_Map()
-{
-	if (m_dwTime + 10 <= GetTickCount()) {
-		m_fSpeed -= 5.f;
-	}
-	CMaps::Update_Rect_Object();
-}
-
-void CYellowJelly::LateUpdate_Map()
-{
 }

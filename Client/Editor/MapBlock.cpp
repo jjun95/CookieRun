@@ -3,7 +3,7 @@
 
 CMapBlock::CMapBlock()
 {
-	m_tInfo = MAPINFO(124, 120);
+	m_tInfo = MAPINFO(BLOCK_CX, BLOCK_CY);
 	m_eDTID = MAP::BLOCK;
 }
 
@@ -30,5 +30,5 @@ void CMapBlock::Render_Map(HDC hDC)
 		0, 0,
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
-		RGB(255, 255, 255));
+		RGB(255, 0, 255));
 }

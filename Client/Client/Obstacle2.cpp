@@ -4,7 +4,7 @@
 
 CObstacle2::CObstacle2()
 {
-	m_tInfo = MAPINFO(68, 99);
+	m_tInfo = MAPINFO(OTC2_CX, OTC2_CY);
 	m_eDTID = MAP::OTC2;
 }
 
@@ -15,6 +15,18 @@ CObstacle2::CObstacle2(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 
 
 CObstacle2::~CObstacle2()
+{
+}
+
+void CObstacle2::Update_Map()
+{
+	if (m_dwTime + 10 <= GetTickCount()) {
+		m_fSpeed -= 5.f;
+	}
+	CMaps::Update_Rect_Object();
+}
+
+void CObstacle2::LateUpdate_Map()
 {
 }
 
@@ -32,16 +44,4 @@ void CObstacle2::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		RGB(255, 0, 255));
-}
-
-void CObstacle2::Update_Map()
-{
-	if (m_dwTime + 10 <= GetTickCount()) {
-		m_fSpeed -= 5.f;
-	}
-	CMaps::Update_Rect_Object();
-}
-
-void CObstacle2::LateUpdate_Map()
-{
 }
