@@ -10,13 +10,22 @@ public:
 
 public:
 	MAPINFO* Get_MapInfo() { return &m_tInfo; }
-	RECT* Get_MapRect() { return &m_tRect; }
+	RECT* Get_MapRect() {
+		RECT tRect;
+		tRect.left = m_tRect.left + m_fSpeed;
+		tRect.right = m_tRect.right + m_fSpeed;
+		tRect.top = m_tRect.top;
+		tRect.bottom = m_tRect.bottom;
+		return &tRect; 
+	}
 	float Get_Speed() { return m_fSpeed; }
+
+	void Set_Dead() { m_bIsDead = true; }
 	void Set_Pos(const float fX, const float fY) {
 		m_tInfo.tPoint.SetPosition(fX, fY);
 	}
 public:
-	virtual void Update_Map() = 0;
+	virtual int Update_Map() = 0;
 	virtual void LateUpdate_Map() = 0;
 	virtual void Render_Map(HDC hDC) = 0;
 
@@ -28,6 +37,6 @@ protected:
 	float m_fSpeed = 0.f;
 	bool m_bIsDead = false;
 	MAP::DETAILED_ID m_eDTID;
-
+	int m_iValue = 0;
 };
 

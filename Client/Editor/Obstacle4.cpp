@@ -4,7 +4,7 @@
 
 CObstacle4::CObstacle4()
 {
-	m_tInfo = MAPINFO(OTC4_CX, OTC4_CY);
+	m_tInfo = MAPINFO(OTC4_CX, 520);
 	m_eDTID = MAP::OTC4;
 }
 
@@ -30,7 +30,7 @@ void CObstacle4::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		hMemDC,
 		0, 0,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		OTC4_CX,
+		OTC4_CY,
 		RGB(255, 0, 255));
 }

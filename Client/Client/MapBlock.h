@@ -8,7 +8,7 @@ public:
 	virtual ~CMapBlock();
 
 public:
-	virtual void Update_Map();
+	virtual int Update_Map();
 	virtual void LateUpdate_Map();
 	virtual void Render_Map(HDC hDC);
 };

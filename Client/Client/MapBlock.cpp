@@ -16,19 +16,22 @@ CMapBlock::~CMapBlock()
 {
 }
 
-void CMapBlock::Update_Map()
+int CMapBlock::Update_Map()
 {
+	if (m_bIsDead)
+		return OBJ_DEAD;
 	if (m_dwTime + 10 <= GetTickCount()) {
 		m_fSpeed -= 5.f;
 	}
 	CMaps::Update_Rect_Object();
+	
+	return OBJ_NOEVENT;
 }
 
 void CMapBlock::LateUpdate_Map()
 {
-	//if ( (m_tRect.right <= 0) || (m_tRect.left > WINCX))
-	//	m_bIsDead = true;
-	//else m_bIsDead = false;
+	if ( m_tRect.right + m_fSpeed <= 0)
+		m_bIsDead = true;
 }
 
 void CMapBlock::Render_Map(HDC hDC)

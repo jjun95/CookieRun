@@ -11,7 +11,7 @@
 #include "Obstacle1.h"
 #include "Obstacle2.h"
 #include "Obstacle3.h"
-#include "Obstacle4.h"1
+#include "Obstacle4.h"
 
 CMap_Manager* CMap_Manager::m_pInstance = nullptr;
 
@@ -107,8 +107,13 @@ void CMap_Manager::Update_MapManager()
 	for (size_t i = 0; i < MAP::MAP_END; ++i)
 	{
 		auto& iter_end = m_listMap[i].end();
-		for (auto& iter = m_listMap[i].begin(); iter != iter_end; ++iter) {
-			(*iter)->Update_Map();
+		for (auto& iter = m_listMap[i].begin(); iter != iter_end; ) {
+			int iEvent = (*iter)->Update_Map();
+			if (OBJ_DEAD == iEvent) {
+				Safe_Delete(*iter);
+				iter = m_listMap[i].erase(iter);
+			}
+			else ++iter;
 		}
 		for (auto& iter = m_listMap[i].begin(); iter != iter_end; ++iter) {
 			(*iter)->LateUpdate_Map();

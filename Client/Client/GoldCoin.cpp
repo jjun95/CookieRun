@@ -6,6 +6,7 @@ CGoldCoin::CGoldCoin()
 {
 	m_tInfo = MAPINFO(GDCOIN_CX, GDCOIN_CY);
 	m_eDTID = MAP::GDCOIN;
+	m_iValue = 10;
 }
 
 CGoldCoin::CGoldCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
@@ -18,16 +19,22 @@ CGoldCoin::~CGoldCoin()
 {
 }
 
-void CGoldCoin::Update_Map()
+int CGoldCoin::Update_Map()
 {
+	if (m_bIsDead)
+		return OBJ_DEAD;
 	if (m_dwTime + 10 <= GetTickCount()) {
 		m_fSpeed -= 5.f;
 	}
 	CMaps::Update_Rect_Object();
+
+	return OBJ_NOEVENT;
 }
 
 void CGoldCoin::LateUpdate_Map()
 {
+	if (m_tRect.right + m_fSpeed <= 0)
+		m_bIsDead = true;
 }
 
 void CGoldCoin::Render_Map(HDC hDC)

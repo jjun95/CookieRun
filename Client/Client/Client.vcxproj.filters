@@ -61,10 +61,10 @@
     <Filter Include="03.Map\Obstacle">
       <UniqueIdentifier>{07c6b13b-44d4-4d0a-94c7-672178aeb346}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Scene\98.DesignPattern">
+    <Filter Include="98.DesignPattern">
       <UniqueIdentifier>{23ededb0-cb1a-48c9-8dfb-3cf85ed84ff0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03.Scene\98.DesignPattern\Obj_Manager">
+    <Filter Include="98.DesignPattern\Obj_Manager">
       <UniqueIdentifier>{b90fafa0-9d9b-431f-ba8d-fdc7ab9a8d7c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -91,13 +91,13 @@
       <Filter>01.Obj\Player</Filter>
     </ClInclude>
     <ClInclude Include="AbstractFactory.h">
-      <Filter>03.Scene\98.DesignPattern</Filter>
+      <Filter>98.DesignPattern</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
       <Filter>01.Obj\Mouse</Filter>
     </ClInclude>
     <ClInclude Include="Obj_Manager.h">
-      <Filter>03.Scene\98.DesignPattern\Obj_Manager</Filter>
+      <Filter>98.DesignPattern\Obj_Manager</Filter>
     </ClInclude>
     <ClInclude Include="Collision_Manager.h">
       <Filter>Manager\Collision</Filter>
@@ -186,7 +186,7 @@
       <Filter>01.Obj\Mouse</Filter>
     </ClCompile>
     <ClCompile Include="Obj_Manager.cpp">
-      <Filter>03.Scene\98.DesignPattern\Obj_Manager</Filter>
+      <Filter>98.DesignPattern\Obj_Manager</Filter>
     </ClCompile>
     <ClCompile Include="Collision_Manager.cpp">
       <Filter>Manager\Collision</Filter>

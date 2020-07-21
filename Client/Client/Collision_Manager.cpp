@@ -13,17 +13,33 @@ CCollision_Manager::~CCollision_Manager()
 {
 }
 
-void CCollision_Manager::Collision_Rect(list<CObj*>& rDstList, list<CObj*>& rSrcList)
+//void CCollision_Manager::Collision_Rect(list<CObj*>& rDstList, list<CObj*>& rSrcList)
+//{
+//	RECT rc = {}; 
+//	for (auto& rDstObject : rDstList)
+//	{
+//		for (auto& rSrcObject : rSrcList)
+//		{
+//			if (IntersectRect(&rc,&rDstObject->Get_Rect(), &rSrcObject->Get_Rect()))
+//			{
+//				rDstObject->Set_Dead(); 
+//				rSrcObject->Set_Dead(); 
+//			}
+//		}
+//	}
+//}
+
+void CCollision_Manager::Collision_Rect(list<CMaps*>& rDstList, list<CObj*>& rSrcList)
 {
-	RECT rc = {}; 
+	RECT rc = {};
 	for (auto& rDstObject : rDstList)
 	{
 		for (auto& rSrcObject : rSrcList)
 		{
-			if (IntersectRect(&rc,&rDstObject->Get_Rect(), &rSrcObject->Get_Rect()))
+			if (IntersectRect(&rc, rDstObject->Get_MapRect(), rSrcObject->Get_Rect()))
 			{
-				rDstObject->Set_Dead(); 
-				rSrcObject->Set_Dead(); 
+				rDstObject->Set_Dead();
+				//rSrcObject->Set_Dead();
 			}
 		}
 	}

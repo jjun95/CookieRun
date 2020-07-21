@@ -18,16 +18,22 @@ CObstacle3::~CObstacle3()
 {
 }
 
-void CObstacle3::Update_Map()
+int CObstacle3::Update_Map()
 {
+	if (m_bIsDead)
+		return OBJ_DEAD;
 	if (m_dwTime + 10 <= GetTickCount()) {
 		m_fSpeed -= 5.f;
 	}
 	CMaps::Update_Rect_Object();
+
+	return OBJ_NOEVENT;
 }
 
 void CObstacle3::LateUpdate_Map()
 {
+	if (m_tRect.right + m_fSpeed <= 0)
+		m_bIsDead = true;
 }
 
 void CObstacle3::Render_Map(HDC hDC)
@@ -44,4 +50,10 @@ void CObstacle3::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		RGB(255, 0, 255));
+
+	MoveToEx(hDC, m_tRect.left + m_fSpeed, m_tRect.top, nullptr);
+	LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.top);
+	LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.bottom);
+	LineTo(hDC, m_tRect.left + m_fSpeed, m_tRect.bottom);
+	LineTo(hDC, m_tRect.left + m_fSpeed, m_tRect.top);
 }

@@ -13,7 +13,7 @@ public:
 	//void Set_Angle(float fAngle) { m_fAngle = fAngle; }
 	void Set_Dead() { m_bIsDead = true;  }
 
-	const RECT& Get_Rect() const { return m_tRect;  }
+	const RECT* Get_Rect() const { return &m_tRect;  }
 	const INFO* Get_Info() const { return &m_tInfo; }
 
 public:

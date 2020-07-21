@@ -10,6 +10,9 @@ CObj_Manager* CObj_Manager::m_pInstance = nullptr;
 CObj_Manager::CObj_Manager()
 {
 	m_plistMap[MAP::MAP_BLOCK] = CMap_Manager::Get_Instance()->Get_MapList(MAP::MAP_BLOCK);
+	m_plistMap[MAP::MAP_COIN] = CMap_Manager::Get_Instance()->Get_MapList(MAP::MAP_COIN);
+	m_plistMap[MAP::MAP_JELLY] = CMap_Manager::Get_Instance()->Get_MapList(MAP::MAP_JELLY);
+	m_plistMap[MAP::MAP_OBSTACLE] = CMap_Manager::Get_Instance()->Get_MapList(MAP::MAP_OBSTACLE);
 }
 
 
@@ -81,6 +84,8 @@ void CObj_Manager::LateUpdate_ObjectManager()
 	}
 	if(CCollision_Manager::Collision_RectEX(*m_plistMap[MAP::MAP_BLOCK], m_listObject[OBJ::OBJ_PLAYER]))
 		dynamic_cast<CPlayer*>(m_listObject[OBJ::OBJ_PLAYER].front())->Stop_Jump();
+	CCollision_Manager::Collision_Rect(*m_plistMap[MAP::MAP_COIN], m_listObject[OBJ::OBJ_PLAYER]);
+	CCollision_Manager::Collision_Rect(*m_plistMap[MAP::MAP_JELLY], m_listObject[OBJ::OBJ_PLAYER]);
 }
 
 void CObj_Manager::Render_ObjectManager(HDC hDC)

@@ -6,6 +6,7 @@ CBigCoin::CBigCoin()
 {
 	m_tInfo = MAPINFO(BIGCOIN_CX, BIGCOIN_CY);
 	m_eDTID = MAP::BIGCOIN;
+	m_iValue = 100;
 }
 
 CBigCoin::CBigCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
@@ -18,16 +19,22 @@ CBigCoin::~CBigCoin()
 {
 }
 
-void CBigCoin::Update_Map()
+int CBigCoin::Update_Map()
 {
-}
-
-void CBigCoin::LateUpdate_Map()
-{
+	if (m_bIsDead)
+		return OBJ_DEAD;
 	if (m_dwTime + 10 <= GetTickCount()) {
 		m_fSpeed -= 5.f;
 	}
 	CMaps::Update_Rect_Object();
+
+	return OBJ_NOEVENT;
+}
+
+void CBigCoin::LateUpdate_Map()
+{
+	if (m_tRect.right + m_fSpeed <= 0)
+		m_bIsDead = true;
 }
 
 void CBigCoin::Render_Map(HDC hDC)

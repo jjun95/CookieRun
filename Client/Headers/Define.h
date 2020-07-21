@@ -35,8 +35,8 @@
 #define OTC2_CY 100
 #define OTC3_CX 60
 #define OTC3_CY 190
-#define OTC4_CX 130
-#define OTC4_CY 470
+#define OTC4_CX 134
+#define OTC4_CY 482
 #define SVCOIN_CX 50
 #define SVCOIN_CY 50
 #define GDCOIN_CX 60

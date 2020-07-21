@@ -4,8 +4,6 @@
 
 CObstacle4::CObstacle4()
 {
-	m_tInfo = MAPINFO(OTC4_CX, OTC4_CY);
-	m_eDTID = MAP::OTC4;
 }
 
 CObstacle4::CObstacle4(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
@@ -18,16 +16,22 @@ CObstacle4::~CObstacle4()
 {
 }
 
-void CObstacle4::Update_Map()
+int CObstacle4::Update_Map()
 {
+	if (m_bIsDead)
+		return OBJ_DEAD;
 	if (m_dwTime + 10 <= GetTickCount()) {
 		m_fSpeed -= 5.f;
 	}
 	CMaps::Update_Rect_Object();
+
+	return OBJ_NOEVENT;
 }
 
 void CObstacle4::LateUpdate_Map()
 {
+	if (m_tRect.right + m_fSpeed <= 0)
+		m_bIsDead = true;
 }
 
 void CObstacle4::Render_Map(HDC hDC)
@@ -41,7 +45,14 @@ void CObstacle4::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		hMemDC,
 		0, 0,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		OTC4_CX,
+		OTC4_CY,
 		RGB(255, 0, 255));
+
+	MoveToEx(hDC, m_tRect.left + m_fSpeed, m_tRect.top, nullptr);
+	LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.top);
+	LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.bottom);
+	LineTo(hDC, m_tRect.left + m_fSpeed, m_tRect.bottom);
+	LineTo(hDC, m_tRect.left + m_fSpeed, m_tRect.top);
 }
+
