@@ -148,7 +148,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Headers\Struct.h" />
     <ClInclude Include="AbstractFactory.h" />
     <ClInclude Include="BaseJelly.h" />
     <ClInclude Include="BigCoin.h" />

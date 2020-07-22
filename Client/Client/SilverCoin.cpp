@@ -6,12 +6,15 @@ CSilverCoin::CSilverCoin()
 {
 	m_tInfo = MAPINFO(SVCOIN_CX, SVCOIN_CY);
 	m_eDTID = MAP::SVCOIN;
-	m_iValue = 1;
+	m_iCValue = 1;
+	m_iSValue = 200;
 }
 
 CSilverCoin::CSilverCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: CMaps(mapInfo, eDTID)
 {
+	m_iCValue = 1;
+	m_iSValue = 200;
 }
 
 

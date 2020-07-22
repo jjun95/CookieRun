@@ -6,11 +6,13 @@ CPinkJelly::CPinkJelly()
 {
 	m_tInfo = MAPINFO(BEARJL_CX, BEARJL_CY);
 	m_eDTID = MAP::PINKJL;
+	m_iSValue = 3600;
 }
 
 CPinkJelly::CPinkJelly(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: CMaps(mapInfo, eDTID)
 {
+	m_iSValue = 3600;
 }
 
 

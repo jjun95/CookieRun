@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Collision_Manager.h"
 #include "Obj.h"
+#include "Player.h"
 #include "Maps.h"
 #include "MapBlock.h"
 
@@ -29,7 +30,7 @@ CCollision_Manager::~CCollision_Manager()
 //	}
 //}
 
-void CCollision_Manager::Collision_Rect(list<CMaps*>& rDstList, list<CObj*>& rSrcList)
+void CCollision_Manager::Collision_ScoreRect(list<CMaps*>& rDstList, list<CObj*>& rSrcList)
 {
 	RECT rc = {};
 	for (auto& rDstObject : rDstList)
@@ -38,8 +39,31 @@ void CCollision_Manager::Collision_Rect(list<CMaps*>& rDstList, list<CObj*>& rSr
 		{
 			if (IntersectRect(&rc, rDstObject->Get_MapRect(), rSrcObject->Get_Rect()))
 			{
+				int coin = rDstObject->Get_Coin();
+				int score = rDstObject->Get_Score();
 				rDstObject->Set_Dead();
+				rSrcObject->Set_Coin(coin);
+				rSrcObject->Set_Score(score);
+			}
+		}
+	}
+}
+
+void CCollision_Manager::Collision_ObstacleRect(list<CMaps*>& rDstList, list<CObj*>& rSrcList)
+{
+	RECT rc = {};
+	for (auto& rDstObject : rDstList)
+	{
+		for (auto& rSrcObject : rSrcList)
+		{
+			if (IntersectRect(&rc, rDstObject->Get_MapRect(), rSrcObject->Get_Rect()))
+			{
+				//rDstObject->Set_Dead();
 				//rSrcObject->Set_Dead();
+				if (!dynamic_cast<CPlayer*>(rSrcObject)->Get_isHit()) {
+					dynamic_cast<CPlayer*>(rSrcObject)->Set_Hp(-30);
+					dynamic_cast<CPlayer*>(rSrcObject)->Set_Hit();
+				}
 			}
 		}
 	}
@@ -107,19 +131,19 @@ bool CCollision_Manager::Collision_RectEX(list<CMaps*>& rDstList, list<CObj*>& r
 				float fX = rSrcObject->Get_Info()->fX;
 				float fY = rSrcObject->Get_Info()->fY;
 
-				if (fMoveX > fMoveY)
-				{
+//				if (fMoveX > fMoveY)
+//				{
 					if (fY < rDstObject->Get_MapInfo()->tPoint.fY)
 						fMoveY *= -1.f;
 
 					rSrcObject->Set_Pos(fX, fY + fMoveY);
-				}
-				else
-				{
-					if (fX < rDstObject->Get_MapInfo()->tPoint.fX)
-						fMoveX *= -1.f;
-					rSrcObject->Set_Pos(fX + fMoveX, fY);
-				}
+//				}
+				//else
+				//{
+				//	if (fX < rDstObject->Get_MapInfo()->tPoint.fX)
+				//		fMoveX *= -1.f;
+				//	rSrcObject->Set_Pos(fX + fMoveX, fY);
+				//}
 			}
 		}
 	}

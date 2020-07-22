@@ -9,7 +9,8 @@ public:
 	~CCollision_Manager();
 public:
 	//static void Collision_Rect(list<CObj*>& rDstList, list<CObj*>& rSrcList);
-	static void Collision_Rect(list<CMaps*>& rDstList, list<CObj*>& rSrcList);
+	static void Collision_ScoreRect(list<CMaps*>& rDstList, list<CObj*>& rSrcList);
+	static void Collision_ObstacleRect(list<CMaps*>& rDstList, list<CObj*>& rSrcList);
 	static void Collision_Sphere(list<CObj*>& rDstList, list<CObj*>& rSrcList);
 	static void Collision_RectEX(list<CObj*>& rDstList, list<CObj*>& rSrcList);
 	static bool Collision_RectEX(list<CMaps*>& rDstList, list<CObj*>& rSrcList);

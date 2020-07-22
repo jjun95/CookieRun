@@ -77,14 +77,14 @@ void CMainApp::Render_MainApp()
 	CScene_Manager::Get_Instance()->Render_SceneManager(hBack);
 	//CScene_Manager::Get_Instance()->Render_SceneManager(m_hDC);
 
-	//++m_iFPS; 
-	//if (m_dwOldTime + 1000 < GetTickCount() )
-	//{
-	//	swprintf_s(m_szFPS, L"FPS : %d", m_iFPS);
-	//	m_iFPS = 0; 
-	//	m_dwOldTime = GetTickCount(); 
-	//}
-	TextOut(m_hDC, 600, 50, m_szFPS, lstrlen(m_szFPS));
+	++m_iFPS; 
+	if (m_dwOldTime + 1000 < GetTickCount() )
+	{
+		swprintf_s(m_szFPS, L"FPS : %d", m_iFPS);
+		m_iFPS = 0; 
+		m_dwOldTime = GetTickCount(); 
+	}
+	//TextOut(m_hDC, 600, 50, m_szFPS, lstrlen(m_szFPS));
 	SetWindowText(g_hWND, m_szFPS);
 	BitBlt(m_hDC, 0, 0, WINCX, WINCY, hBack, 0, 0, SRCCOPY);
 }

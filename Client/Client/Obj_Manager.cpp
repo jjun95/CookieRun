@@ -84,8 +84,9 @@ void CObj_Manager::LateUpdate_ObjectManager()
 	}
 	if(CCollision_Manager::Collision_RectEX(*m_plistMap[MAP::MAP_BLOCK], m_listObject[OBJ::OBJ_PLAYER]))
 		dynamic_cast<CPlayer*>(m_listObject[OBJ::OBJ_PLAYER].front())->Stop_Jump();
-	CCollision_Manager::Collision_Rect(*m_plistMap[MAP::MAP_COIN], m_listObject[OBJ::OBJ_PLAYER]);
-	CCollision_Manager::Collision_Rect(*m_plistMap[MAP::MAP_JELLY], m_listObject[OBJ::OBJ_PLAYER]);
+	CCollision_Manager::Collision_ScoreRect(*m_plistMap[MAP::MAP_COIN], m_listObject[OBJ::OBJ_PLAYER]);
+	CCollision_Manager::Collision_ScoreRect(*m_plistMap[MAP::MAP_JELLY], m_listObject[OBJ::OBJ_PLAYER]);
+	CCollision_Manager::Collision_ObstacleRect(*m_plistMap[MAP::MAP_OBSTACLE], m_listObject[OBJ::OBJ_PLAYER]);
 }
 
 void CObj_Manager::Render_ObjectManager(HDC hDC)

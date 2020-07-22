@@ -6,11 +6,13 @@ CBaseJelly::CBaseJelly()
 {
 	m_tInfo = MAPINFO(BASEJL_CX, BASEJL_CY);
 	m_eDTID = MAP::BASEJL;
+	m_iSValue = 385;
 }
 
 CBaseJelly::CBaseJelly(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: CMaps(mapInfo, eDTID)
 {
+	m_iSValue = 385;
 }
 
 

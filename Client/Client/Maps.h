@@ -19,6 +19,8 @@ public:
 		return &tRect; 
 	}
 	float Get_Speed() { return m_fSpeed; }
+	int Get_Coin() { return m_iCValue; }
+	int Get_Score() { return m_iSValue; }
 
 	void Set_Dead() { m_bIsDead = true; }
 	void Set_Pos(const float fX, const float fY) {
@@ -37,6 +39,7 @@ protected:
 	float m_fSpeed = 0.f;
 	bool m_bIsDead = false;
 	MAP::DETAILED_ID m_eDTID;
-	int m_iValue = 0;
+	int m_iCValue = 0; // 코인
+	int m_iSValue = 0; // 점수
 };
 

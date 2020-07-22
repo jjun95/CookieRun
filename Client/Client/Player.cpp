@@ -26,26 +26,28 @@ void CPlayer::KeyCheck()
 
 bool CPlayer::IsJumping()
 {
-	if (m_dwJumpTime + 150 < GetTickCount()) {
-		if (m_bIsJump && (m_bIsDoubleJump == false)) {
-			if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_UP)) {
-				m_fStartHeight = m_tInfo.fY;
-				m_bIsDoubleJump = true;
-				m_fTime = 0.f;
-				m_eNextState = OBJ::PLAYER_DOUBLEJUMP;
+	//if (!m_bIsHit) {
+		if (m_dwJumpTime + 150 < GetTickCount()) {
+			if (m_bIsJump && (m_bIsDoubleJump == false)) {
+				if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_UP)) {
+					m_fStartHeight = m_tInfo.fY;
+					m_bIsDoubleJump = true;
+					m_fTime = 0.f;
+					m_eNextState = OBJ::PLAYER_DOUBLEJUMP;
+				}
 			}
 		}
-	}
-	if (!m_bIsJump)
-	{
-		if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_UP))
+		if (!m_bIsJump)
 		{
-			m_fStartHeight = m_tInfo.fY;
-			m_bIsJump = true;
-			m_dwJumpTime = GetTickCount();
-			m_eNextState = OBJ::PLAYER_JUMP;
+			if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_UP))
+			{
+				m_fStartHeight = m_tInfo.fY;
+				m_bIsJump = true;
+				m_dwJumpTime = GetTickCount();
+				m_eNextState = OBJ::PLAYER_JUMP;
+			}
 		}
-	}
+	//}
 	m_fTime += 0.2f;
 
 	if (m_bIsDoubleJump) {
@@ -110,7 +112,7 @@ void CPlayer::Animation_Change()
 			m_tFrame.iDefaultStartFrame = 3;
 			m_tFrame.iStartFrame = 3;
 			m_tFrame.iEndFrame = 4;
-			m_tFrame.dwFrameSpeed = 100;
+			m_tFrame.dwFrameSpeed = 500;
 			m_tFrame.iSceneFrame = 5;
 			break;
 		case OBJ::PLAYER_DIE:
@@ -129,12 +131,13 @@ void CPlayer::Animation_Change()
 
 void CPlayer::Stop_Jump()
 {
-	m_bIsJump= false; 
-	m_bIsDoubleJump = false; 
-	m_fTime = 0.f; 
-	m_dwJumpTime = GetTickCount();
 	m_fTime = 0.f;
-	m_eNextState = OBJ::PLAYER_RUN;
+	if (m_bIsJump) {
+		m_bIsJump = false;
+		m_bIsDoubleJump = false;
+		m_dwJumpTime = GetTickCount();
+		m_eNextState = OBJ::PLAYER_RUN;
+	}
 }
 
 void CPlayer::Ready_Object()
@@ -145,8 +148,8 @@ void CPlayer::Ready_Object()
 	m_tInfo.iCY = PLAYERSIZE;
 	m_fSpeed = 80.f; 
 	m_dwJumpTime = GetTickCount();
-	//m_fJumpPower = 20.f;
-	//m_fStartfY = m_tInfo.fY;
+	m_iMaxHp = 150;
+	m_iHp = m_iMaxHp;
 	m_szFrameKey = L"ButterCream";
 	m_tFrame.iDefaultStartFrame = 0;
 	m_tFrame.iStartFrame = 0;
@@ -156,7 +159,7 @@ void CPlayer::Ready_Object()
 	m_tFrame.dwFrameTime = GetTickCount();
 	m_eCurState = OBJ::PLAYER_RUN;
 	m_eNextState = OBJ::PLAYER_RUN;
-	CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 3), m_tInfo.fY, m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY >> 1));
+	//CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 4), m_tInfo.fY, m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY >> 1));
 }
 
 int CPlayer::Update_Object()
@@ -170,28 +173,41 @@ int CPlayer::Update_Object()
 
 void CPlayer::LateUpdate_Object()
 {
-
+	if (m_bIsHit) {
+		if (m_dwHitTime + 1000 < GetTickCount()) {
+			m_bIsHit = false;
+			if (m_eCurState == OBJ::PLAYER_PAIN)
+				m_eNextState = OBJ::PLAYER_RUN;
+		}
+	}
 }
 
 void CPlayer::Render_Object(HDC hDC)
 {
 	if(m_eCurState == OBJ::PLAYER_SLIDE)
-		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 2), m_tInfo.fY + (m_tInfo.iCX >> 2), m_tInfo.fX + (m_tInfo.iCX >> 2), m_tInfo.fY + (m_tInfo.iCY >> 1));
+		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCX / 3.f), m_tInfo.fX + (m_tInfo.iCX >> 2), m_tInfo.fY + (m_tInfo.iCY >> 1));
 	else
-		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 3), m_tInfo.fY, m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY >> 1));
+		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 6), m_tInfo.fY, m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY / 2.2f));
 	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(m_szFrameKey);
 	if (nullptr == hMemDC)
 		return;
 
-	GdiTransparentBlt(hDC, m_tInfo.fX - (PLAYERSIZE >> 1),
-		m_tInfo.fY - (PLAYERSIZE >> 1),
-		m_tInfo.iCX,
-		m_tInfo.iCY,
-		hMemDC,
-		m_tInfo.iCX * m_tFrame.iStartFrame, m_tInfo.iCY * m_tFrame.iSceneFrame,
-		m_tInfo.iCX,
-		m_tInfo.iCY,
-		RGB(255, 0, 255));
+	if (!blink){
+		GdiTransparentBlt(hDC, m_tInfo.fX - (PLAYERSIZE >> 1),
+			m_tInfo.fY - (PLAYERSIZE >> 1),
+			m_tInfo.iCX,
+			m_tInfo.iCY,
+			hMemDC,
+			m_tInfo.iCX * m_tFrame.iStartFrame, m_tInfo.iCY * m_tFrame.iSceneFrame,
+			m_tInfo.iCX,
+			m_tInfo.iCY,
+			RGB(255, 0, 255));
+		if(m_bIsHit)
+			blink = true;
+	}
+	else{
+		blink = false;
+	}
 	//충돌 처리할 rect 확인
 	MoveToEx(hDC, m_tRect.left, m_tRect.top, nullptr);
 	LineTo(hDC, m_tRect.right, m_tRect.top);

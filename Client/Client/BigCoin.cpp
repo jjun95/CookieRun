@@ -6,12 +6,15 @@ CBigCoin::CBigCoin()
 {
 	m_tInfo = MAPINFO(BIGCOIN_CX, BIGCOIN_CY);
 	m_eDTID = MAP::BIGCOIN;
-	m_iValue = 100;
+	m_iCValue = 100;
+	m_iSValue = 700;
 }
 
 CBigCoin::CBigCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: CMaps(mapInfo, eDTID)
 {
+	m_iCValue = 100;
+	m_iSValue = 700;
 }
 
 

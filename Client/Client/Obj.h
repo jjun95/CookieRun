@@ -12,6 +12,15 @@ public:
 	}
 	//void Set_Angle(float fAngle) { m_fAngle = fAngle; }
 	void Set_Dead() { m_bIsDead = true;  }
+	void Set_BestScore(int score) { m_iBestScore = score; }
+	void Set_MyCoin(int coin) { m_iMyCoin += coin; }
+	void Set_Coin(int coin) { m_iCoin += coin; }
+	void Set_Score(int score) { m_iScore += score; }
+
+	int Get_CurCoin() { return m_iCoin; }
+	int Get_CurScore() { return m_iScore; }
+	int Get_TotalCoin() { return m_iMyCoin; }
+	int Get_BestScore() { return m_iBestScore; }
 
 	const RECT* Get_Rect() const { return &m_tRect;  }
 	const INFO* Get_Info() const { return &m_tInfo; }
@@ -32,5 +41,10 @@ protected:
 	bool m_bIsDead = false; 
 	//float m_fAngle = 0.f; 
 	FRAME m_tFrame;
+
+	int m_iBestScore = 0;
+	int m_iMyCoin = 0;
+	int m_iScore = 0;
+	int m_iCoin = 0;
 };
 

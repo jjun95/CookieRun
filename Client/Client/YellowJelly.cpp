@@ -6,11 +6,13 @@ CYellowJelly::CYellowJelly()
 {
 	m_tInfo = MAPINFO(BEARJL_CX, BEARJL_CY);
 	m_eDTID = MAP::YELLOWJL;
+	m_iSValue = 2000;
 }
 
 CYellowJelly::CYellowJelly(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: CMaps(mapInfo, eDTID)
 {
+	m_iSValue = 2000;
 }
 
 

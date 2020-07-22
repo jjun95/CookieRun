@@ -132,9 +132,6 @@
     <ClInclude Include="Stage.h">
       <Filter>03.Scene\Stage</Filter>
     </ClInclude>
-    <ClInclude Include="..\Headers\Struct.h">
-      <Filter>00.MainApp</Filter>
-    </ClInclude>
     <ClInclude Include="BigCoin.h">
       <Filter>03.Map\Coin</Filter>
     </ClInclude>

@@ -6,12 +6,15 @@ CGoldCoin::CGoldCoin()
 {
 	m_tInfo = MAPINFO(GDCOIN_CX, GDCOIN_CY);
 	m_eDTID = MAP::GDCOIN;
-	m_iValue = 10;
+	m_iCValue = 10;
+	m_iSValue = 600;
 }
 
 CGoldCoin::CGoldCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: CMaps(mapInfo, eDTID)
 {
+	m_iCValue = 10;
+	m_iSValue = 600;
 }
 
 

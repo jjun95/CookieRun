@@ -43,8 +43,8 @@
 #define GDCOIN_CY 60
 #define BIGCOIN_CX 160
 #define BIGCOIN_CY 160
-#define BASEJL_CX 60
-#define BASEJL_CY 60
+#define BASEJL_CX 50
+#define BASEJL_CY 50
 #define BEARJL_CX 50
 #define BEARJL_CY 50
 #define BIGJL_CX 160
