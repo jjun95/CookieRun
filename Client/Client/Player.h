@@ -21,6 +21,7 @@ public:
 	}
 	void Set_Hp(int plusHp) { m_iHp += plusHp; }
 	int Get_Hp() { return m_iHp; }
+	int Get_MaxHp() { return m_iMaxHp; }
 	bool Get_isHit() { return m_bIsHit; }
 	bool Get_IsJump() { return m_bIsJump; }
 public:
@@ -43,9 +44,10 @@ private:
 	bool blink = false;
 
 	TCHAR* m_szFrameKey;
-	OBJ::STATE m_eCurState;
-	OBJ::STATE m_eNextState;
+	OBJ::PLAYER m_eCurState;
+	OBJ::PLAYER m_eNextState;
 
+	DWORD m_dwRunTime = 0;
 	int m_iHp;
 	int m_iMaxHp;
 };

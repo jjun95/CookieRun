@@ -51,6 +51,7 @@
 #define BIGJL_CY 150
 
 #define PLAYERSIZE 320
+#define PETSIZE 198
 
 #define OBJ_NOEVENT 0
 #define OBJ_DEAD 1

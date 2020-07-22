@@ -13,5 +13,9 @@ public:
 	virtual void LateUpdate_Scene() override;
 	virtual void Render_Scene(HDC hDC) override;
 	virtual void Release_Scene() override;
+
+private:
+	int m_iSpeed = 0;
+	DWORD m_dwTime = 0;
 };
 

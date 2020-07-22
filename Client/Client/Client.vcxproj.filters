@@ -67,6 +67,12 @@
     <Filter Include="98.DesignPattern\Obj_Manager">
       <UniqueIdentifier>{b90fafa0-9d9b-431f-ba8d-fdc7ab9a8d7c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Obj\Pet">
+      <UniqueIdentifier>{25c04fb9-8021-499a-852d-e3041065ac92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Map\Item">
+      <UniqueIdentifier>{43adda7c-4817-4aae-a623-62fb1bb7214a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -162,6 +168,21 @@
     <ClInclude Include="Obstacle4.h">
       <Filter>03.Map\Obstacle</Filter>
     </ClInclude>
+    <ClInclude Include="Pet.h">
+      <Filter>01.Obj\Pet</Filter>
+    </ClInclude>
+    <ClInclude Include="BigHp.h">
+      <Filter>03.Map\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Booster.h">
+      <Filter>03.Map\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Giant.h">
+      <Filter>03.Map\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallHp.h">
+      <Filter>03.Map\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -175,9 +196,6 @@
     </ClCompile>
     <ClCompile Include="Obj.cpp">
       <Filter>01.Obj</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>01.Obj\Player</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>01.Obj\Mouse</Filter>
@@ -247,6 +265,24 @@
     </ClCompile>
     <ClCompile Include="Obstacle4.cpp">
       <Filter>03.Map\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>01.Obj\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Pet.cpp">
+      <Filter>01.Obj\Pet</Filter>
+    </ClCompile>
+    <ClCompile Include="BigHp.cpp">
+      <Filter>03.Map\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Booster.cpp">
+      <Filter>03.Map\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Giant.cpp">
+      <Filter>03.Map\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallHp.cpp">
+      <Filter>03.Map\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

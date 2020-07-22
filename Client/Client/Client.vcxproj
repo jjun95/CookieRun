@@ -151,9 +151,12 @@
     <ClInclude Include="AbstractFactory.h" />
     <ClInclude Include="BaseJelly.h" />
     <ClInclude Include="BigCoin.h" />
+    <ClInclude Include="BigHp.h" />
     <ClInclude Include="Bitmap_Manager.h" />
+    <ClInclude Include="Booster.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Collision_Manager.h" />
+    <ClInclude Include="Giant.h" />
     <ClInclude Include="GoldCoin.h" />
     <ClInclude Include="Key_Manager.h" />
     <ClInclude Include="MainApp.h" />
@@ -168,6 +171,7 @@
     <ClInclude Include="Obstacle2.h" />
     <ClInclude Include="Obstacle3.h" />
     <ClInclude Include="Obstacle4.h" />
+    <ClInclude Include="Pet.h" />
     <ClInclude Include="PinkJelly.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
@@ -175,6 +179,7 @@
     <ClInclude Include="Scene_Manager.h" />
     <ClInclude Include="Scroll_Manager.h" />
     <ClInclude Include="SilverCoin.h" />
+    <ClInclude Include="SmallHp.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -183,9 +188,12 @@
   <ItemGroup>
     <ClCompile Include="BaseJelly.cpp" />
     <ClCompile Include="BigCoin.cpp" />
+    <ClCompile Include="BigHp.cpp" />
     <ClCompile Include="Bitmap_Manager.cpp" />
+    <ClCompile Include="Booster.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Collision_Manager.cpp" />
+    <ClCompile Include="Giant.cpp" />
     <ClCompile Include="GoldCoin.cpp" />
     <ClCompile Include="Key_Manager.cpp" />
     <ClCompile Include="MainApp.cpp" />
@@ -200,12 +208,14 @@
     <ClCompile Include="Obstacle2.cpp" />
     <ClCompile Include="Obstacle3.cpp" />
     <ClCompile Include="Obstacle4.cpp" />
+    <ClCompile Include="Pet.cpp" />
     <ClCompile Include="PinkJelly.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene_Manager.cpp" />
     <ClCompile Include="Scroll_Manager.cpp" />
     <ClCompile Include="SilverCoin.cpp" />
+    <ClCompile Include="SmallHp.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

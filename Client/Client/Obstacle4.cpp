@@ -49,10 +49,10 @@ void CObstacle4::Render_Map(HDC hDC)
 		OTC4_CY,
 		RGB(255, 0, 255));
 
-	MoveToEx(hDC, m_tRect.left + m_fSpeed, m_tRect.top, nullptr);
-	LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.top);
-	LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.bottom);
-	LineTo(hDC, m_tRect.left + m_fSpeed, m_tRect.bottom);
-	LineTo(hDC, m_tRect.left + m_fSpeed, m_tRect.top);
+	//MoveToEx(hDC, m_tRect.left + m_fSpeed, m_tRect.top, nullptr);
+	//LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.top);
+	//LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.bottom);
+	//LineTo(hDC, m_tRect.left + m_fSpeed, m_tRect.bottom);
+	//LineTo(hDC, m_tRect.left + m_fSpeed, m_tRect.top);
 }
 
