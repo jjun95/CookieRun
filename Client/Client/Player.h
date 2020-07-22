@@ -1,5 +1,6 @@
 #pragma once
 #include "Obj.h"
+#include "Map_Manager.h"
 class CPlayer :
 	public CObj
 {
@@ -16,6 +17,7 @@ public:
 		m_bIsHit = true; 
 		m_eNextState = OBJ::PLAYER_PAIN;
 		m_dwHitTime = GetTickCount();
+		CMap_Manager::Get_Instance()->Set_Speed(3.5f);
 	}
 	void Set_Hp(int plusHp) { m_iHp += plusHp; }
 	int Get_Hp() { return m_iHp; }
@@ -31,8 +33,6 @@ public:
 private:
 	bool m_bIsJump = false;
 	bool m_bIsDoubleJump = false;
-	//float m_fJumpPower = 0.f;
-	//float m_fJumpAccel = 0.f;
 	float m_fTime = 0.f;
 	float m_fHeight = 0.f;
 	float m_fStartHeight = 0.f;
@@ -49,5 +49,3 @@ private:
 	int m_iHp;
 	int m_iMaxHp;
 };
-
-// y = 힘 * sin@ * 시간 - 1/2 * 중력 * 시간 * 시간 

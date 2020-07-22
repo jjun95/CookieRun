@@ -23,7 +23,7 @@ int CObstacle2::Update_Map()
 	if (m_bIsDead)
 		return OBJ_DEAD;
 	if (m_dwTime + 10 <= GetTickCount()) {
-		m_fSpeed -= 5.f;
+		m_fSpeed -= m_fSpeedInc;
 	}
 	CMaps::Update_Rect_Object();
 

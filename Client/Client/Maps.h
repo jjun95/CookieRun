@@ -22,6 +22,7 @@ public:
 	int Get_Coin() { return m_iCValue; }
 	int Get_Score() { return m_iSValue; }
 
+	void Set_Speed(float speedInc) { m_fSpeedInc = speedInc; }
 	void Set_Dead() { m_bIsDead = true; }
 	void Set_Pos(const float fX, const float fY) {
 		m_tInfo.tPoint.SetPosition(fX, fY);
@@ -37,6 +38,7 @@ protected:
 	RECT m_tRect;
 	DWORD m_dwTime = 0;
 	float m_fSpeed = 0.f;
+	float m_fSpeedInc = 5.f;
 	bool m_bIsDead = false;
 	MAP::DETAILED_ID m_eDTID;
 	int m_iCValue = 0; // ÄÚÀÎ

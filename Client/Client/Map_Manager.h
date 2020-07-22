@@ -27,6 +27,7 @@ public:
 	void Load_MapData();
 
 	void Set_Player(CObj* pPlayer) { m_pPlayer = pPlayer; }
+	void Set_Speed(float speedInc);
 	list<CMaps*>* Get_MapList(MAP::ID mapID) { return &m_listMap[mapID]; }
 public:
 	void Ready_MapManager();
