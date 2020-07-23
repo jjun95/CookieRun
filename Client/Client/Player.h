@@ -17,7 +17,7 @@ public:
 		m_bIsHit = true; 
 		m_eNextState = OBJ::PLAYER_PAIN;
 		m_dwHitTime = GetTickCount();
-		CMap_Manager::Get_Instance()->Set_Speed(3.5f);
+		CMap_Manager::Get_Instance()->Set_Speed(4.f);
 	}
 	void Set_Hp(int plusHp) { m_iHp += plusHp; }
 	int Get_Hp() { return m_iHp; }
@@ -42,6 +42,8 @@ private:
 	DWORD m_dwHitTime = 0;
 	bool m_bIsHit = false;
 	bool blink = false;
+	bool isBoost = false;
+	bool isGiant = false;
 
 	TCHAR* m_szFrameKey;
 	OBJ::PLAYER m_eCurState;

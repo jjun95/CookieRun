@@ -186,6 +186,12 @@
     <ClInclude Include="Magnet.h">
       <Filter>03.Map\Item</Filter>
     </ClInclude>
+    <ClInclude Include="MiddleJelly.h">
+      <Filter>03.Map\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="BigJelly.h">
+      <Filter>03.Map\Jelly</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -289,6 +295,12 @@
     </ClCompile>
     <ClCompile Include="Magnet.cpp">
       <Filter>03.Map\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="BigJelly.cpp">
+      <Filter>03.Map\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="MiddleJelly.cpp">
+      <Filter>03.Map\Jelly</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

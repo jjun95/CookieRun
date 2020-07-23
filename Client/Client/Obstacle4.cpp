@@ -16,24 +16,6 @@ CObstacle4::~CObstacle4()
 {
 }
 
-int CObstacle4::Update_Map()
-{
-	if (m_bIsDead)
-		return OBJ_DEAD;
-	if (m_dwTime + 10 <= GetTickCount()) {
-		m_fSpeed -= m_fSpeedInc;
-	}
-	CMaps::Update_Rect_Object();
-
-	return OBJ_NOEVENT;
-}
-
-void CObstacle4::LateUpdate_Map()
-{
-	if (m_tRect.right + m_fSpeed <= 0)
-		m_bIsDead = true;
-}
-
 void CObstacle4::Render_Map(HDC hDC)
 {
 	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"Obstacle4");

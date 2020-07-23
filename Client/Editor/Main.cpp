@@ -30,6 +30,8 @@ void CMain::Ready_Main()
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/PinkBear.bmp", L"PinkBear");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/YellowBear.bmp", L"YellowBear");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/TestJelly.bmp", L"BaseJelly");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/MiddleJelly.bmp", L"MiddleJelly");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/BigJelly.bmp", L"BigJelly");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/SmallHp.bmp", L"SmallHp");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/BigHp.bmp", L"BigHp");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/Booster.bmp", L"Booster");
@@ -58,13 +60,11 @@ void CMain::Render_Main()
 
 	TextOut(m_hDC, 10, 10, L"Save : S", 8);
 	TextOut(m_hDC, 10, 30, L"Load: L", 7);
-	TextOut(m_hDC, 10, 50, L"MapBlock : T", 12);
+	TextOut(m_hDC, 10, 50, L"MapBlock : B", 12);
 	TextOut(m_hDC, 10, 70, L"Coin : C", 8);
 	TextOut(m_hDC, 10, 90, L"Jelly : J", 9);
 	TextOut(m_hDC, 10, 110, L"Obstacle : O", 12);
-	TextOut(m_hDC, 10, 130, L"Hp : H", 6);
-	TextOut(m_hDC, 10, 150, L"Booster : B", 11);
-	TextOut(m_hDC, 10, 170, L"Giant : G", 9);
+	TextOut(m_hDC, 10, 130, L"Item : I", 8);
 
 }
 

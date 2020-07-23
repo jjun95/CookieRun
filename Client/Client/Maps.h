@@ -21,6 +21,7 @@ public:
 	float Get_Speed() { return m_fSpeed; }
 	int Get_Coin() { return m_iCValue; }
 	int Get_Score() { return m_iSValue; }
+	MAP::DETAILED_ID Get_DTID() { return m_eDTID; }
 
 	void Set_Speed(float speedInc) { m_fSpeedInc = speedInc; }
 	void Set_Dead() { m_bIsDead = true; }
@@ -28,19 +29,22 @@ public:
 		m_tInfo.tPoint.SetPosition(fX, fY);
 	}
 public:
-	virtual int Update_Map() = 0;
-	virtual void LateUpdate_Map() = 0;
+	virtual int Update_Map();
+	virtual void LateUpdate_Map();
 	virtual void Render_Map(HDC hDC) = 0;
 
 	void Update_Rect_Object();
+	virtual void MoveFrame();
 protected:
 	MAPINFO m_tInfo;
 	RECT m_tRect;
 	DWORD m_dwTime = 0;
 	float m_fSpeed = 0.f;
-	float m_fSpeedInc = 5.f;
+	float m_fSpeedInc = DEFAULT_SPEED;
 	bool m_bIsDead = false;
 	MAP::DETAILED_ID m_eDTID;
+	FRAME m_tFrame;
+
 	int m_iCValue = 0; // 코인
 	int m_iSValue = 0; // 점수
 };

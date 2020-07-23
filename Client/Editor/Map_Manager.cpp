@@ -9,6 +9,8 @@
 #include "BaseJelly.h"
 #include "YellowJelly.h"
 #include "PinkJelly.h"
+#include "MiddleJelly.h"
+#include "BigJelly.h"
 #include "Obstacle1.h"
 #include "Obstacle2.h"
 #include "Obstacle3.h"
@@ -103,6 +105,14 @@ void CMap_Manager::Load_MapData()
 			pMap = new CYellowJelly(tMapInfo, eDTID);
 			m_listMap[MAP::MAP_JELLY].emplace_back(pMap);
 			break;
+		case MAP::MIDJL:
+			pMap = new CMiddleJelly(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_JELLY].emplace_back(pMap);
+			break;
+		case MAP::BIGJL:
+			pMap = new CBigJelly(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_JELLY].emplace_back(pMap);
+			break;
 		case MAP::OTC1:
 			pMap = new CObstacle1(tMapInfo, eDTID);
 			m_listMap[MAP::MAP_OBSTACLE].emplace_back(pMap);
@@ -121,23 +131,23 @@ void CMap_Manager::Load_MapData()
 			break;
 		case MAP::BIGHP:
 			pMap = new CBigHp(tMapInfo, eDTID);
-			m_listMap[MAP::MAP_HP].emplace_back(pMap);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
 			break;
 		case MAP::SMALLHP:
 			pMap = new CSmallHp(tMapInfo, eDTID);
-			m_listMap[MAP::MAP_HP].emplace_back(pMap);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
 			break;
 		case MAP::BOOSTER:
 			pMap = new CBooster(tMapInfo, eDTID);
-			m_listMap[MAP::MAP_BOOSTER].emplace_back(pMap);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
 			break;
 		case MAP::GIANT:
 			pMap = new CGiant(tMapInfo, eDTID);
-			m_listMap[MAP::MAP_GIANT].emplace_back(pMap);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
 			break;
 		case MAP::MAGNET:
 			pMap = new CMagnet(tMapInfo, eDTID);
-			m_listMap[MAP::MAP_MAGNET].emplace_back(pMap);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
 			break;
 		}
 
@@ -168,9 +178,9 @@ void CMap_Manager::Update_MapManager()
 		}
 	}
 	if (CKey_Manager::Get_Instance()->Key_Pressing(KEY_LEFT))
-		CScroll_Manager::Set_ScrollX(-5);
+		CScroll_Manager::Set_ScrollX(-10);
 	if (CKey_Manager::Get_Instance()->Key_Pressing(KEY_RIGHT))
-		CScroll_Manager::Set_ScrollX(+5);
+		CScroll_Manager::Set_ScrollX(+10);
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_C)) {
 		m_mapID = MAP::MAP_COIN;
 		m_iMapKey = 1;
@@ -192,40 +202,19 @@ void CMap_Manager::Update_MapManager()
 		m_iMapCX = OTC1_CX;
 		m_iMapCY = OTC1_CY;
 	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_T)) {
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_B)) {
 		m_mapID = MAP::MAP_BLOCK;
 		m_iMapKey = 1;
 		m_szImage = L"Ground1";
 		m_iMapCX = BLOCK_CX;
 		m_iMapCY = BLOCK_CY;
 	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_H)) {
-		m_mapID = MAP::MAP_HP;
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_I)) {
+		m_mapID = MAP::MAP_ITEM;
 		m_iMapKey = 1;
 		m_szImage = L"SmallHp";
 		m_iMapCX = SMALLHP_CX;
 		m_iMapCY = SMALLHP_CY;
-	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_B)) {
-		m_mapID = MAP::MAP_BOOSTER;
-		m_iMapKey = 1;
-		m_szImage = L"Booster";
-		m_iMapCX = BOOSTER_CX;
-		m_iMapCY = BOOSTER_CY;
-	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_G)) {
-		m_mapID = MAP::MAP_GIANT;
-		m_iMapKey = 1;
-		m_szImage = L"Giant";
-		m_iMapCX = GIANT_CX;
-		m_iMapCY = GIANT_CY;
-	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_M)) {
-		m_mapID = MAP::MAP_MAGNET;
-		m_iMapKey = 1;
-		m_szImage = L"Magnet";
-		m_iMapCX = MAGNET_CX;
-		m_iMapCY = MAGNET_CY;
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_1)) {
 		m_iMapKey = 1;
@@ -244,7 +233,7 @@ void CMap_Manager::Update_MapManager()
 			m_iMapCX = OTC1_CX;
 			m_iMapCY = OTC1_CY;
 		}
-		if (m_mapID == MAP::MAP_HP) {
+		if (m_mapID == MAP::MAP_ITEM) {
 			m_szImage = L"SmallHp";
 			m_iMapCX = SMALLHP_CX;
 			m_iMapCY = SMALLHP_CY;
@@ -267,7 +256,7 @@ void CMap_Manager::Update_MapManager()
 			m_iMapCX = OTC2_CX;
 			m_iMapCY = OTC2_CY;
 		}
-		if (m_mapID == MAP::MAP_HP) {
+		if (m_mapID == MAP::MAP_ITEM) {
 			m_szImage = L"BigHp";
 			m_iMapCX = BIGHP_CX;
 			m_iMapCY = BIGHP_CY;
@@ -290,6 +279,11 @@ void CMap_Manager::Update_MapManager()
 			m_iMapCX = OTC3_CX;
 			m_iMapCY = OTC3_CY;
 		}
+		if (m_mapID == MAP::MAP_ITEM) {
+			m_szImage = L"Booster";
+			m_iMapCX = BOOSTER_CX;
+			m_iMapCY = BOOSTER_CY;
+		}
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_4)) {
 		m_iMapKey = 4;
@@ -298,8 +292,31 @@ void CMap_Manager::Update_MapManager()
 			m_iMapCX = OTC4_CX;
 			m_iMapCY = OTC4_CY;
 		}
+		if (m_mapID == MAP::MAP_JELLY) {
+			m_szImage = L"MiddleJelly";
+			m_iMapCX = MIDJL_CX;
+			m_iMapCY = MIDJL_CY;
+		}
+		if (m_mapID == MAP::MAP_ITEM) {
+			m_szImage = L"Giant";
+			m_iMapCX = GIANT_CX;
+			m_iMapCY = GIANT_CY;
+		}
 	}
-	if (CKey_Manager::Get_Instance()->Key_UP(KEY_LBUTTON))
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_5)) {
+		m_iMapKey = 5;
+		if (m_mapID == MAP::MAP_JELLY) {
+			m_szImage = L"BigJelly";
+			m_iMapCX = BIGJL_CX;
+			m_iMapCY = BIGJL_CY;
+		}
+		if (m_mapID == MAP::MAP_ITEM) {
+			m_szImage = L"Magnet";
+			m_iMapCX = MAGNET_CX;
+			m_iMapCY = MAGNET_CY;
+		}
+	}
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_LBUTTON))
 	{
 		switch (m_mapID) {
 		case MAP::MAP_BLOCK :
@@ -320,6 +337,10 @@ void CMap_Manager::Update_MapManager()
 				m_pMap = new CYellowJelly();
 			if (m_iMapKey == 3)
 				m_pMap = new CPinkJelly();
+			if (m_iMapKey == 4)
+				m_pMap = new CMiddleJelly();
+			if (m_iMapKey == 5)
+				m_pMap = new CBigJelly();
 			break;
 		case MAP::MAP_OBSTACLE:
 			if (m_iMapKey == 1)
@@ -330,6 +351,18 @@ void CMap_Manager::Update_MapManager()
 				m_pMap = new CObstacle3();
 			if (m_iMapKey == 4)
 				m_pMap = new CObstacle4();
+			break;
+		case MAP::MAP_ITEM:
+			if (m_iMapKey == 1)
+				m_pMap = new CSmallHp();
+			if (m_iMapKey == 2)
+				m_pMap = new CBigHp();
+			if (m_iMapKey == 3)
+				m_pMap = new CBooster();
+			if (m_iMapKey == 4)
+				m_pMap = new CGiant();
+			if (m_iMapKey == 5)
+				m_pMap = new CMagnet();
 			break;
 		default:
 			m_pMap = new CMapBlock();

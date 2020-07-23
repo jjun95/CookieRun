@@ -8,6 +8,12 @@ CGoldCoin::CGoldCoin()
 	m_eDTID = MAP::GDCOIN;
 	m_iCValue = 10;
 	m_iSValue = 600;
+	m_tFrame.iDefaultStartFrame = 0;
+	m_tFrame.iStartFrame = 0;
+	m_tFrame.iEndFrame = 5;
+	m_tFrame.dwFrameSpeed = 150;
+	m_tFrame.iSceneFrame = 0;
+	m_tFrame.dwFrameTime = GetTickCount();
 }
 
 CGoldCoin::CGoldCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
@@ -15,31 +21,18 @@ CGoldCoin::CGoldCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 {
 	m_iCValue = 10;
 	m_iSValue = 600;
+	m_tFrame.iDefaultStartFrame = 0;
+	m_tFrame.iStartFrame = 0;
+	m_tFrame.iEndFrame = 5;
+	m_tFrame.dwFrameSpeed = 150;
+	m_tFrame.iSceneFrame = 0;
+	m_tFrame.dwFrameTime = GetTickCount();
 }
 
 
 CGoldCoin::~CGoldCoin()
 {
 }
-
-int CGoldCoin::Update_Map()
-{
-	if (m_bIsDead)
-		return OBJ_DEAD;
-	if (m_dwTime + 10 <= GetTickCount()) {
-		m_fSpeed -= m_fSpeedInc;
-	}
-	CMaps::Update_Rect_Object();
-
-	return OBJ_NOEVENT;
-}
-
-void CGoldCoin::LateUpdate_Map()
-{
-	if (m_tRect.right + m_fSpeed <= 0)
-		m_bIsDead = true;
-}
-
 void CGoldCoin::Render_Map(HDC hDC)
 {
 	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"GoldCoin");
@@ -50,7 +43,7 @@ void CGoldCoin::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		hMemDC,
-		0, 0,
+		m_tInfo.tPoint.iCX * m_tFrame.iStartFrame, 0,
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		RGB(255, 0, 255));

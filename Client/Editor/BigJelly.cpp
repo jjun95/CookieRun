@@ -1,25 +1,26 @@
 #include "stdafx.h"
-#include "Magnet.h"
+#include "BigJelly.h"
 
 
-CMagnet::CMagnet()
+CBigJelly::CBigJelly()
 {
-	m_tInfo = MAPINFO(MAGNET_CX, MAGNET_CY);
-	m_eDTID = MAP::MAGNET;
+	m_tInfo = MAPINFO(BIGJL_CX, BIGJL_CY);
+	m_eDTID = MAP::BIGJL;
 }
 
-CMagnet::CMagnet(MAPINFO& mapInfo, MAP::DETAILED_ID eDTID)
+CBigJelly::CBigJelly(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: CMaps(mapInfo, eDTID)
 {
 }
 
-CMagnet::~CMagnet()
+
+CBigJelly::~CBigJelly()
 {
 }
 
-void CMagnet::Render_Map(HDC hDC)
+void CBigJelly::Render_Map(HDC hDC)
 {
-	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"Magnet");
+	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"BigJelly");
 	if (nullptr == hMemDC)
 		return;
 	int scX = CScroll_Manager::Get_ScrollX();

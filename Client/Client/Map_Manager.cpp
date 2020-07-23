@@ -8,10 +8,17 @@
 #include "BaseJelly.h"
 #include "YellowJelly.h"
 #include "PinkJelly.h"
+#include "MiddleJelly.h"
+#include "BigJelly.h"
 #include "Obstacle1.h"
 #include "Obstacle2.h"
 #include "Obstacle3.h"
 #include "Obstacle4.h"
+#include "BigHp.h"
+#include "SmallHp.h"
+#include "Booster.h"
+#include "Giant.h"
+#include "Magnet.h"
 
 CMap_Manager* CMap_Manager::m_pInstance = nullptr;
 
@@ -74,6 +81,14 @@ void CMap_Manager::Load_MapData()
 			pMap = new CYellowJelly(tMapInfo, eDTID);
 			m_listMap[MAP::MAP_JELLY].emplace_back(pMap);
 			break;
+		case MAP::MIDJL:
+			pMap = new CMiddleJelly(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_JELLY].emplace_back(pMap);
+			break;
+		case MAP::BIGJL:
+			pMap = new CBigJelly(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_JELLY].emplace_back(pMap);
+			break;
 		case MAP::OTC1:
 			pMap = new CObstacle1(tMapInfo, eDTID);
 			m_listMap[MAP::MAP_OBSTACLE].emplace_back(pMap);
@@ -89,6 +104,26 @@ void CMap_Manager::Load_MapData()
 		case MAP::OTC4:
 			pMap = new CObstacle4(tMapInfo, eDTID);
 			m_listMap[MAP::MAP_OBSTACLE].emplace_back(pMap);
+			break;
+		case MAP::BIGHP:
+			pMap = new CBigHp(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
+			break;
+		case MAP::SMALLHP:
+			pMap = new CSmallHp(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
+			break;
+		case MAP::BOOSTER:
+			pMap = new CBooster(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
+			break;
+		case MAP::GIANT:
+			pMap = new CGiant(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
+			break;
+		case MAP::MAGNET:
+			pMap = new CMagnet(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_ITEM].emplace_back(pMap);
 			break;
 		}
 
@@ -136,7 +171,10 @@ void CMap_Manager::Render_MapManager(HDC hDC)
 	for (size_t i = 0; i < MAP::MAP_END; ++i) {
 		for (auto& pMapObject : m_listMap[i])
 		{
-			pMapObject->Render_Map(hDC);
+			int mapLeft = pMapObject->Get_MapRect()->left + pMapObject->Get_Speed();
+			if (mapLeft <= WINCX) 
+				pMapObject->Render_Map(hDC);
+			else break;
 		}
 	}
 }

@@ -42,6 +42,8 @@ void CMainApp::Ready_MainApp()
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/PinkBear.bmp", L"PinkBear");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/YellowBear.bmp", L"YellowBear");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/TestJelly.bmp", L"BaseJelly");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/MiddleJelly.bmp", L"MiddleJelly");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/BigJelly.bmp", L"BigJelly");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Dumbbell.bmp", L"Dumbbell");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/HpBar.bmp", L"HpBar");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/HpBarBack.bmp", L"HpBarBack");

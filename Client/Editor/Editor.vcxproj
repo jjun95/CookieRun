@@ -152,6 +152,7 @@
     <ClInclude Include="BaseJelly.h" />
     <ClInclude Include="BigCoin.h" />
     <ClInclude Include="BigHp.h" />
+    <ClInclude Include="BigJelly.h" />
     <ClInclude Include="Bitmap_Manager.h" />
     <ClInclude Include="Booster.h" />
     <ClInclude Include="Editor.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="MapBlock.h" />
     <ClInclude Include="Maps.h" />
     <ClInclude Include="Map_Manager.h" />
+    <ClInclude Include="MiddleJelly.h" />
     <ClInclude Include="MyBitmap.h" />
     <ClInclude Include="Obstacle1.h" />
     <ClInclude Include="Obstacle2.h" />
@@ -181,12 +183,14 @@
     <ClCompile Include="BaseJelly.cpp" />
     <ClCompile Include="BigCoin.cpp" />
     <ClCompile Include="BigHp.cpp" />
+    <ClCompile Include="BigJelly.cpp" />
     <ClCompile Include="Bitmap_Manager.cpp" />
     <ClCompile Include="Booster.cpp" />
     <ClCompile Include="Giant.cpp" />
     <ClCompile Include="GoldCoin.cpp" />
     <ClCompile Include="Magnet.cpp" />
     <ClCompile Include="Maps.cpp" />
+    <ClCompile Include="MiddleJelly.cpp" />
     <ClCompile Include="MyBitmap.cpp" />
     <ClCompile Include="Obstacle1.cpp" />
     <ClCompile Include="Obstacle2.cpp" />

@@ -41,9 +41,24 @@ void CCollision_Manager::Collision_ScoreRect(list<CMaps*>& rDstList, list<CObj*>
 			{
 				int coin = rDstObject->Get_Coin();
 				int score = rDstObject->Get_Score();
-				rDstObject->Set_Dead();
+				MAP::DETAILED_ID eDTID = rDstObject->Get_DTID();
 				rSrcObject->Set_Coin(coin);
 				rSrcObject->Set_Score(score);
+				rDstObject->Set_Dead();
+				switch (eDTID) {
+				case MAP::SMALLHP:
+					dynamic_cast<CPlayer*>(rSrcObject)->Set_Hp(20);
+					break;
+				case MAP::BIGHP:
+					dynamic_cast<CPlayer*>(rSrcObject)->Set_Hp(50);
+					break;
+				case MAP::BOOSTER:
+					break;
+				case MAP::GIANT:
+					break;
+				case MAP::MAGNET:
+					break;
+				}
 			}
 		}
 	}

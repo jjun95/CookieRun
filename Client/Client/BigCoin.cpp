@@ -8,6 +8,12 @@ CBigCoin::CBigCoin()
 	m_eDTID = MAP::BIGCOIN;
 	m_iCValue = 100;
 	m_iSValue = 700;
+	m_tFrame.iDefaultStartFrame = 0;
+	m_tFrame.iStartFrame = 0;
+	m_tFrame.iEndFrame = 3;
+	m_tFrame.dwFrameSpeed = 250;
+	m_tFrame.iSceneFrame = 0;
+	m_tFrame.dwFrameTime = GetTickCount();
 }
 
 CBigCoin::CBigCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
@@ -15,29 +21,17 @@ CBigCoin::CBigCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 {
 	m_iCValue = 100;
 	m_iSValue = 700;
+	m_tFrame.iDefaultStartFrame = 0;
+	m_tFrame.iStartFrame = 0;
+	m_tFrame.iEndFrame = 3;
+	m_tFrame.dwFrameSpeed = 250;
+	m_tFrame.iSceneFrame = 0;
+	m_tFrame.dwFrameTime = GetTickCount();
 }
 
 
 CBigCoin::~CBigCoin()
 {
-}
-
-int CBigCoin::Update_Map()
-{
-	if (m_bIsDead)
-		return OBJ_DEAD;
-	if (m_dwTime + 10 <= GetTickCount()) {
-		m_fSpeed -= m_fSpeedInc;
-	}
-	CMaps::Update_Rect_Object();
-
-	return OBJ_NOEVENT;
-}
-
-void CBigCoin::LateUpdate_Map()
-{
-	if (m_tRect.right + m_fSpeed <= 0)
-		m_bIsDead = true;
 }
 
 void CBigCoin::Render_Map(HDC hDC)
@@ -50,7 +44,7 @@ void CBigCoin::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		hMemDC,
-		0, 0,
+		m_tInfo.tPoint.iCX * m_tFrame.iStartFrame, 0,
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		RGB(255, 0, 255));

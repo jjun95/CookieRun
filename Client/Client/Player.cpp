@@ -185,7 +185,7 @@ void CPlayer::LateUpdate_Object()
 		}
 		if (m_bIsHit) {
 			if (m_dwHitTime + 100 < GetTickCount())
-				CMap_Manager::Get_Instance()->Set_Speed(5);
+				CMap_Manager::Get_Instance()->Set_Speed(DEFAULT_SPEED);
 			if ((m_eCurState == OBJ::PLAYER_PAIN) && m_dwHitTime + 300 < GetTickCount()) {
 				m_eNextState = OBJ::PLAYER_RUN;
 			}

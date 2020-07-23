@@ -1,25 +1,26 @@
 #include "stdafx.h"
-#include "Magnet.h"
+#include "MiddleJelly.h"
 
 
-CMagnet::CMagnet()
+CMiddleJelly::CMiddleJelly()
 {
-	m_tInfo = MAPINFO(MAGNET_CX, MAGNET_CY);
-	m_eDTID = MAP::MAGNET;
+	m_tInfo = MAPINFO(MIDJL_CX, MIDJL_CY);
+	m_eDTID = MAP::MIDJL;
 }
 
-CMagnet::CMagnet(MAPINFO& mapInfo, MAP::DETAILED_ID eDTID)
+CMiddleJelly::CMiddleJelly(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: CMaps(mapInfo, eDTID)
 {
 }
 
-CMagnet::~CMagnet()
+
+CMiddleJelly::~CMiddleJelly()
 {
 }
 
-void CMagnet::Render_Map(HDC hDC)
+void CMiddleJelly::Render_Map(HDC hDC)
 {
-	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"Magnet");
+	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"MiddleJelly");
 	if (nullptr == hMemDC)
 		return;
 	int scX = CScroll_Manager::Get_ScrollX();

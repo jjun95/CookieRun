@@ -38,16 +38,10 @@ void CKey_Manager::Update_KeyManager()
 		m_dwKey |= KEY_J;
 	if (GetAsyncKeyState('O') & 0x8000)
 		m_dwKey |= KEY_O;
-	if (GetAsyncKeyState('T') & 0x8000)
-		m_dwKey |= KEY_T;
-	if (GetAsyncKeyState('H') & 0x8000)
-		m_dwKey |= KEY_H;
 	if (GetAsyncKeyState('B') & 0x8000)
 		m_dwKey |= KEY_B;
-	if (GetAsyncKeyState('G') & 0x8000)
-		m_dwKey |= KEY_G;
-	if (GetAsyncKeyState('M') & 0x8000)
-		m_dwKey |= KEY_M;
+	if (GetAsyncKeyState('I') & 0x8000)
+		m_dwKey |= KEY_I;
 	if (GetAsyncKeyState(0x31) & 0x8000)
 		m_dwKey |= KEY_1;
 	if (GetAsyncKeyState(0x32) & 0x8000)
@@ -56,6 +50,8 @@ void CKey_Manager::Update_KeyManager()
 		m_dwKey |= KEY_3;
 	if (GetAsyncKeyState(0x34) & 0x8000)
 		m_dwKey |= KEY_4;
+	if (GetAsyncKeyState(0x35) & 0x8000)
+		m_dwKey |= KEY_5;
 }
 
 bool CKey_Manager::Key_UP(DWORD dwKey)
