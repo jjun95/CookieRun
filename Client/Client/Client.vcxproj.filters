@@ -183,6 +183,9 @@
     <ClInclude Include="SmallHp.h">
       <Filter>03.Map\Item</Filter>
     </ClInclude>
+    <ClInclude Include="Magnet.h">
+      <Filter>03.Map\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -282,6 +285,9 @@
       <Filter>03.Map\Item</Filter>
     </ClCompile>
     <ClCompile Include="SmallHp.cpp">
+      <Filter>03.Map\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Magnet.cpp">
       <Filter>03.Map\Item</Filter>
     </ClCompile>
   </ItemGroup>

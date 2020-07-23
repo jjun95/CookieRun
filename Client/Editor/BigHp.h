@@ -5,12 +5,10 @@ class CBigHp :
 {
 public:
 	explicit CBigHp();
-	explicit CBigHp(MAPINFO& mapInfo, MAP::DETAILED_ID eDTID);
+	explicit CBigHp(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID);
 	virtual ~CBigHp();
 
 	// CMaps을(를) 통해 상속됨
-	virtual int Update_Map() override;
-	virtual void LateUpdate_Map() override;
 	virtual void Render_Map(HDC hDC) override;
 };
 

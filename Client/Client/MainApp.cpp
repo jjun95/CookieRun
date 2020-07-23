@@ -50,6 +50,7 @@ void CMainApp::Ready_MainApp()
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/BigHp.bmp", L"BigHp");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/Booster.bmp", L"Booster");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/Giant.bmp", L"Giant");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/Magnet.bmp", L"Magnet");
 
 
 	//CObj* pObj = ; 

@@ -37,6 +37,9 @@
     <Filter Include="Map\Jelly">
       <UniqueIdentifier>{93ed5377-5ad6-405a-bdb1-1ed41603d46c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map\Item">
+      <UniqueIdentifier>{288d85f9-395c-407e-9954-9d7a43a59baf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Editor.h">
@@ -105,6 +108,21 @@
     <ClInclude Include="Obstacle4.h">
       <Filter>Map\Obstacle</Filter>
     </ClInclude>
+    <ClInclude Include="BigHp.h">
+      <Filter>Map\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Booster.h">
+      <Filter>Map\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Giant.h">
+      <Filter>Map\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Magnet.h">
+      <Filter>Map\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallHp.h">
+      <Filter>Map\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Editor.cpp">
@@ -166,6 +184,21 @@
     </ClCompile>
     <ClCompile Include="Obstacle4.cpp">
       <Filter>Map\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="BigHp.cpp">
+      <Filter>Map\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Booster.cpp">
+      <Filter>Map\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Giant.cpp">
+      <Filter>Map\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Magnet.cpp">
+      <Filter>Map\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallHp.cpp">
+      <Filter>Map\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

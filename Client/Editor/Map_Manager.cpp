@@ -13,6 +13,11 @@
 #include "Obstacle2.h"
 #include "Obstacle3.h"
 #include "Obstacle4.h"
+#include "BigHp.h"
+#include "SmallHp.h"
+#include "Booster.h"
+#include "Giant.h"
+#include "Magnet.h"
 
 CMap_Manager* CMap_Manager::m_pInstance = nullptr;
 
@@ -114,6 +119,26 @@ void CMap_Manager::Load_MapData()
 			pMap = new CObstacle4(tMapInfo, eDTID);
 			m_listMap[MAP::MAP_OBSTACLE].emplace_back(pMap);
 			break;
+		case MAP::BIGHP:
+			pMap = new CBigHp(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_HP].emplace_back(pMap);
+			break;
+		case MAP::SMALLHP:
+			pMap = new CSmallHp(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_HP].emplace_back(pMap);
+			break;
+		case MAP::BOOSTER:
+			pMap = new CBooster(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_BOOSTER].emplace_back(pMap);
+			break;
+		case MAP::GIANT:
+			pMap = new CGiant(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_GIANT].emplace_back(pMap);
+			break;
+		case MAP::MAGNET:
+			pMap = new CMagnet(tMapInfo, eDTID);
+			m_listMap[MAP::MAP_MAGNET].emplace_back(pMap);
+			break;
 		}
 
 	}
@@ -167,12 +192,40 @@ void CMap_Manager::Update_MapManager()
 		m_iMapCX = OTC1_CX;
 		m_iMapCY = OTC1_CY;
 	}
-	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_B)) {
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_T)) {
 		m_mapID = MAP::MAP_BLOCK;
 		m_iMapKey = 1;
 		m_szImage = L"Ground1";
 		m_iMapCX = BLOCK_CX;
 		m_iMapCY = BLOCK_CY;
+	}
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_H)) {
+		m_mapID = MAP::MAP_HP;
+		m_iMapKey = 1;
+		m_szImage = L"SmallHp";
+		m_iMapCX = SMALLHP_CX;
+		m_iMapCY = SMALLHP_CY;
+	}
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_B)) {
+		m_mapID = MAP::MAP_BOOSTER;
+		m_iMapKey = 1;
+		m_szImage = L"Booster";
+		m_iMapCX = BOOSTER_CX;
+		m_iMapCY = BOOSTER_CY;
+	}
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_G)) {
+		m_mapID = MAP::MAP_GIANT;
+		m_iMapKey = 1;
+		m_szImage = L"Giant";
+		m_iMapCX = GIANT_CX;
+		m_iMapCY = GIANT_CY;
+	}
+	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_M)) {
+		m_mapID = MAP::MAP_MAGNET;
+		m_iMapKey = 1;
+		m_szImage = L"Magnet";
+		m_iMapCX = MAGNET_CX;
+		m_iMapCY = MAGNET_CY;
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_1)) {
 		m_iMapKey = 1;
@@ -191,6 +244,11 @@ void CMap_Manager::Update_MapManager()
 			m_iMapCX = OTC1_CX;
 			m_iMapCY = OTC1_CY;
 		}
+		if (m_mapID == MAP::MAP_HP) {
+			m_szImage = L"SmallHp";
+			m_iMapCX = SMALLHP_CX;
+			m_iMapCY = SMALLHP_CY;
+		}
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_2)) {
 		m_iMapKey = 2;
@@ -208,6 +266,11 @@ void CMap_Manager::Update_MapManager()
 			m_szImage = L"Obstacle2";
 			m_iMapCX = OTC2_CX;
 			m_iMapCY = OTC2_CY;
+		}
+		if (m_mapID == MAP::MAP_HP) {
+			m_szImage = L"BigHp";
+			m_iMapCX = BIGHP_CX;
+			m_iMapCY = BIGHP_CY;
 		}
 	}
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_3)) {

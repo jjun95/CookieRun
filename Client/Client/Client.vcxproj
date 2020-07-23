@@ -159,6 +159,7 @@
     <ClInclude Include="Giant.h" />
     <ClInclude Include="GoldCoin.h" />
     <ClInclude Include="Key_Manager.h" />
+    <ClInclude Include="Magnet.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="MapBlock.h" />
     <ClInclude Include="Maps.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="Giant.cpp" />
     <ClCompile Include="GoldCoin.cpp" />
     <ClCompile Include="Key_Manager.cpp" />
+    <ClCompile Include="Magnet.cpp" />
     <ClCompile Include="MainApp.cpp" />
     <ClCompile Include="MapBlock.cpp" />
     <ClCompile Include="Maps.cpp" />
