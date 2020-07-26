@@ -11,6 +11,7 @@ CBigJelly::CBigJelly()
 CBigJelly::CBigJelly(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: CMaps(mapInfo, eDTID)
 {
+	m_iSValue = 10000;
 }
 
 
@@ -29,7 +30,7 @@ void CBigJelly::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		hMemDC,
 		0, 0,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		BIGJL_CX,
+		BIGJL_CX,
 		RGB(255, 0, 255));
 }

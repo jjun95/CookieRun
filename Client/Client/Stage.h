@@ -4,7 +4,8 @@ class CStage :
 	public CScene
 {
 public:
-	CStage();
+	explicit CStage();
+	explicit CStage(CObj* pPlayer);
 	virtual ~CStage();
 
 	// CScene을(를) 통해 상속됨

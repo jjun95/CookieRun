@@ -1,6 +1,7 @@
 #pragma once
 
 class CScene;
+class CObj;
 
 class CScene_Manager
 {
@@ -18,12 +19,12 @@ public:
 	}
 
 public:
-	 enum ID {SCENE_LOGO, SCENE_STANDBY, SCENE_PLAY, SCENE_END};
+	 enum ID {SCENE_LOAD, SCENE_STANDBY, SCENE_PLAY, SCENE_END};
 private:
 	CScene_Manager();
 	~CScene_Manager();
 public:
-	void Scene_Change_SceneManager(ID eSceneID);
+	void Scene_Change_SceneManager(ID eSceneID, CObj* pPlayer);
 	void Update_SceneManager();
 	void LateUpdate_SceneManager();
 	void Render_SceneManager(HDC hDC);

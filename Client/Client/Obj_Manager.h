@@ -24,6 +24,7 @@ private:
 	~CObj_Manager();
 public:
 	CObj* Get_Player() { return m_listObject[OBJ::OBJ_PLAYER].front(); }
+	CObj* Get_Pet() { return m_listObject[OBJ::OBJ_PET].front(); }
 	CObj* Get_Target(CObj* pObj, OBJ::ID eTargetID); 
 
 public:

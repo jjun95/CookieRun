@@ -73,6 +73,9 @@
     <Filter Include="03.Map\Item">
       <UniqueIdentifier>{43adda7c-4817-4aae-a623-62fb1bb7214a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Scene\Load">
+      <UniqueIdentifier>{1142ebb2-2189-47c0-aa96-e4e24d469851}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -192,6 +195,9 @@
     <ClInclude Include="BigJelly.h">
       <Filter>03.Map\Jelly</Filter>
     </ClInclude>
+    <ClInclude Include="Load.h">
+      <Filter>03.Scene\Load</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -301,6 +307,9 @@
     </ClCompile>
     <ClCompile Include="MiddleJelly.cpp">
       <Filter>03.Map\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="Load.cpp">
+      <Filter>03.Scene\Load</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

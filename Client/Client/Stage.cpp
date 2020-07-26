@@ -2,12 +2,16 @@
 #include "Stage.h"
 #include "Player.h"
 #include "Pet.h"
-#include "Obj.h"
 #include "Map_Manager.h"
 #include "Obj_Manager.h"
 
 
 CStage::CStage()
+{
+}
+
+CStage::CStage(CObj * pPlayer)
+	: CScene(pPlayer)
 {
 }
 
@@ -19,12 +23,12 @@ CStage::~CStage()
 void CStage::Ready_Scene()
 {
 	m_dwTime = GetTickCount();
-	CObj* pObj = CAbstractFactory<CPlayer>::Create();
-	CObj_Manager::Get_Instance()->Add_Object(pObj, OBJ::OBJ_PLAYER);
-	pObj = CAbstractFactory<CPet>::Create();
+
+	CObj* pObj = CAbstractFactory<CPet>::Create();
 	CObj_Manager::Get_Instance()->Add_Object(pObj, OBJ::OBJ_PET);
 
 	CMap_Manager::Get_Instance()->Load_MapData();
+	CMap_Manager::Get_Instance()->Set_Pet(CObj_Manager::Get_Instance()->Get_Pet());
 }
 
 void CStage::Update_Scene()
@@ -52,13 +56,13 @@ void CStage::Render_Scene(HDC hDC)
 		WINCX,
 		WINCY,
 		hMemDC,
-		(m_iSpeed)%640, 0,
+		(m_iSpeed) % 640, 0,
 		WINCX,
 		WINCY,
 		RGB(255, 0, 255));
 	CMap_Manager::Get_Instance()->Render_MapManager(hDC);
 	CObj_Manager::Get_Instance()->Render_ObjectManager(hDC);
-	
+
 	TCHAR szCoin[32] = L"";
 	TCHAR szScore[32] = L"";
 	TCHAR szHp[32] = L"";
@@ -69,11 +73,11 @@ void CStage::Render_Scene(HDC hDC)
 	int maxHp = dynamic_cast<CPlayer*>(player)->Get_MaxHp();
 
 	hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"HpBarBack");
-	BitBlt(hDC, 70, 80, maxHp +12, 34, hMemDC, 590 - maxHp, 0, SRCCOPY);
+	BitBlt(hDC, 70, 80, maxHp + 12, 34, hMemDC, 590 - maxHp, 0, SRCCOPY);
 	hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"HpBar");
 	BitBlt(hDC, 70, 80, hp, 34, hMemDC, 0, 0, SRCCOPY);
 	hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"HpBarAcc");
-	BitBlt(hDC, 70+hp, 80, 10, 34, hMemDC, 0, 0, SRCCOPY);
+	BitBlt(hDC, 70 + hp, 80, 10, 34, hMemDC, 0, 0, SRCCOPY);
 	hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(L"SmallHp");
 	GdiTransparentBlt(hDC, 20,
 		55,
@@ -85,17 +89,25 @@ void CStage::Render_Scene(HDC hDC)
 		70,
 		RGB(255, 0, 255));
 
+	AddFontResourceW(L"../Font/CookieRun Black.ttf");
 
+	SetBkMode(hDC, TRANSPARENT);
+	SetTextColor(hDC, RGB(255, 255, 255));
+	HFONT hFont, oldFont;
 
-	//swprintf_s(szHp, L"hp : %d", hp);
-	swprintf_s(szCoin, L"Coin : %d", coin);
-	swprintf_s(szScore, L"Score : %d", score);
-	//swprintf_s(szHp, L"hp : %d", hp);
-	TextOut(hDC, 50, 100, szHp, lstrlen(szHp));
+	hFont = CreateFont(50, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("CookieRun Black"));
+	swprintf_s(szCoin, L"Coin %d", coin);
+	swprintf_s(szScore, L"SCORE %d", score);
+	oldFont = (HFONT)SelectObject(hDC, hFont);
+	SetTextAlign(hDC, TA_LEFT);
 	TextOut(hDC, WINCX>>1, 20, szCoin, lstrlen(szCoin));
-	TextOut(hDC, WINCX-200, 20, szScore, lstrlen(szScore));
+	SetTextAlign(hDC, TA_RIGHT);
+	TextOut(hDC, WINCX-50, 20, szScore, lstrlen(szScore));
+	hFont = (HFONT)SelectObject(hDC, oldFont);
+	DeleteObject(hFont);
 }
 
 void CStage::Release_Scene()
 {
+	RemoveFontResourceW(L"../Font/CookieRun Black.ttf");
 }

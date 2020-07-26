@@ -43,9 +43,9 @@ void CSilverCoin::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		hMemDC,
-		m_tInfo.tPoint.iCX * m_tFrame.iStartFrame, 0,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		SVCOIN_CX * m_tFrame.iStartFrame, 0,
+		SVCOIN_CX,
+		SVCOIN_CY,
 		RGB(255, 0, 255));
 	//MoveToEx(hDC, m_tRect.left + m_fSpeed, m_tRect.top, nullptr);
 	//LineTo(hDC, m_tRect.right + m_fSpeed, m_tRect.top);

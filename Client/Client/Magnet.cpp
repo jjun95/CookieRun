@@ -31,7 +31,7 @@ void CMagnet::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		hMemDC,
 		0, 0,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		MAGNET_CX,
+		MAGNET_CX,
 		RGB(255, 0, 255));
 }

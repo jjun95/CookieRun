@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "Collision_Manager.h"
 #include "Obj.h"
+#include "Obj_Manager.h"
 #include "Player.h"
+#include "Pet.h"
 #include "Maps.h"
 #include "MapBlock.h"
 
@@ -39,24 +41,31 @@ void CCollision_Manager::Collision_ScoreRect(list<CMaps*>& rDstList, list<CObj*>
 		{
 			if (IntersectRect(&rc, rDstObject->Get_MapRect(), rSrcObject->Get_Rect()))
 			{
+				//if (dynamic_cast<CPlayer*>(CObj_Manager::Get_Instance()->Get_Player())->Get_Hp() <= 0)
+				//	return;
 				int coin = rDstObject->Get_Coin();
 				int score = rDstObject->Get_Score();
 				MAP::DETAILED_ID eDTID = rDstObject->Get_DTID();
-				rSrcObject->Set_Coin(coin);
-				rSrcObject->Set_Score(score);
+				dynamic_cast<CPlayer*>(CObj_Manager::Get_Instance()->Get_Player())->Set_Coin(coin);
+				dynamic_cast<CPlayer*>(CObj_Manager::Get_Instance()->Get_Player())->Set_Score(score);
 				rDstObject->Set_Dead();
 				switch (eDTID) {
 				case MAP::SMALLHP:
 					dynamic_cast<CPlayer*>(rSrcObject)->Set_Hp(20);
 					break;
 				case MAP::BIGHP:
-					dynamic_cast<CPlayer*>(rSrcObject)->Set_Hp(50);
+					dynamic_cast<CPlayer*>(rSrcObject)->Set_Hp(40);
 					break;
 				case MAP::BOOSTER:
+					CMap_Manager::Get_Instance()->Set_Speed(DEFAULT_SPEED * 2);
+					dynamic_cast<CPlayer*>(rSrcObject)->Set_IsBoost();
 					break;
 				case MAP::GIANT:
+					dynamic_cast<CPlayer*>(rSrcObject)->Set_IsGiant();
 					break;
 				case MAP::MAGNET:
+					dynamic_cast<CPet*>(CObj_Manager::Get_Instance()->Get_Pet())->Set_Magnet();
+					CMap_Manager::Get_Instance()->Set_Magnet(true);
 					break;
 				}
 			}
@@ -73,12 +82,14 @@ void CCollision_Manager::Collision_ObstacleRect(list<CMaps*>& rDstList, list<COb
 		{
 			if (IntersectRect(&rc, rDstObject->Get_MapRect(), rSrcObject->Get_Rect()))
 			{
-				//rDstObject->Set_Dead();
-				//rSrcObject->Set_Dead();
-				if (!dynamic_cast<CPlayer*>(rSrcObject)->Get_isHit()) {
-					dynamic_cast<CPlayer*>(rSrcObject)->Set_Hp(-30);
-					dynamic_cast<CPlayer*>(rSrcObject)->Set_Hit();
+				bool isBoost = dynamic_cast<CPlayer*>(rSrcObject)->Get_IsBoost();
+				bool isGiant = dynamic_cast<CPlayer*>(rSrcObject)->Get_IsGiant();
+				if (isBoost || isGiant) {
+					rDstObject->Set_Dead();
+					return;
 				}
+				dynamic_cast<CPlayer*>(rSrcObject)->Set_Hp(-30);
+				dynamic_cast<CPlayer*>(rSrcObject)->Set_Hit();
 			}
 		}
 	}
@@ -152,6 +163,9 @@ bool CCollision_Manager::Collision_RectEX(list<CMaps*>& rDstList, list<CObj*>& r
 						fMoveY *= -1.f;
 
 					rSrcObject->Set_Pos(fX, fY + fMoveY);
+
+					if (dynamic_cast<CPlayer*>(rSrcObject)->Get_Hp() <= 0)
+						dynamic_cast<CPlayer*>(rSrcObject)->Set_Dead();
 //				}
 				//else
 				//{

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Scene_Manager.h"
 #include "Stage.h"
+#include "Load.h"
 
 CScene_Manager* CScene_Manager::m_pInstance = nullptr;
 CScene_Manager::CScene_Manager()
@@ -13,14 +14,14 @@ CScene_Manager::~CScene_Manager()
 	Release_SCeneManager();
 }
 
-void CScene_Manager::Scene_Change_SceneManager(ID eSceneID)
+void CScene_Manager::Scene_Change_SceneManager(ID eSceneID, CObj* pPlayer)
 {
 	m_eNextScene = eSceneID;
 	if (m_eCurScene != m_eNextScene) {
 		Safe_Delete(m_pScene);
 		switch (m_eNextScene) {
-		case CScene_Manager::SCENE_LOGO:
-			//m_pScene = new CLogo;
+		case CScene_Manager::SCENE_LOAD:
+			m_pScene = new CLoad;
 			break;
 		case CScene_Manager::SCENE_STANDBY:
 			//m_pScene = new CStandby;

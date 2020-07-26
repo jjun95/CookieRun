@@ -29,8 +29,8 @@ void CObstacle2::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		hMemDC,
 		0, 0,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		OTC2_CX,
+		OTC2_CY,
 		RGB(255, 0, 255));
 
 	//MoveToEx(hDC, m_tRect.left + m_fSpeed, m_tRect.top, nullptr);

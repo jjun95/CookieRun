@@ -53,6 +53,7 @@ void CMainApp::Ready_MainApp()
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/Booster.bmp", L"Booster");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/Giant.bmp", L"Giant");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/Magnet.bmp", L"Magnet");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Load2.bmp", L"Load");
 
 
 	//CObj* pObj = ; 
@@ -61,7 +62,11 @@ void CMainApp::Ready_MainApp()
 	CObj* pObj = CAbstractFactory<CMouse>::Create(); 
 	m_pObj_Manager->Add_Object(pObj, OBJ::OBJ_MOUSE);
 
-	CScene_Manager::Get_Instance()->Scene_Change_SceneManager(CScene_Manager::SCENE_PLAY);
+	pObj = CAbstractFactory<CPlayer>::Create();
+	CObj_Manager::Get_Instance()->Add_Object(pObj, OBJ::OBJ_PLAYER);
+
+	CScene_Manager::Get_Instance()->Scene_Change_SceneManager(CScene_Manager::SCENE_LOAD, pObj);
+	//CScene_Manager::Get_Instance()->Scene_Change_SceneManager(CScene_Manager::SCENE_PLAY);
 }
 
 void CMainApp::Update_MainApp()

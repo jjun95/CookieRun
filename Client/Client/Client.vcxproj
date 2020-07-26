@@ -83,6 +83,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>../Headers/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -160,6 +161,7 @@
     <ClInclude Include="Giant.h" />
     <ClInclude Include="GoldCoin.h" />
     <ClInclude Include="Key_Manager.h" />
+    <ClInclude Include="Load.h" />
     <ClInclude Include="Magnet.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="MapBlock.h" />
@@ -200,6 +202,7 @@
     <ClCompile Include="Giant.cpp" />
     <ClCompile Include="GoldCoin.cpp" />
     <ClCompile Include="Key_Manager.cpp" />
+    <ClCompile Include="Load.cpp" />
     <ClCompile Include="Magnet.cpp" />
     <ClCompile Include="MainApp.cpp" />
     <ClCompile Include="MapBlock.cpp" />

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Maps.h"
+#include "Obj.h"
 
 
 CMaps::CMaps()
@@ -8,6 +9,11 @@ CMaps::CMaps()
 
 CMaps::CMaps(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	: m_tInfo(mapInfo), m_eDTID(eDTID)
+{
+}
+
+CMaps::CMaps(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID, CObj * pPet)
+	: m_tInfo(mapInfo), m_eDTID(eDTID) , m_pPet(pPet)
 {
 }
 
@@ -22,6 +28,20 @@ int CMaps::Update_Map()
 		return OBJ_DEAD;
 	if (m_dwTime + 10 <= GetTickCount()) {
 		m_fSpeed -= m_fSpeedInc;
+	}
+	if (m_bIsMagnet) {
+		int dx = m_tInfo.tPoint.fX + m_fSpeed - m_pPet->Get_Info()->fX;
+		int dy = m_tInfo.tPoint.fY - m_pPet->Get_Info()->fY;
+		int dist = sqrt(dx*dx + dy * dy);
+		if (dx >= 0 && dist < 500) {
+			m_tInfo.tPoint.fX -= 5 * dx / dist;
+			m_tInfo.tPoint.fY -= 15 * dy / dist;
+		}
+		//if (dx > 0 && dist < 500) {
+		//	m_tInfo.tPoint.fX -= 5 * dist / dx ;
+		//	if (dy != 0)
+		//		m_tInfo.tPoint.fY -= 5 * dist / dy;
+		//}
 	}
 	Update_Rect_Object();
 	MoveFrame();

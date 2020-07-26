@@ -44,8 +44,8 @@ void CBigCoin::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		hMemDC,
-		m_tInfo.tPoint.iCX * m_tFrame.iStartFrame, 0,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		BIGCOIN_CX * m_tFrame.iStartFrame, 0,
+		BIGCOIN_CX,
+		BIGCOIN_CY,
 		RGB(255, 0, 255));
 }

@@ -31,7 +31,7 @@ void CGiant::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCY,
 		hMemDC,
 		0, 0,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		GIANT_CX,
+		GIANT_CY,
 		RGB(255, 0, 255));
 }

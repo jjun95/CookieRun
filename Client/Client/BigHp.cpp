@@ -42,8 +42,8 @@ void CBigHp::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		hMemDC,
-		m_tInfo.tPoint.iCX * m_tFrame.iStartFrame, m_tInfo.tPoint.iCY * m_tFrame.iSceneFrame,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		BIGHP_CX * m_tFrame.iStartFrame, BIGHP_CY * m_tFrame.iSceneFrame,
+		BIGHP_CX,
+		BIGHP_CY,
 		RGB(255, 0, 255));
 }

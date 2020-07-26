@@ -132,6 +132,14 @@ void CMap_Manager::Load_MapData()
 	CloseHandle(hFile);
 }
 
+void CMap_Manager::Set_Pet(CObj * pPet)
+{
+	for (size_t i = MAP::MAP_COIN; i < MAP::MAP_END; ++i) {
+		for (auto& pMapObject : m_listMap[i])
+			pMapObject->Set_Pet(pPet);
+	}
+}
+
 void CMap_Manager::Set_Speed(float speedInc)
 {
 	for (size_t i = 0; i < MAP::MAP_END; ++i) {
@@ -139,6 +147,14 @@ void CMap_Manager::Set_Speed(float speedInc)
 		{
 			pMapObject->Set_Speed(speedInc);
 		}
+	}
+}
+
+void CMap_Manager::Set_Magnet(bool isMagnet)
+{
+	for (size_t i = MAP::MAP_COIN; i < MAP::MAP_END; ++i) {
+		for (auto& pMapObject : m_listMap[i])
+			pMapObject->Set_Magnet(isMagnet);
 	}
 }
 

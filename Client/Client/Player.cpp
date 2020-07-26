@@ -26,7 +26,7 @@ void CPlayer::KeyCheck()
 
 bool CPlayer::IsJumping()
 {
-	//if (!m_bIsHit) {
+	if (!m_bIsDead) {
 		if (m_dwJumpTime + 150 < GetTickCount()) {
 			if (m_bIsJump && (m_bIsDoubleJump == false)) {
 				if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_UP)) {
@@ -47,7 +47,7 @@ bool CPlayer::IsJumping()
 				m_eNextState = OBJ::PLAYER_JUMP;
 			}
 		}
-	//}
+	}
 	m_fTime += 0.2f;
 
 	if (m_bIsDoubleJump) {
@@ -136,7 +136,9 @@ void CPlayer::Stop_Jump()
 		m_bIsJump = false;
 		m_bIsDoubleJump = false;
 		m_dwJumpTime = GetTickCount();
-		m_eNextState = OBJ::PLAYER_RUN;
+		if(m_bIsBoost)
+			m_eNextState = OBJ::PLAYER_RUSH;
+		else m_eNextState = OBJ::PLAYER_RUN;
 	}
 }
 
@@ -144,7 +146,7 @@ void CPlayer::Ready_Object()
 {
 	m_tInfo.fX = 300.f; 
 	m_tInfo.fY = WINCY - 280.f; 
-	m_tInfo.iCX = PLAYERSIZE; 
+	m_tInfo.iCX = PLAYERSIZE;  
 	m_tInfo.iCY = PLAYERSIZE;
 	m_fSpeed = 80.f; 
 	m_dwJumpTime = GetTickCount();
@@ -160,14 +162,48 @@ void CPlayer::Ready_Object()
 	m_eCurState = OBJ::PLAYER_RUN;
 	m_eNextState = OBJ::PLAYER_RUN;
 	m_dwRunTime = GetTickCount();
+
+	CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 6), m_tInfo.fY + (m_tInfo.iCY >> 3), m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY / 2.2f));
 }
 
 int CPlayer::Update_Object()
 {
-	if (!m_bIsDead) {
-		if (!IsJumping())
-			KeyCheck();
+	if (!IsJumping() && !m_bIsDead)
+		KeyCheck();
+	// 부스터
+	if (m_bIsBoost) {
+		if (m_dwRushTime + 3000 < GetTickCount()) {
+			m_bIsInvincible = true;
+			m_dwInvincibleTime = GetTickCount();
+			m_bIsBoost = false;
+			if(m_eCurState == OBJ::PLAYER_RUSH)
+				m_eNextState = OBJ::PLAYER_RUN;
+			CMap_Manager::Get_Instance()->Set_Speed(DEFAULT_SPEED);
+		}
 	}
+	// 거대화
+	if (m_bIsGiant) {
+		if (m_tInfo.iCY < PLAYERSIZE * 2) {
+			m_tInfo.fY -= 2.f;
+			m_tInfo.iCX += 4;
+			m_tInfo.iCY += 4;
+		}
+		if (m_dwGiantTime + 4000 < GetTickCount()) {
+			//m_bIsInvincible = true;
+			//m_dwInvincibleTime = GetTickCount();
+			m_bIsGiant = false;
+		}
+	}
+	else if (m_tInfo.iCY > PLAYERSIZE) {
+		m_tInfo.fY += 2.f;
+		m_tInfo.iCX -= 4;
+		m_tInfo.iCY -= 4;
+		if (PLAYERSIZE == m_tInfo.iCY) {
+			m_bIsInvincible = true;
+			m_dwInvincibleTime = GetTickCount();
+		}
+	}
+
 	Animation_Change();
 	CObj::MoveFrame();
 	return OBJ_NOEVENT;
@@ -175,67 +211,62 @@ int CPlayer::Update_Object()
 
 void CPlayer::LateUpdate_Object()
 {
-	//if (!m_bIsDead) {
-		if (m_iHp <= 0) {
-			m_iHp = 0;
-			m_eNextState = OBJ::PLAYER_DIE;
-			m_bIsDead = true;
-			CMap_Manager::Get_Instance()->Set_Speed(0);
-			return;
+	if (m_bIsHit) {
+		if (m_dwHitTime + 100 < GetTickCount())
+			CMap_Manager::Get_Instance()->Set_Speed(DEFAULT_SPEED);
+		if ((m_eCurState == OBJ::PLAYER_PAIN) && m_dwHitTime + 300 < GetTickCount()) {
+			m_eNextState = OBJ::PLAYER_RUN;
 		}
-		if (m_bIsHit) {
-			if (m_dwHitTime + 100 < GetTickCount())
-				CMap_Manager::Get_Instance()->Set_Speed(DEFAULT_SPEED);
-			if ((m_eCurState == OBJ::PLAYER_PAIN) && m_dwHitTime + 300 < GetTickCount()) {
-				m_eNextState = OBJ::PLAYER_RUN;
-			}
-			if (m_dwHitTime + 1000 < GetTickCount()) {
-				m_bIsHit = false;
-			}
+		if (m_dwHitTime + 1000 < GetTickCount()) {
+			m_bIsInvincible = false;
 		}
-		if (m_dwRunTime + 1000 < GetTickCount()) {
-			m_iHp -= 5;
-			m_dwRunTime = GetTickCount();
-		}
-	//}
-		//if (m_bIsDead && blink) {
-		//	m_bIsHit = false;
-		//	blink = false;
-		//}
+	}
+	if (m_dwRunTime + 1000 < GetTickCount()) {
+		m_iHp -= 5;
+		m_dwRunTime = GetTickCount();
+	}
+
+	if (m_dwInvincibleTime + 1000 < GetTickCount())
+		m_bIsInvincible = false;
 }
 
 void CPlayer::Render_Object(HDC hDC)
 {
 	if(m_eCurState == OBJ::PLAYER_SLIDE)
-		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCX / 3.f), m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY >> 1));
+		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY / 3.f), m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY / 2.2f));
 	else
-		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 6), m_tInfo.fY, m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY / 2.2f));
+		CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 6), m_tInfo.fY + (m_tInfo.iCY >> 3) , m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY / 2.2f));
 	HDC hMemDC = CBitmap_Manager::Get_Instance()->Find_Image_BitmapManager(m_szFrameKey);
 	if (nullptr == hMemDC)
 		return;
 
-	if (m_bIsDead || !blink){
-		GdiTransparentBlt(hDC, m_tInfo.fX - (PLAYERSIZE >> 1),
-			m_tInfo.fY - (PLAYERSIZE >> 1),
+	if (m_bIsDead || !m_bIsblink){
+		GdiTransparentBlt(hDC, m_tInfo.fX - (m_tInfo.iCX >> 1),
+			m_tInfo.fY - (m_tInfo.iCY >> 1),
 			m_tInfo.iCX,
 			m_tInfo.iCY,
 			hMemDC,
-			m_tInfo.iCX * m_tFrame.iStartFrame, m_tInfo.iCY * m_tFrame.iSceneFrame,
-			m_tInfo.iCX,
-			m_tInfo.iCY,
+			PLAYERSIZE * m_tFrame.iStartFrame, PLAYERSIZE * m_tFrame.iSceneFrame,
+			PLAYERSIZE,
+			PLAYERSIZE,
 			RGB(255, 0, 255));
-		if(m_bIsHit)
-			blink = true;
+		if(m_bIsInvincible)
+			m_bIsblink = true;
 	}
 	else{
-		blink = false;
+		m_bIsblink = false;
 	}
 	//충돌 처리할 rect 확인
-	//MoveToEx(hDC, m_tRect.left, m_tRect.top, nullptr);
-	//LineTo(hDC, m_tRect.right, m_tRect.top);
-	//LineTo(hDC, m_tRect.right, m_tRect.bottom);
-	//LineTo(hDC, m_tRect.left, m_tRect.bottom);
-	//LineTo(hDC, m_tRect.left, m_tRect.top);
+	//MoveToEx(hDC, m_tInfo.fX - (m_tInfo.iCX >> 1), m_tInfo.fY - (m_tInfo.iCY >> 1), nullptr);
+	//LineTo(hDC, m_tInfo.fX + (m_tInfo.iCX >> 1), m_tInfo.fY - (m_tInfo.iCY >> 1));
+	//LineTo(hDC, m_tInfo.fX + (m_tInfo.iCX >> 1), m_tInfo.fY + (m_tInfo.iCY >> 1));
+	//LineTo(hDC, m_tInfo.fX - (m_tInfo.iCX >> 1), m_tInfo.fY + (m_tInfo.iCY >> 1));
+	//LineTo(hDC, m_tInfo.fX - (m_tInfo.iCX >> 1), m_tInfo.fY - (m_tInfo.iCY >> 1));
+	MoveToEx(hDC, m_tRect.left, m_tRect.top, nullptr);
+	LineTo(hDC, m_tRect.right, m_tRect.top);
+	LineTo(hDC, m_tRect.right, m_tRect.bottom);
+	LineTo(hDC, m_tRect.left, m_tRect.bottom);
+	LineTo(hDC, m_tRect.left, m_tRect.top);
 	// 각도에서 라디안으로 치환하기 위해서는// 각도 * PI / 180 = 라디안
 	// 라디안에서 각도로 치환하기 위해서는// 라디안 * 180 / PI = 각도 
 }

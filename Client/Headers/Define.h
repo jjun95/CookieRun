@@ -27,6 +27,8 @@
 #define		KEY_4			0x00200000
 #define		KEY_5			0x00400000
 
+#define		KEY_ENTER		0x00800000
+
 #define WINCX 1280
 #define WINCY 720
 

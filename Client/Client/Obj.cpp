@@ -29,6 +29,6 @@ void CObj::MoveFrame()
 		++m_tFrame.iStartFrame;
 		m_tFrame.dwFrameTime = GetTickCount();
 	}
-	if (m_tFrame.iStartFrame >= m_tFrame.iEndFrame)
+	if (m_tFrame.iStartFrame > m_tFrame.iEndFrame)
 		m_tFrame.iStartFrame = m_tFrame.iDefaultStartFrame;
 }

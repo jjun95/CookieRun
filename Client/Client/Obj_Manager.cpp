@@ -2,6 +2,7 @@
 #include "Obj_Manager.h"
 #include "Obj.h"
 #include "Player.h"
+#include "Pet.h"
 #include "Maps.h"
 #include "Map_Manager.h"
 
@@ -88,7 +89,13 @@ void CObj_Manager::LateUpdate_ObjectManager()
 	CCollision_Manager::Collision_ScoreRect(*m_plistMap[MAP::MAP_COIN], m_listObject[OBJ::OBJ_PLAYER]);
 	CCollision_Manager::Collision_ScoreRect(*m_plistMap[MAP::MAP_JELLY], m_listObject[OBJ::OBJ_PLAYER]);
 	CCollision_Manager::Collision_ScoreRect(*m_plistMap[MAP::MAP_ITEM], m_listObject[OBJ::OBJ_PLAYER]);
-	CCollision_Manager::Collision_ObstacleRect(*m_plistMap[MAP::MAP_OBSTACLE], m_listObject[OBJ::OBJ_PLAYER]);
+	if (dynamic_cast<CPet*>(m_listObject[OBJ::OBJ_PET].front())->Get_IsMagnet()) {
+		CCollision_Manager::Collision_ScoreRect(*m_plistMap[MAP::MAP_COIN], m_listObject[OBJ::OBJ_PET]);
+		CCollision_Manager::Collision_ScoreRect(*m_plistMap[MAP::MAP_JELLY], m_listObject[OBJ::OBJ_PET]);
+		CCollision_Manager::Collision_ScoreRect(*m_plistMap[MAP::MAP_ITEM], m_listObject[OBJ::OBJ_PET]);
+	}	
+	if (!dynamic_cast<CPlayer*>(m_listObject[OBJ::OBJ_PLAYER].front())->Get_isInvincible())
+		CCollision_Manager::Collision_ObstacleRect(*m_plistMap[MAP::MAP_OBSTACLE], m_listObject[OBJ::OBJ_PLAYER]);
 }
 
 void CObj_Manager::Render_ObjectManager(HDC hDC)

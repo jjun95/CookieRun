@@ -29,7 +29,6 @@ CGoldCoin::CGoldCoin(MAPINFO & mapInfo, MAP::DETAILED_ID eDTID)
 	m_tFrame.dwFrameTime = GetTickCount();
 }
 
-
 CGoldCoin::~CGoldCoin()
 {
 }
@@ -43,8 +42,8 @@ void CGoldCoin::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		hMemDC,
-		m_tInfo.tPoint.iCX * m_tFrame.iStartFrame, 0,
-		m_tInfo.tPoint.iCX,
-		m_tInfo.tPoint.iCY,
+		GDCOIN_CX * m_tFrame.iStartFrame, 0,
+		GDCOIN_CX,
+		GDCOIN_CY,
 		RGB(255, 0, 255));
 }
