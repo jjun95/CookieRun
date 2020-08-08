@@ -18,6 +18,7 @@ CStage::CStage(CObj * pPlayer)
 
 CStage::~CStage()
 {
+	Release_Scene();
 }
 
 void CStage::Ready_Scene()
@@ -29,6 +30,8 @@ void CStage::Ready_Scene()
 
 	CMap_Manager::Get_Instance()->Load_MapData();
 	CMap_Manager::Get_Instance()->Set_Pet(CObj_Manager::Get_Instance()->Get_Pet());
+
+	dynamic_cast<CPlayer*>(m_pPlayer)->Set_Hp(0, true);
 }
 
 void CStage::Update_Scene()
@@ -109,5 +112,8 @@ void CStage::Render_Scene(HDC hDC)
 
 void CStage::Release_Scene()
 {
+	CMap_Manager::Get_Instance()->Release_MapManager();
+	//CObj_Manager::Get_Instance()->Release_ObjectManager();
+	CObj_Manager::Get_Instance()->Delete_Object(OBJ::OBJ_PET);
 	RemoveFontResourceW(L"../Font/CookieRun Black.ttf");
 }

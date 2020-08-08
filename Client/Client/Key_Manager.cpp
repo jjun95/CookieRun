@@ -24,6 +24,8 @@ void CKey_Manager::Update_KeyManager()
 		m_dwKey |= KEY_DOWN;
 	if (GetAsyncKeyState(VK_RETURN) & 0x8000)
 		m_dwKey |= KEY_ENTER;
+	if (GetAsyncKeyState(0x31) & 0x8000)
+		m_dwKey |= KEY_1;
 }
 
 bool CKey_Manager::Key_UP(DWORD dwKey)

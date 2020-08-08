@@ -86,11 +86,11 @@ void CPet::Render_Object(HDC hDC)
 		PETSIZE,
 		RGB(255, 0, 255));
 
-	MoveToEx(hDC, m_tRect.left, m_tRect.top, nullptr);
-	LineTo(hDC, m_tRect.right, m_tRect.top);
-	LineTo(hDC, m_tRect.right, m_tRect.bottom);
-	LineTo(hDC, m_tRect.left, m_tRect.bottom);
-	LineTo(hDC, m_tRect.left, m_tRect.top);
+	//MoveToEx(hDC, m_tRect.left, m_tRect.top, nullptr);
+	//LineTo(hDC, m_tRect.right, m_tRect.top);
+	//LineTo(hDC, m_tRect.right, m_tRect.bottom);
+	//LineTo(hDC, m_tRect.left, m_tRect.bottom);
+	//LineTo(hDC, m_tRect.left, m_tRect.top);
 }
 
 void CPet::Release_Object()

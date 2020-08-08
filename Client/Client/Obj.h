@@ -12,15 +12,27 @@ public:
 	}
 	//void Set_Angle(float fAngle) { m_fAngle = fAngle; }
 	void Set_Dead() { m_bIsDead = true;  }
-	void Set_BestScore(int score) { m_iBestScore = score; }
-	void Set_MyCoin(int coin) { m_iMyCoin += coin; }
-	void Set_Coin(int coin) { m_iCoin += coin; }
-	void Set_Score(int score) { m_iScore += score; }
+	static void Set_BestScore(int score) { m_iBestScore = score; }
+	static void Set_MyCoin(int coin) { m_iMyCoin += coin; }
+	void Set_Coin(int coin, bool setZero = false) { 
+		if (setZero)
+			m_iCoin = 0;
+		else m_iCoin += coin; 
+	}
+	void Set_Score(int score, bool setZero = false) { 
+		if (setZero)
+			m_iScore = 0;
+		else m_iScore += score; 
+	}
+	static void HP_LevelUp() { m_iHpLevel++; }
+	static void Jelly_LevelUp() { m_iJellyLevel++; }
 
 	int Get_CurCoin() { return m_iCoin; }
 	int Get_CurScore() { return m_iScore; }
-	int Get_TotalCoin() { return m_iMyCoin; }
-	int Get_BestScore() { return m_iBestScore; }
+	static int Get_TotalCoin() { return m_iMyCoin; }
+	static int Get_BestScore() { return m_iBestScore; }
+	static int Get_HpLevel() { return m_iHpLevel; }
+	static int Get_JellyLevel() { return m_iJellyLevel; }
 
 	const RECT* Get_Rect() const { return &m_tRect;  }
 	const INFO* Get_Info() const { return &m_tInfo; }
@@ -42,9 +54,11 @@ protected:
 	//float m_fAngle = 0.f; 
 	FRAME m_tFrame;
 
-	int m_iBestScore = 0;
-	int m_iMyCoin = 0;
+	static int m_iBestScore;
+	static int m_iMyCoin;
 	int m_iScore = 0;
 	int m_iCoin = 0;
+	static int m_iHpLevel;
+	static int m_iJellyLevel;
 };
 

@@ -1,17 +1,22 @@
 #include "stdafx.h"
-#include "Load.h"=
+#include "Load.h"
 #include "Obj_Manager.h"
 #include "Scene_Manager.h"
-#include "Bitmap_Manager.h"
 
 
 CLoad::CLoad()
 {
 }
 
+CLoad::CLoad(CObj * pPlayer)
+	: CScene(pPlayer)
+{
+}
+
 
 CLoad::~CLoad()
 {
+	Release_Scene();
 }
 
 void CLoad::Ready_Scene()
@@ -23,7 +28,7 @@ void CLoad::Update_Scene()
 {
 	//CObj_Manager::Get_Instance()->Update_ObjectManager();
 	if (CKey_Manager::Get_Instance()->Key_DOWN(KEY_ENTER))
-		CScene_Manager::Get_Instance()->Scene_Change_SceneManager(CScene_Manager::SCENE_PLAY, m_pPlayer);
+		CScene_Manager::Get_Instance()->Scene_Change_SceneManager(CScene_Manager::SCENE_STANDBY, m_pPlayer);
 }
 
 void CLoad::LateUpdate_Scene()

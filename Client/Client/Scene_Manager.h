@@ -19,7 +19,7 @@ public:
 	}
 
 public:
-	 enum ID {SCENE_LOAD, SCENE_STANDBY, SCENE_PLAY, SCENE_END};
+	 enum ID {SCENE_LOAD, SCENE_STANDBY, SCENE_PLAY, SCENE_RESULT, SCENE_END};
 private:
 	CScene_Manager();
 	~CScene_Manager();

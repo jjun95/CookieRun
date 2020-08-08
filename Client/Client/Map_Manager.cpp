@@ -128,7 +128,7 @@ void CMap_Manager::Load_MapData()
 		}
 
 	}
-	MessageBox(nullptr, L"MapLoad 성공!", L"MapManager_Client", MB_OK);
+	//MessageBox(nullptr, L"MapLoad 성공!", L"MapManager_Client", MB_OK);
 	CloseHandle(hFile);
 }
 
@@ -169,6 +169,8 @@ void CMap_Manager::Update_MapManager()
 	{
 		auto& iter_end = m_listMap[i].end();
 		for (auto& iter = m_listMap[i].begin(); iter != iter_end; ) {
+			if (m_listMap[i].empty())
+				break;
 			int iEvent = (*iter)->Update_Map();
 			if (OBJ_DEAD == iEvent) {
 				Safe_Delete(*iter);
@@ -197,6 +199,10 @@ void CMap_Manager::Render_MapManager(HDC hDC)
 
 void CMap_Manager::Release_MapManager()
 {
-	for(size_t i = 0; i < MAP::MAP_END; ++i)
-		for_each(m_listMap[i].begin(), m_listMap[i].end(), Safe_Delete<CMaps*>);
+	for (size_t i = 0; i < MAP::MAP_END; ++i) {
+		//for_each(m_listMap[i].begin(), m_listMap[i].end(), Safe_Delete<CMaps*>);
+		for (auto& map : m_listMap[i])
+			Safe_Delete(map);
+		m_listMap[i].clear();
+	}
 }

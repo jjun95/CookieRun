@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "BaseJelly.h"
+#include "Obj.h"
 
 
 CBaseJelly::CBaseJelly()
@@ -30,7 +31,7 @@ void CBaseJelly::Render_Map(HDC hDC)
 		m_tInfo.tPoint.iCX,
 		m_tInfo.tPoint.iCY,
 		hMemDC,
-		0, 0,
+		BASEJL_CX * (CObj::Get_JellyLevel() - 1), 0,
 		BASEJL_CX,
 		BASEJL_CY,
 		RGB(255, 0, 255));

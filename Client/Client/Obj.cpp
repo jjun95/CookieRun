@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "Obj.h"
 
+int CObj::m_iBestScore = 0;
+int CObj::m_iMyCoin= 0;
+int CObj::m_iHpLevel = 1;
+int CObj::m_iJellyLevel = 1;
+
 
 CObj::CObj()
 	:m_fSpeed(0)

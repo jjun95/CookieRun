@@ -22,12 +22,24 @@ public:
 		CMap_Manager::Get_Instance()->Set_Speed(DEFAULT_SPEED / 2);
 	}
 	void Set_Dead() {
+		if (!m_bIsDead)
+			m_dwEndTime = GetTickCount();
 		m_iHp = 0;
 		m_eNextState = OBJ::PLAYER_DIE;
 		m_bIsDead = true;
+		m_bIsInvincible = true;
 		CMap_Manager::Get_Instance()->Set_Speed(0);
 	}
-	void Set_Hp(int plusHp) { m_iHp += plusHp; }
+	void Set_Hp(int plusHp, bool setMax = false) {
+		if (setMax) {
+			m_bIsDead = false;
+			m_iMaxHp = 150 + 10 * m_iHpLevel;
+			m_iHp = m_iMaxHp;
+			m_eNextState = OBJ::PLAYER_RUN;
+		}
+		else m_iHp += plusHp;
+	}
+	void Set_MaxHp() { m_iMaxHp += 10; m_iHp = m_iMaxHp; }
 	void Set_IsBoost() { m_bIsBoost = true; m_dwRushTime = GetTickCount(); m_eNextState = OBJ::PLAYER_RUSH;}
 	void Set_IsGiant() { m_bIsGiant = true; m_dwGiantTime = GetTickCount(); }
 	void Set_IsInvincible() { m_bIsInvincible = true; }
@@ -66,5 +78,5 @@ private:
 	DWORD m_dwRushTime = 0;
 	DWORD m_dwGiantTime = 0;
 	DWORD m_dwInvincibleTime = 0;
-
+	DWORD m_dwEndTime = 0;
 };

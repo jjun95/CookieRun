@@ -29,6 +29,7 @@ public:
 
 public:
 	void Add_Object(CObj* pObj, OBJ::ID eID); 
+	void Delete_Object(OBJ::ID eID); 
 
 public:
 	void Update_ObjectManager();

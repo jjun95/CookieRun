@@ -41,7 +41,7 @@ void CMainApp::Ready_MainApp()
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Coin/BigCoin.bmp", L"BigCoin");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/PinkBear.bmp", L"PinkBear");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/YellowBear.bmp", L"YellowBear");
-	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/TestJelly.bmp", L"BaseJelly");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/BaseJelly.bmp", L"BaseJelly");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/MiddleJelly.bmp", L"MiddleJelly");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/BigJelly.bmp", L"BigJelly");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Dumbbell.bmp", L"Dumbbell");
@@ -54,6 +54,12 @@ void CMainApp::Ready_MainApp()
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/Giant.bmp", L"Giant");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/Magnet.bmp", L"Magnet");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Load2.bmp", L"Load");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Upgrade.bmp", L"UpgradeBack");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Button/Upgrade.bmp", L"Upgrade");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Button/Start.bmp", L"Start");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Button/UpgradePan.bmp", L"UpgradePan");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Button/Selected.bmp", L"Selected");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Result.bmp", L"Result");
 
 
 	//CObj* pObj = ; 

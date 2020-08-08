@@ -44,7 +44,7 @@ void CCollision_Manager::Collision_ScoreRect(list<CMaps*>& rDstList, list<CObj*>
 				//if (dynamic_cast<CPlayer*>(CObj_Manager::Get_Instance()->Get_Player())->Get_Hp() <= 0)
 				//	return;
 				int coin = rDstObject->Get_Coin();
-				int score = rDstObject->Get_Score();
+				int score = rDstObject->Get_Score() + ( 50 * CObj::Get_JellyLevel());
 				MAP::DETAILED_ID eDTID = rDstObject->Get_DTID();
 				dynamic_cast<CPlayer*>(CObj_Manager::Get_Instance()->Get_Player())->Set_Coin(coin);
 				dynamic_cast<CPlayer*>(CObj_Manager::Get_Instance()->Get_Player())->Set_Score(score);
@@ -164,8 +164,8 @@ bool CCollision_Manager::Collision_RectEX(list<CMaps*>& rDstList, list<CObj*>& r
 
 					rSrcObject->Set_Pos(fX, fY + fMoveY);
 
-					if (dynamic_cast<CPlayer*>(rSrcObject)->Get_Hp() <= 0)
-						dynamic_cast<CPlayer*>(rSrcObject)->Set_Dead();
+				if (dynamic_cast<CPlayer*>(rSrcObject)->Get_Hp() <= 0)
+					dynamic_cast<CPlayer*>(rSrcObject)->Set_Dead();
 //				}
 				//else
 				//{

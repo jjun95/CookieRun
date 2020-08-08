@@ -3,6 +3,7 @@
 #include "Obj_Manager.h"
 #include "Bitmap_Manager.h"
 #include "Map_Manager.h"
+#include "Scene_Manager.h"
 
 CPlayer::CPlayer()
 {
@@ -162,7 +163,7 @@ void CPlayer::Ready_Object()
 	m_eCurState = OBJ::PLAYER_RUN;
 	m_eNextState = OBJ::PLAYER_RUN;
 	m_dwRunTime = GetTickCount();
-
+	m_bIsDead = false;
 	CObj::Update_Rect_Object(m_tInfo.fX - (m_tInfo.iCX >> 6), m_tInfo.fY + (m_tInfo.iCY >> 3), m_tInfo.fX + (m_tInfo.iCX >> 3), m_tInfo.fY + (m_tInfo.iCY / 2.2f));
 }
 
@@ -204,6 +205,10 @@ int CPlayer::Update_Object()
 		}
 	}
 
+	if (m_bIsDead && (m_dwEndTime + 3000 < GetTickCount())) {
+		CScene_Manager::Get_Instance()->Scene_Change_SceneManager(CScene_Manager::SCENE_RESULT, this);
+	}
+
 	Animation_Change();
 	CObj::MoveFrame();
 	return OBJ_NOEVENT;
@@ -222,12 +227,13 @@ void CPlayer::LateUpdate_Object()
 		}
 	}
 	if (m_dwRunTime + 1000 < GetTickCount()) {
-		m_iHp -= 5;
+		m_iHp -= 10;
 		m_dwRunTime = GetTickCount();
 	}
 
 	if (m_dwInvincibleTime + 1000 < GetTickCount())
 		m_bIsInvincible = false;
+
 }
 
 void CPlayer::Render_Object(HDC hDC)
@@ -250,7 +256,7 @@ void CPlayer::Render_Object(HDC hDC)
 			PLAYERSIZE,
 			PLAYERSIZE,
 			RGB(255, 0, 255));
-		if(m_bIsInvincible)
+		if(m_bIsInvincible && !m_bIsDead)
 			m_bIsblink = true;
 	}
 	else{
@@ -262,11 +268,11 @@ void CPlayer::Render_Object(HDC hDC)
 	//LineTo(hDC, m_tInfo.fX + (m_tInfo.iCX >> 1), m_tInfo.fY + (m_tInfo.iCY >> 1));
 	//LineTo(hDC, m_tInfo.fX - (m_tInfo.iCX >> 1), m_tInfo.fY + (m_tInfo.iCY >> 1));
 	//LineTo(hDC, m_tInfo.fX - (m_tInfo.iCX >> 1), m_tInfo.fY - (m_tInfo.iCY >> 1));
-	MoveToEx(hDC, m_tRect.left, m_tRect.top, nullptr);
-	LineTo(hDC, m_tRect.right, m_tRect.top);
-	LineTo(hDC, m_tRect.right, m_tRect.bottom);
-	LineTo(hDC, m_tRect.left, m_tRect.bottom);
-	LineTo(hDC, m_tRect.left, m_tRect.top);
+	//MoveToEx(hDC, m_tRect.left, m_tRect.top, nullptr);
+	//LineTo(hDC, m_tRect.right, m_tRect.top);
+	//LineTo(hDC, m_tRect.right, m_tRect.bottom);
+	//LineTo(hDC, m_tRect.left, m_tRect.bottom);
+	//LineTo(hDC, m_tRect.left, m_tRect.top);
 	// 각도에서 라디안으로 치환하기 위해서는// 각도 * PI / 180 = 라디안
 	// 라디안에서 각도로 치환하기 위해서는// 라디안 * 180 / PI = 각도 
 }

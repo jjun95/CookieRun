@@ -76,6 +76,12 @@
     <Filter Include="03.Scene\Load">
       <UniqueIdentifier>{1142ebb2-2189-47c0-aa96-e4e24d469851}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Scene\Standby">
+      <UniqueIdentifier>{bfae4bed-52ba-4399-9dee-717d0d81bcba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Scene\Result">
+      <UniqueIdentifier>{2d102b73-ede0-4544-b6a6-37245da75c2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -198,6 +204,12 @@
     <ClInclude Include="Load.h">
       <Filter>03.Scene\Load</Filter>
     </ClInclude>
+    <ClInclude Include="Standby.h">
+      <Filter>03.Scene\Standby</Filter>
+    </ClInclude>
+    <ClInclude Include="Result.h">
+      <Filter>03.Scene\Result</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -310,6 +322,12 @@
     </ClCompile>
     <ClCompile Include="Load.cpp">
       <Filter>03.Scene\Load</Filter>
+    </ClCompile>
+    <ClCompile Include="Standby.cpp">
+      <Filter>03.Scene\Standby</Filter>
+    </ClCompile>
+    <ClCompile Include="Result.cpp">
+      <Filter>03.Scene\Result</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

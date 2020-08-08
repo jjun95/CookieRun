@@ -1,5 +1,7 @@
 #pragma once
 #include "Obj.h"
+#include "Bitmap_Manager.h"
+
 class CScene abstract
 {
 public:

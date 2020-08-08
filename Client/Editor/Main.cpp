@@ -29,7 +29,7 @@ void CMain::Ready_Main()
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Coin/BigCoin.bmp", L"BigCoin");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/PinkBear.bmp", L"PinkBear");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/YellowBear.bmp", L"YellowBear");
-	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/TestJelly.bmp", L"BaseJelly");
+	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/BaseJelly.bmp", L"BaseJelly");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/MiddleJelly.bmp", L"MiddleJelly");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Jelly/BigJelly.bmp", L"BigJelly");
 	CBitmap_Manager::Get_Instance()->Insert_Texture_BitmapManager(L"../Image/Item/SmallHp.bmp", L"SmallHp");

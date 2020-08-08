@@ -55,6 +55,13 @@ void CObj_Manager::Add_Object(CObj * pObj, OBJ::ID eID)
 	m_listObject[eID].emplace_back(pObj);
 }
 
+void CObj_Manager::Delete_Object(OBJ::ID eID)
+{
+	for (auto& iter = m_listObject[eID].begin(); iter != m_listObject[eID].end(); ) {
+		iter = m_listObject[eID].erase(iter);
+	}
+}
+
 void CObj_Manager::Update_ObjectManager()
 {
 	// 최신 코드 ! 
@@ -63,6 +70,8 @@ void CObj_Manager::Update_ObjectManager()
 		auto& iter_end = m_listObject[i].end();
 		for (auto& iter = m_listObject[i].begin(); iter != iter_end; )
 		{
+			if (m_listObject[i].empty())
+				break;
 			int iEvent = (*iter)->Update_Object();
 			if (OBJ_DEAD == iEvent)
 			{
